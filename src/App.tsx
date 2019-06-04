@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { IAppState } from './redux/Store';
 
 import Footer from './views/components/Footer';
-import {Card,CountryImage} from './views/components/Flag'
+import {CountryImage} from './views/components/Flag'
 import { Continents } from "./data";
-import { ICountryState,INextCountryAction } from './redux/Interfaces';
+import { ICountryState } from './redux/Interfaces';
 import * as actions from "./redux/actions/CountryActions";
 import { AnyAction, bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
@@ -24,8 +24,7 @@ interface IProps {
 
 
 class App extends React.Component<IProps> {
-   handleIndexChange = (index: number) => {
-    console.log(this.props);
+   handleIndexChange = (index: number) => {    
     this.props.acciones.RequestContinents(index);
   }
 
@@ -33,7 +32,7 @@ class App extends React.Component<IProps> {
  
   return (   
     <>
-      <Card title= {data.title} paragraph={data.paragraph}></Card>
+      
       <CountryImage title = {data.title}></CountryImage>
       <Footer
             data={Continents}

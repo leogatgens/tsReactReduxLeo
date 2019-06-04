@@ -1,7 +1,4 @@
-// Import redux types
-import { ActionCreator, Dispatch } from 'redux';
-import { ThunkAction } from 'redux-thunk';
-import axios from 'axios';
+
 
 // Import Character Typing
 import { INextCountryAction,IRequestContryByContinentAction, GameActionTypes } from '../Interfaces';
