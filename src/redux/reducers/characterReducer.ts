@@ -1,3 +1,4 @@
+
 // Import Reducer type
 import { Reducer } from 'redux';
 import {
@@ -28,3 +29,4 @@ export const characterReducer: Reducer<ICharacterState, CharacterActions> = (
       return state;
   }
 };
+
