@@ -17,6 +17,7 @@ export const Card = ({ title, paragraph }: CardProps) => <aside>
 export function CountryImage({title} : CardProps ) {    
   
   return ( 
+    
   <React.Fragment>
     <img src={ title} alt="logo"  />
     <Typography variant="h6" align="center">
