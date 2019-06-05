@@ -2,9 +2,7 @@ import { Reducer } from 'redux';
 import {GameActions} from '../actions/CountryActions'
 import { ICountryState,GameActionTypes } from '../Interfaces';
 
-/////////////////////////////////
-/////////////////////////////////
-/////////////////////////////////
+
 const defaultState: ICountryState = {
   countriesToShow: 'ssdfsd',
   indexCountry: 0,

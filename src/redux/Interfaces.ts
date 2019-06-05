@@ -8,11 +8,13 @@ export interface ICharacter {
 // Define the Character State
 export interface ICharacterState {
   readonly characters: ICharacter[];  
+  readonly colorDivPrincipal: string;  
 }
 
 // Create Action Constants
 export enum CharacterActionTypes {
-  GET_ALL = 'GET_ALL'
+  GET_ALL = 'GET_ALL',
+  CHANGE_COLOR = 'CHANGE_COLOR'
 
 }
 // Interface for Get All Action Type
@@ -20,6 +22,12 @@ export interface ICharacterGetAllAction {
   type: CharacterActionTypes.GET_ALL;
   characters: ICharacter[];
 }
+
+export interface ICharacterChangeColorAction {
+  type: CharacterActionTypes.CHANGE_COLOR;
+  color: string;
+}
+
 
 
 
@@ -44,7 +52,6 @@ export interface ICountryState {
 // Create Action Constants
 export enum GameActionTypes {
   NEXT_COUNTRY = 'NEXT_COUNTRY',
-  CHANGE_COLOR = 'CHANGE_COLOR',
   REQUEST_COUNTRIES_BY_CONTINENT = 'REQUEST_COUNTRIES_BY_CONTINENT'
   
 }

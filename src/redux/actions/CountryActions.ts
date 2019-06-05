@@ -12,9 +12,6 @@ example: export type CharacterActions = IGetAllAction | IGetOneAction ...
 export type GameActions = INextCountryAction | IRequestContryByContinentAction;
 
 
-export const CambiarFondo = (text : string) => {
-  return { type: GameActionTypes.CHANGE_COLOR , text }
-}
 
 
 export const nextCountry = (index : number) => {

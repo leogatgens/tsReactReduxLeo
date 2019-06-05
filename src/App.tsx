@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { IAppState } from './redux/Store';
 
 import Footer from './views/components/Footer';
-import {CountryImage} from './views/components/Flag'
+import Header from './views/components/Header';
+
 import { Continents } from "./data";
-import { ICountryState } from './redux/Interfaces';
+
 import * as actions from "./redux/actions/CountryActions";
 import { AnyAction, bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
+import TabGame from './views/components/TabGame';
 
 const data = {
   title : 'La hora ha llegado',
@@ -18,7 +20,7 @@ const data = {
 
 // Create the containers interface
 interface IProps {
-  propiedades: ICountryState;
+  propiedades: IAppState;
   acciones : any;
 }
 
@@ -31,15 +33,20 @@ class App extends React.Component<IProps> {
   public render() {
  
   return (   
-    <>
-      
-      <CountryImage title = {data.title}></CountryImage>
+    <div
+          style={{
+            background: this.props.propiedades.countryState.colorDivPrincipal,
+            height: 470
+          }}
+        >
+      <Header></Header> 
+      <TabGame></TabGame>
       <Footer
             data={Continents}
             handleIndexChange={this.handleIndexChange}
-            selectedIndex={this.props.propiedades.selectedTabIndex}
+            selectedIndex={this.props.propiedades.PaisState.selectedTabIndex}
           />
-    </>
+      </div>
   );
   }
 };
@@ -47,7 +54,7 @@ class App extends React.Component<IProps> {
 // Grab the characters from the store and make them available on props
 const mapStateToProps = (store: IAppState) => {
   return {
-    propiedades: store.PaisState,
+    propiedades: store,
     
   };
 };
