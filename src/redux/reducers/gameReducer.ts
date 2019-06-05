@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import {GameActions} from '../actions/CountryActions'
-import { ICountryState,GameActionTypes,IPais } from '../Interfaces';
+import { ICountryState,GameActionTypes } from '../Interfaces';
 import { Continents } from '../../data';
 import { countriesByContinent } from '../getContinentText';
 

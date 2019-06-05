@@ -1,19 +1,18 @@
 import React from 'react'; // we need this to make JSX compile
 import { Typography } from '@material-ui/core';
+import { IPais } from '../../redux/Interfaces';
 
-type CardProps = {
-  title: string,
-  paragraph?: string
+
+interface IProps {
+  propiedades: IPais; 
+
 }
 
-
-
-export function CountryImage({title} : CardProps ) {    
+export const CountryImage: React.SFC<IProps> = (props) => { 
   
-  return ( 
-    
+  return (     
   <React.Fragment>
-    <img src={ title} alt="logo"  />
+    <img src={props.propiedades.flagUrl} alt="logo"  />
     <Typography variant="h6" align="center">
       ¿País?
     </Typography>
