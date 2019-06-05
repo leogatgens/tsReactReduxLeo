@@ -13,14 +13,14 @@ import { AnyAction, bindActionCreators } from "redux";
 import { ICountryState } from "../../redux/Interfaces";
 import { IAppState } from "../../redux/Store";
 const styles = {
-  Paper: { padding: 20, marginTop: 20, marginBottom: 10, height: 300 }
+  Paper: { padding: 20, marginTop: 20, marginBottom: 10, height: 320 }
 };
 
 // Create the containers interface
 interface IProps {
   mapProps: ICountryState;
   countryaccions: any;
-  characteraccions: any;
+  characteraccions:  any;
 }
 
 class TabGame extends React.Component<IProps> {
@@ -49,10 +49,10 @@ class TabGame extends React.Component<IProps> {
     const actualCountry = countriesToShow[index];
 
     return (
-      <Grid container spacing={8}>
+      <Grid container spacing={1}>
         <Grid item xs={3}>
           <Paper style={styles.Paper}>
-            <CountryImage propiedades={actualCountry} />
+          <CountryImage propiedades={actualCountry} /> 
           </Paper>
         </Grid>
         <Grid item sm>
@@ -61,17 +61,21 @@ class TabGame extends React.Component<IProps> {
               data={countriesToShow}
               handleSelectedCountry={this.handleSelectedCountry}
               actualCountry={actualCountry}
-            />
-            <Button
+            />    
+          <Grid container direction="column-reverse" alignContent="flex-end">
+          <Button
               variant="contained"
-              color="primary"
-              style={{ float: "right", marginRight: 5 }}
+              color="primary"             
               onClick={this.handleNext}
             >
               Next
             </Button>
-          </Paper>
+         
         </Grid>
+          </Paper>
+
+        </Grid>
+       
       </Grid>
     );
   }

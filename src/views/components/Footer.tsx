@@ -14,6 +14,7 @@ interface IFooter {
     selectedIndex: number,
     data : Array<string>,
     handleIndexChange(index : number) : any,
+    classes : any
     
 
   }
@@ -23,11 +24,11 @@ class Footer extends React.Component<IFooter> {
   this.props.handleIndexChange(index);
 };
   render() {
-   // const { classes } = this.props;
+    console.log(this);
+    const { classes } = this.props;
   
     return (
-//      <Paper className={classes.root}>
-    <Paper>
+      <Paper className={classes.root}>    
         <Tabs
           value={this.props.selectedIndex}
           onChange={this.handleChange}

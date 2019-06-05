@@ -7,9 +7,9 @@ import { Typography } from '@material-ui/core';
   function Header() {
   return ( 
     <Fragment>
-     <AppBar position="static">
+     <AppBar position="static" >
       <Toolbar>
-        <Typography variant="h4" color="inherit">
+        <Typography variant="h4" >
           Países del planeta tierra
         </Typography>       
       </Toolbar>
