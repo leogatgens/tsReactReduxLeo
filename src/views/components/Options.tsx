@@ -38,7 +38,7 @@ export class Options extends React.Component<IProps> {
            }
          };
          render() {
-           console.log(this);
+           
            return (
              <React.Fragment>
                <Typography variant="h6">

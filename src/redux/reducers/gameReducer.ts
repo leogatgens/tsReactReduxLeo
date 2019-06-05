@@ -12,16 +12,22 @@ const defaultState: ICountryState = {
   selectedTabIndex: 0
 }
 export const gameReducer: Reducer<ICountryState, GameActions> = (state = defaultState, action) => {
+  let resultado = null;
   console.log(action);
   switch (action.type) {
     case (GameActionTypes.NEXT_COUNTRY):
+        resultado = countriesByContinent(action.index);
       return {
         ...state,
-        selectedTabIndex: action.index
+        countriesToShow: resultado.listaPaises,
+        indexCountry: resultado.paisActual,
       };
       case(GameActionTypes.REQUEST_COUNTRIES_BY_CONTINENT):
+      resultado = countriesByContinent(action.index);
       return{
         ...state,
+        countriesToShow: resultado.listaPaises,
+        indexCountry: resultado.paisActual,
         selectedTabIndex: action.index
 
       };
