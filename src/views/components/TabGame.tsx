@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -8,9 +8,11 @@ import * as  countryacciones from '../../redux/actions/CountryActions';
 import * as  characteracciones from '../../redux/actions/CharacterActions';
 import {connect} from 'react-redux'
 import {CountryImage} from './Flag'
+import {Options} from './Options'
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction, bindActionCreators } from 'redux';
 import { ICountryState } from '../../redux/Interfaces';
+import { IAppState } from '../../redux/Store';
 const styles =  ({
   Paper : {padding : 20, marginTop : 20, marginBottom : 10 ,  height : 300}
 });
@@ -23,7 +25,7 @@ interface IProps {
   characteraccions : any;
 }
 
-class TabPrincipal extends React.Component<IProps> {  
+class TabGame extends React.Component<IProps> {  
 
   componentDidMount() {   
     //this.props.dispatch(actions.loadAuthors());     
@@ -40,30 +42,29 @@ class TabPrincipal extends React.Component<IProps> {
    this.props.countryaccions.CambiarFondo(event);
   }
   handleNext = () => {
-    console.log(this);
+    
   //      let index = this.props.mapProps.countryreducer.selectedTabIndex;
   //  this.props.dispatch(actions.nextCountry(index));
   this.props.characteraccions.CambiarFondo('green');
    // this.props.dispatch(actions.fetchPosts());
   }
   render() {    
-    
-   // const index = this.props.mapProps.countryreducer.indexCountry;
-  //  const  flagUrl = this.props.mapProps.countryreducer.countriesToShow[index];
-    // const countriesToShow = this.props.mapProps.countryreducer.countriesToShow; 
-    // const  actualCountry = countriesToShow[index];
+    console.log(this.props.mapProps);
+    const index = this.props.mapProps.indexCountry;
+    //const  flagUrl = this.props.mapProps.countriesToShow[index];
+     const countriesToShow = this.props.mapProps.countriesToShow; 
+     const  actualCountry = countriesToShow[index];
 
     return (
       <Grid container spacing={8} >
         <Grid item xs={3}>
          <Paper style={styles.Paper} >
-         <CountryImage title = {'http://localhost:3000/img/brazil-flag-button-square-xs.png'}></CountryImage>
-        
+         <CountryImage title = {'http://localhost:3000/img/brazil-flag-button-square-xs.png'}/>                
         </Paper>         
         </Grid>
         <Grid item sm>
          <Paper style={styles.Paper} >
-            {/* <Options data={countriesToShow} handleSelectedCountry={this.handleSelectedCountry} actualCountry={actualCountry}></Options> */}
+             <Options data={countriesToShow} handleSelectedCountry={this.handleSelectedCountry} actualCountry={actualCountry}></Options> 
             <Button variant="contained" color="primary" style={{float:"right", marginRight: 5}} onClick={this.handleNext} >
               Next
             </Button>
@@ -76,9 +77,9 @@ class TabPrincipal extends React.Component<IProps> {
   }
 }
 
-function mapStateToProps(state : any){
+function mapStateToProps(state : IAppState){
   return {
-    mapProps : state
+    mapProps : state.PaisState
   };
 }
 
@@ -88,4 +89,4 @@ countryaccions: bindActionCreators(countryacciones, dispatch),
 characteraccions : bindActionCreators(characteracciones, dispatch)
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps )(withStyles(styles)(TabPrincipal));
+export default connect(mapStateToProps,mapDispatchToProps )(withStyles(styles)(TabGame));

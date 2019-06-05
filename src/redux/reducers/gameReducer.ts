@@ -1,11 +1,14 @@
 import { Reducer } from 'redux';
 import {GameActions} from '../actions/CountryActions'
-import { ICountryState,GameActionTypes } from '../Interfaces';
+import { ICountryState,GameActionTypes,IPais } from '../Interfaces';
+import { Continents } from '../../data';
+import { countriesByContinent } from '../getContinentText';
 
+const listaPaisesInicial = countriesByContinent(Continents.indexOf('All'));
 
 const defaultState: ICountryState = {
-  countriesToShow: 'ssdfsd',
-  indexCountry: 0,
+  countriesToShow: listaPaisesInicial.listaPaises,
+  indexCountry: listaPaisesInicial.paisActual,
   selectedTabIndex: 0
 }
 export const gameReducer: Reducer<ICountryState, GameActions> = (state = defaultState, action) => {

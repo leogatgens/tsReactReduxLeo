@@ -2,8 +2,7 @@
 // Import Reducer type
 import { Reducer } from 'redux';
 import {
-  CharacterActions
-  
+  CharacterActions  
 } from '../actions/CharacterActions';
 import { ICharacterState,CharacterActionTypes } from '../Interfaces';
 

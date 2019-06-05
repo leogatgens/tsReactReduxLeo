@@ -42,8 +42,14 @@ export interface ICharacterChangeColorAction {
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 ////////////////////////////////////////////
+
+export interface IPais {  
+    name: string,
+    flagUrl: string,
+    Continent: string
+}
 export interface ICountryState {
-  countriesToShow: string,
+  countriesToShow: IPais[],
   indexCountry: number,
   selectedTabIndex: number
 }

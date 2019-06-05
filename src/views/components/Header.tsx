@@ -9,7 +9,7 @@ import { Typography } from '@material-ui/core';
     <Fragment>
      <AppBar position="static">
       <Toolbar>
-        <Typography variant="h3" color="inherit">
+        <Typography variant="h4" color="inherit">
           Países del planeta tierra
         </Typography>       
       </Toolbar>

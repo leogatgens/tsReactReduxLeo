@@ -13,10 +13,7 @@ import { AnyAction, bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import TabGame from './views/components/TabGame';
 
-const data = {
-  title : 'La hora ha llegado',
-  paragraph : 'Todo fue lo que fue'
-}
+
 
 // Create the containers interface
 interface IProps {
