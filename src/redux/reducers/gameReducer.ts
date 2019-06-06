@@ -1,14 +1,12 @@
 import { Reducer } from 'redux';
 import {GameActions} from '../actions/CountryActions'
-import { ICountryState,GameActionTypes } from '../Interfaces';
-import { Continents } from '../../shared/data';
+import { ICountryState,GameActionTypes, IPais } from '../Interfaces';
 import { countriesByContinent } from '../getContinentText';
 
-const listaPaisesInicial = countriesByContinent(Continents.indexOf('All'));
-
+ 
 const defaultState: ICountryState = {
-  countriesToShow: listaPaisesInicial.listaPaises,
-  indexCountry: listaPaisesInicial.paisActual,
+  countriesToShow: [] as Array<IPais>,
+  indexCountry: 0,
   selectedTabIndex: 0
 }
 export const gameReducer: Reducer<ICountryState, GameActions> = (state = defaultState, action) => {
@@ -16,20 +14,23 @@ export const gameReducer: Reducer<ICountryState, GameActions> = (state = default
   console.log(action);
   switch (action.type) {
     case (GameActionTypes.NEXT_COUNTRY):
-        resultado = countriesByContinent(action.index);
+        
       return {
         ...state,
-        countriesToShow: resultado.listaPaises,
-        indexCountry: resultado.paisActual,
+        indexCountry: 0,
       };
       case(GameActionTypes.REQUEST_COUNTRIES_BY_CONTINENT):
-      resultado = countriesByContinent(action.index);
+     
       return{
         ...state,
-        countriesToShow: resultado.listaPaises,
-        indexCountry: resultado.paisActual,
-        selectedTabIndex: action.index
-
+        indexCountry: 0,
+      };
+      case(GameActionTypes.GET_ALL):
+      
+      return{
+        ...state,
+        countriesToShow: countriesByContinent(0,action.paises).listaPaises,
+      
       };
     default:
       return state;

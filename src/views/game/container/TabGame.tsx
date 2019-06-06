@@ -10,7 +10,7 @@ import { CountryImage } from "../components/Flag";
 import { Options } from "../components/Options";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction, bindActionCreators } from "redux";
-import { ICountryState } from "../../../redux/Interfaces";
+import { ICountryState,IPais } from "../../../redux/Interfaces";
 import { IAppState } from "../../../redux/Store";
 const styles = {
   Paper: { padding: 20, marginTop: 20, marginBottom: 10, height: 320 }
@@ -25,7 +25,7 @@ interface IProps {
 
 class TabGame extends React.Component<IProps> {
   componentDidMount() {
-    this.props.characteraccions.getAllCharacters();
+    this.props.countryaccions.getAllCharacters();
   }
 
   handleChange = (key: number) => (event: any, value: any) => {
@@ -43,10 +43,19 @@ class TabGame extends React.Component<IProps> {
     this.props.characteraccions.CambiarFondo("white");
   };
   render() {
-    const index = this.props.mapProps.indexCountry;
 
-    const countriesToShow = this.props.mapProps.countriesToShow;
-    const actualCountry = countriesToShow[index];
+    let index = this.props.mapProps.indexCountry;
+    let countriesToShow = [] as Array<IPais>;
+    let actualCountry  = {} as IPais;    
+    if(this.props.mapProps.countriesToShow.length > 0)
+    {
+       index = this.props.mapProps.indexCountry;
+       countriesToShow = this.props.mapProps.countriesToShow;
+       actualCountry = countriesToShow[index];
+    }else{
+     
+    }
+
 
     return (
       <Grid container spacing={1}>

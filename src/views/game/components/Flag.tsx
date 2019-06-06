@@ -10,6 +10,7 @@ interface IProps {
 
 export const CountryImage: React.SFC<IProps> = (props) => { 
   
+  
   return (     
   <React.Fragment>
     <img src={props.propiedades.flagUrl ? props.propiedades.flagUrl : "http://localhost:3000/img/notfound.png"} alt="logo"  />

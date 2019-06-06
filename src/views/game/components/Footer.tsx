@@ -24,7 +24,7 @@ class Footer extends React.Component<IFooter> {
   this.props.handleIndexChange(index);
 };
   render() {
-    console.log(this);
+    
     const { classes } = this.props;
   
     return (

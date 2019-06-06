@@ -7,20 +7,14 @@ export interface ICharacter {
 }
 // Define the Character State
 export interface ICharacterState {
-  readonly characters: ICharacter[];  
+  readonly paises: IPais[];  
   readonly colorDivPrincipal: string;  
 }
 
 // Create Action Constants
-export enum CharacterActionTypes {
-  GET_ALL = 'GET_ALL',
+export enum CharacterActionTypes {  
   CHANGE_COLOR = 'CHANGE_COLOR'
 
-}
-// Interface for Get All Action Type
-export interface ICharacterGetAllAction {
-  type: CharacterActionTypes.GET_ALL;
-  characters: ICharacter[];
 }
 
 export interface ICharacterChangeColorAction {
@@ -48,7 +42,7 @@ export interface IPais {
     flagUrl: string,
     Continent: string
 }
-export interface ICountryState {
+export interface ICountryState {  
   countriesToShow: IPais[],
   indexCountry: number,
   selectedTabIndex: number
@@ -58,7 +52,8 @@ export interface ICountryState {
 // Create Action Constants
 export enum GameActionTypes {
   NEXT_COUNTRY = 'NEXT_COUNTRY',
-  REQUEST_COUNTRIES_BY_CONTINENT = 'REQUEST_COUNTRIES_BY_CONTINENT'
+  REQUEST_COUNTRIES_BY_CONTINENT = 'REQUEST_COUNTRIES_BY_CONTINENT',
+  GET_ALL = 'GET_ALL',
   
 }
 // Interface for 
@@ -71,6 +66,12 @@ export interface INextCountryAction {
 export interface IRequestContryByContinentAction {
   type: GameActionTypes.REQUEST_COUNTRIES_BY_CONTINENT;
   index: number;
+}
+
+// Interface for Get All Action Type
+export interface ICharacterGetAllAction {
+  type: GameActionTypes.GET_ALL;
+  paises: IPais[];
 }
 
 

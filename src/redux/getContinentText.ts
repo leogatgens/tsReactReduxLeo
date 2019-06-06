@@ -1,5 +1,6 @@
 import { Continents } from '../shared/data';
-import { paises } from '../shared/data'
+import { IPais } from './Interfaces';
+
 
 
 function getRandomCountry(countriesToShow :any) {
@@ -23,7 +24,7 @@ function calcularIndiceMaximoParaObtenerCincoPaises(longitud : number){
 
 }
 
-export function countriesByContinent(indicefilter : number) {
+export function countriesByContinent(indicefilter : number, paises : Array<IPais>):any {
   let filter = Continents[indicefilter];
   let listaAMostar = null;
   if (filter !== 'All') {
@@ -36,6 +37,8 @@ export function countriesByContinent(indicefilter : number) {
 
   let listaFinal = listaAMostar.slice(indiceRandom, (indiceRandom + 5));
   let DatosJuego = { listaPaises: listaFinal, paisActual: getRandomCountry(listaFinal) };
+
+  console.log(DatosJuego);
   return DatosJuego;
 }
 
