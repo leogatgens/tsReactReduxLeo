@@ -1,5 +1,5 @@
-import { Continents } from '../data';
-import { paises } from '../data'
+import { Continents } from '../shared/data';
+import { paises } from '../shared/data'
 
 
 function getRandomCountry(countriesToShow :any) {

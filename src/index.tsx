@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { Store } from "redux";
 // Import the store function and state
 import configureStore, { IAppState } from "./redux/Store";
-import { getAllCharacters } from "./redux/actions/CharacterActions";
+
 import * as serviceWorker from "./serviceWorker";
 //import "./index.css";
 import App from "./App";

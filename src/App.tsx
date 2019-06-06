@@ -2,14 +2,14 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import { IAppState } from './redux/Store';
-import Footer from './views/components/Footer';
-import Header from './views/components/Header';
-import { Continents } from "./data";
+import Footer from './views/game/components/Footer';
+import Header from './shared/component/Header';
+import { Continents } from "./shared/data";
 import * as countryacciones from "./redux/actions/CountryActions";
 import * as characteracciones from "./redux/actions/CharacterActions";
 import { AnyAction, bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import TabGame from './views/components/TabGame';
+import TabGame from './views/game/container/TabGame';
 
 // Create the containers interface
 interface IProps {

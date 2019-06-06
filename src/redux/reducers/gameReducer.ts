@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import {GameActions} from '../actions/CountryActions'
 import { ICountryState,GameActionTypes } from '../Interfaces';
-import { Continents } from '../../data';
+import { Continents } from '../../shared/data';
 import { countriesByContinent } from '../getContinentText';
 
 const listaPaisesInicial = countriesByContinent(Continents.indexOf('All'));

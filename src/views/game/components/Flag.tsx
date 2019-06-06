@@ -1,6 +1,6 @@
 import React from 'react'; // we need this to make JSX compile
 import { Typography } from '@material-ui/core';
-import { IPais } from '../../redux/Interfaces';
+import { IPais } from '../../../redux/Interfaces';
 
 
 interface IProps {
