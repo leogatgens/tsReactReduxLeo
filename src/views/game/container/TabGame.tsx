@@ -39,7 +39,7 @@ class TabGame extends React.Component<IProps> {
   };
   handleNext = () => {
     let index = this.props.mapProps.selectedTabIndex;
-    this.props.countryaccions.nextCountry(index);
+    this.props.countryaccions.nextCountry(index,this.props.mapProps.paisesPorContinente);
     this.props.characteraccions.CambiarFondo("white");
   };
   render() {

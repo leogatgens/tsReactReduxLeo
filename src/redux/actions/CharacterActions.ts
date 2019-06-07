@@ -1,7 +1,7 @@
 
 
 // Import Character Typing
-import { ICharacterGetAllAction,ICharacterState,CharacterActionTypes,ICharacterChangeColorAction } from '../Interfaces';
+import { CharacterActionTypes,ICharacterChangeColorAction } from '../Interfaces';
 
 
 export const CambiarFondo = (color : string) => {

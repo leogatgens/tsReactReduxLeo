@@ -19,9 +19,10 @@ interface IProps {
 }
 
 class App extends React.Component<IProps> {
-   handleIndexChange = (index: number) => {    
+   handleIndexChange = (index: number) => {   
+     console.log(this.props.propiedades.PaisState.paisesPorContinente);
     this.props.characteraccions.CambiarFondo("white");
-    this.props.countryaccions.RequestContinents(index);
+    this.props.countryaccions.RequestContinents(index,this.props.propiedades.PaisState.paisesPorContinente);
   }
 
   public render() {

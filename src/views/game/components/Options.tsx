@@ -2,8 +2,6 @@ import React from 'react';
 import {List,ListItem,ListItemText} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { IPais } from '../../../redux/Interfaces';
-
-
 // Create the containers interface
 interface IProps {
   data: IPais[],  
@@ -44,7 +42,6 @@ export class Options extends React.Component<IProps> {
                <Typography variant="h6">
                  Seleccione el país de la bandera:
                </Typography>
-
                <List dense={false}>{this.generate()}</List>
              </React.Fragment>
            );

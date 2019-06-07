@@ -43,6 +43,7 @@ export interface IPais {
     Continent: string
 }
 export interface ICountryState {  
+  paisesPorContinente :  IPais[],
   countriesToShow: IPais[],
   indexCountry: number,
   selectedTabIndex: number
@@ -60,12 +61,14 @@ export enum GameActionTypes {
 export interface INextCountryAction {
   type: GameActionTypes.NEXT_COUNTRY;
   index: number;
+  paises: IPais[];
 }
 
 // Interface for 
 export interface IRequestContryByContinentAction {
   type: GameActionTypes.REQUEST_COUNTRIES_BY_CONTINENT;
   index: number;
+  paises: IPais[];
 }
 
 // Interface for Get All Action Type

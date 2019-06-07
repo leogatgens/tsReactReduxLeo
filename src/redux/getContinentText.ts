@@ -25,6 +25,11 @@ function calcularIndiceMaximoParaObtenerCincoPaises(longitud : number){
 }
 
 export function countriesByContinent(indicefilter : number, paises : Array<IPais>):any {
+console.log(paises);
+  if(paises.length <=0){
+     return { listaPaises: []  as Array<IPais>, paisActual: {} as IPais };
+  }
+
   let filter = Continents[indicefilter];
   let listaAMostar = null;
   if (filter !== 'All') {
