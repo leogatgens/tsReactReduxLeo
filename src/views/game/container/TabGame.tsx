@@ -12,7 +12,7 @@ import { ThunkDispatch } from "redux-thunk";
 import { AnyAction, bindActionCreators } from "redux";
 import { ICountryState, IPais } from "../../../redux/Interfaces";
 import { IAppState } from "../../../redux/Store";
-import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+
 import CircularProgress from "@material-ui/core/CircularProgress";
 const styles = {
   Paper: { padding: 20, marginTop: 20, marginBottom: 10, height: 320 }
@@ -26,9 +26,7 @@ interface IProps {
 }
 
 class TabGame extends React.Component<IProps> {
-  constructor(props: any) {
-    super(props);
-  }
+ 
   componentDidMount() {
     this.props.countryaccions.getAllCharacters();
   }
@@ -59,14 +57,12 @@ class TabGame extends React.Component<IProps> {
     let countriesToShow = [] as Array<IPais>;
     let actualCountry = {} as IPais;
     
+    
     if (this.props.mapProps.countriesToShow.length > 0) {
       index = this.props.mapProps.indexCountry;
       countriesToShow = this.props.mapProps.countriesToShow;
-      actualCountry = countriesToShow[index];
-    
+      actualCountry = countriesToShow[index];    
     } 
-    
-    console.log( this.isEmpty(actualCountry));
 
     return (
       <Grid container spacing={1}>

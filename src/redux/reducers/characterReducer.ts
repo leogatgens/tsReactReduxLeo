@@ -8,8 +8,7 @@ import { ICharacterState,CharacterActionTypes } from '../Interfaces';
 
 
 // Define the initial state
-const initialCharacterState: ICharacterState = {
-  paises: [],
+const initialCharacterState: ICharacterState = {  
   colorDivPrincipal : 'white'
 };
 

@@ -45,10 +45,10 @@ export const getAllCharacters: ActionCreator<
         type: GameActionTypes.GET_ALL,
       });
     } catch (err) {
-      dispatch({
-        paises:  ListapaisesJSON ,
-        type: GameActionTypes.GET_ALL,
-      });
+      // dispatch({
+      //   paises:  ListapaisesJSON ,
+      //   type: GameActionTypes.GET_ALL,
+      // });
       console.error(err);
     }
   };

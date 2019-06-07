@@ -6,8 +6,7 @@ export interface ICharacter {
   url: string;
 }
 // Define the Character State
-export interface ICharacterState {
-  readonly paises: IPais[];  
+export interface ICharacterState {  
   readonly colorDivPrincipal: string;  
 }
 
@@ -38,13 +37,15 @@ export interface ICharacterChangeColorAction {
 ////////////////////////////////////////////
 
 export interface IPais {  
+    id : number,
     name: string,
     flagUrl: string,
-    Continent: string
+    continent: string
 }
 export interface ICountryState {  
   paisesPorContinente :  IPais[],
   countriesToShow: IPais[],
+  paisesMostrados: IPais[],
   indexCountry: number,
   selectedTabIndex: number
 }
