@@ -33,7 +33,7 @@ export const gameReducer: Reducer<ICountryState, GameActions> = (state = default
       return{
         ...state,
         paisesPorContinente: action.paises,
-        countriesToShow : countriesByContinent(0,action.paises, [] as Array<IPais>).listaPaises
+        paisesMostrandose : countriesByContinent(0,action.paises, [] as Array<IPais>).listaPaises
       
       };
     default:
