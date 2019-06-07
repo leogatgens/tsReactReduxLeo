@@ -43,11 +43,12 @@ export interface IPais {
     continent: string
 }
 export interface ICountryState {  
-  paisesPorContinente :  IPais[],
-  countriesToShow: IPais[],
-  paisesMostrados: IPais[],
+  listaTodosLosPaises :  IPais[],
+  paisesMostrandose: IPais[],
+  paisesHistorialJuego : IPais[],
   indexCountry: number,
-  selectedTabIndex: number
+  selectedTabIndex: number,
+  juegoIniciado : boolean 
 }
 
 

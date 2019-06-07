@@ -22,7 +22,7 @@ class App extends React.Component<IProps> {
    handleIndexChange = (index: number) => {   
      
     this.props.characteraccions.CambiarFondo("white");
-    this.props.countryaccions.RequestContinents(index,this.props.propiedades.PaisState.paisesPorContinente);
+    this.props.countryaccions.RequestContinents(index,this.props.propiedades.PaisState.listaTodosLosPaises);
   }
 
   public render() {
