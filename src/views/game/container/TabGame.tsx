@@ -10,8 +10,10 @@ import { CountryImage } from "../components/Flag";
 import { Options } from "../components/Options";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction, bindActionCreators } from "redux";
-import { ICountryState,IPais } from "../../../redux/Interfaces";
+import { ICountryState, IPais } from "../../../redux/Interfaces";
 import { IAppState } from "../../../redux/Store";
+import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
 const styles = {
   Paper: { padding: 20, marginTop: 20, marginBottom: 10, height: 320 }
 };
@@ -20,10 +22,13 @@ const styles = {
 interface IProps {
   mapProps: ICountryState;
   countryaccions: any;
-  characteraccions:  any;
+  characteraccions: any;
 }
 
 class TabGame extends React.Component<IProps> {
+  constructor(props: any) {
+    super(props);
+  }
   componentDidMount() {
     this.props.countryaccions.getAllCharacters();
   }
@@ -39,52 +44,85 @@ class TabGame extends React.Component<IProps> {
   };
   handleNext = () => {
     let index = this.props.mapProps.selectedTabIndex;
-    this.props.countryaccions.nextCountry(index,this.props.mapProps.paisesPorContinente);
+    this.props.countryaccions.nextCountry(
+      index,
+      this.props.mapProps.paisesPorContinente
+    );
     this.props.characteraccions.CambiarFondo("white");
   };
+ 
+  isEmpty(value : any){
+    return Boolean(value && typeof value == 'object') && !Object.keys(value).length;
+  };
   render() {
-
     let index = this.props.mapProps.indexCountry;
     let countriesToShow = [] as Array<IPais>;
-    let actualCountry  = {} as IPais;    
-    if(this.props.mapProps.countriesToShow.length > 0)
-    {
-       index = this.props.mapProps.indexCountry;
-       countriesToShow = this.props.mapProps.countriesToShow;
-       actualCountry = countriesToShow[index];
-    }else{
-     
-    }
-
+    let actualCountry = {} as IPais;
+    
+    if (this.props.mapProps.countriesToShow.length > 0) {
+      index = this.props.mapProps.indexCountry;
+      countriesToShow = this.props.mapProps.countriesToShow;
+      actualCountry = countriesToShow[index];
+    
+    } 
+    
+    console.log( this.isEmpty(actualCountry));
 
     return (
       <Grid container spacing={1}>
         <Grid item xs={3}>
           <Paper style={styles.Paper}>
-          <CountryImage propiedades={actualCountry} /> 
+            {this.isEmpty(actualCountry)  ?
+                <Grid
+                container
+                justify="center"
+                direction="column"
+                alignContent="center"
+              >
+                <CircularProgress
+                  thickness={4.6}
+                  variant="indeterminate"
+                  size={60}
+                />
+              </Grid>:<CountryImage propiedades={actualCountry}/>}
+           
           </Paper>
         </Grid>
         <Grid item sm>
           <Paper style={styles.Paper}>
-            <Options
-              data={countriesToShow}
-              handleSelectedCountry={this.handleSelectedCountry}
-              actualCountry={actualCountry}
-            />    
-          <Grid container direction="column-reverse" alignContent="flex-end">
-          <Button
-              variant="contained"
-              color="primary"             
-              onClick={this.handleNext}
-            >
-              Next
-            </Button>
-         
-        </Grid>
+            {countriesToShow.length > 0 ? (
+              <Options
+                data={countriesToShow}
+                handleSelectedCountry={this.handleSelectedCountry}
+                actualCountry={actualCountry}
+              />
+            ) : (
+              <Grid
+                container
+                justify="center"
+                direction="column"
+                alignContent="center"
+              >
+                <CircularProgress
+                  thickness={4.6}
+                  variant="indeterminate"
+                  size={60}
+                />
+              </Grid>
+            )}
+            <Grid container direction="column-reverse" alignContent="flex-end">
+              {countriesToShow.length > 0 ? (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.handleNext}
+                >
+                  Next
+                </Button>
+              ) : null}
+            </Grid>
           </Paper>
-
         </Grid>
-       
       </Grid>
     );
   }
