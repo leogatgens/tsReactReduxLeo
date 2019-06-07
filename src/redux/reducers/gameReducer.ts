@@ -32,7 +32,7 @@ export const gameReducer: Reducer<ICountryState, GameActions> = (state = default
       case(GameActionTypes.GET_ALL):      
       return{
         ...state,
-        paisesPorContinente: action.paises,
+        listaTodosLosPaises: action.paises,
         paisesMostrandose : countriesByContinent(0,action.paises, [] as Array<IPais>).listaPaises
       
       };
