@@ -10,7 +10,7 @@ import { CountryImage } from "../components/Flag";
 import { Options } from "../components/Options";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction, bindActionCreators } from "redux";
-import { ICountryState, IPais } from "../../../redux/Interfaces";
+import { ICountryState, IPais, IApiState } from "../../../redux/Interfaces";
 import { IAppState } from "../../../redux/Store";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -20,15 +20,17 @@ const styles = {
 
 // Create the containers interface
 interface IProps {
-  mapProps: ICountryState;
+  gameProps: ICountryState;
+  apiProps: IApiState;
   countryaccions: any;
   characteraccions: any;
 }
 
 class TabGame extends React.Component<IProps> {
- 
   componentDidMount() {
-    this.props.countryaccions.getAllCharacters();
+    this.props.countryaccions.getAllCharacters().catch((error : any) => {
+      alert("Loading courses failed" + error);
+    });
   }
 
   handleChange = (key: number) => (event: any, value: any) => {
@@ -41,35 +43,36 @@ class TabGame extends React.Component<IProps> {
     this.props.characteraccions.CambiarFondo(event);
   };
   handleNext = () => {
-    let index = this.props.mapProps.selectedTabIndex;
+    let index = this.props.gameProps.selectedTabIndex;
     this.props.countryaccions.nextCountry(
       index,
-      this.props.mapProps.listaTodosLosPaises
+      this.props.gameProps.listaTodosLosPaises
     );
     this.props.characteraccions.CambiarFondo("white");
   };
- 
-  isEmpty(value : any){
-    return Boolean(value && typeof value == 'object') && !Object.keys(value).length;
-  };
+
+  isEmpty(value: any) {
+    return (
+      Boolean(value && typeof value == "object") && !Object.keys(value).length
+    );
+  }
   render() {
-    let index = this.props.mapProps.indexCountry;
+    let index = this.props.gameProps.indexCountry;
     let countriesToShow = [] as Array<IPais>;
     let actualCountry = {} as IPais;
-    
-    
-    if (this.props.mapProps.paisesMostrandose.length > 0) {
-      index = this.props.mapProps.indexCountry;
-      countriesToShow = this.props.mapProps.paisesMostrandose;
-      actualCountry = countriesToShow[index];    
-    } 
+
+    if (this.props.gameProps.paisesMostrandose.length > 0) {
+      index = this.props.gameProps.indexCountry;
+      countriesToShow = this.props.gameProps.paisesMostrandose;
+      actualCountry = countriesToShow[index];
+    }
 
     return (
       <Grid container spacing={1}>
         <Grid item xs={3}>
           <Paper style={styles.Paper}>
-            {this.isEmpty(actualCountry)  ?
-                <Grid
+            {this.isEmpty(actualCountry) ? (
+              <Grid
                 container
                 justify="center"
                 direction="column"
@@ -80,13 +83,15 @@ class TabGame extends React.Component<IProps> {
                   variant="indeterminate"
                   size={60}
                 />
-              </Grid>:<CountryImage propiedades={actualCountry}/>}
-           
+              </Grid>
+            ) : (
+              <CountryImage propiedades={actualCountry} />
+            )}
           </Paper>
         </Grid>
         <Grid item sm>
           <Paper style={styles.Paper}>
-            {countriesToShow.length > 0 ? (
+            {this.props.apiProps.apiCallsInProgress === 0 ? (
               <Options
                 data={countriesToShow}
                 handleSelectedCountry={this.handleSelectedCountry}
@@ -126,7 +131,8 @@ class TabGame extends React.Component<IProps> {
 
 function mapStateToProps(state: IAppState) {
   return {
-    mapProps: state.PaisState
+    gameProps: state.PaisState,
+    apiProps : state.ApiState
   };
 }
 

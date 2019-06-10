@@ -5,15 +5,12 @@ import {
   CharacterActions  
 } from '../actions/CharacterActions';
 import { ICharacterState,CharacterActionTypes } from '../Interfaces';
+import initialState from './initialState';
 
 
-// Define the initial state
-const initialCharacterState: ICharacterState = {  
-  colorDivPrincipal : 'white'
-};
 
 export const characterReducer: Reducer<ICharacterState, CharacterActions> = (
-  state = initialCharacterState,
+  state = initialState.initialCharacterState,
   action
 ) => {
   switch (action.type) {

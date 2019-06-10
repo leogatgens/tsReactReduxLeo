@@ -1,18 +1,11 @@
 import { Reducer } from 'redux';
 import {GameActions} from '../actions/CountryActions'
 import { ICountryState,GameActionTypes, IPais } from '../Interfaces';
-import { countriesByContinent } from '../getContinentText';
-
+import { countriesByContinent,obtenerTop5Random } from '../getContinentText';
+import initialState  from "./initialState";
  
-const defaultState: ICountryState = {
-  listaTodosLosPaises: [] as Array<IPais>,
-  paisesMostrandose: [] as Array<IPais>,
-  paisesHistorialJuego: [] as Array<IPais>,
-  indexCountry: 0,
-  selectedTabIndex: 0,
-  juegoIniciado : false
-}
-export const gameReducer: Reducer<ICountryState, GameActions> = (state = defaultState, action) => {
+
+export const gameReducer: Reducer<ICountryState, GameActions> = (state = initialState.defaultState, action) => {
   
   
   switch (action.type) {
@@ -33,7 +26,7 @@ export const gameReducer: Reducer<ICountryState, GameActions> = (state = default
       return{
         ...state,
         listaTodosLosPaises: action.paises,
-        paisesMostrandose : countriesByContinent(0,action.paises, [] as Array<IPais>).listaPaises
+        paisesMostrandose : obtenerTop5Random(action.paises).listaPaises
       
       };
     default:

@@ -17,19 +17,21 @@ import {
 import {
   gameReducer
 } from './reducers/gameReducer';
-import { ICharacterState, ICountryState } from "./Interfaces";
+import { ICharacterState, ICountryState, IApiState } from "./Interfaces";
+import { apiReducer } from './reducers/apiReducer';
 
 // Create an interface for the application state
 export interface IAppState {
   countryState: ICharacterState;
   PaisState: ICountryState;
+  ApiState : IApiState;
 }
 
 // Create the root reducer
 const rootReducer = combineReducers<IAppState>({
   countryState: characterReducer,
-  PaisState : gameReducer
-  
+  PaisState : gameReducer,
+  ApiState : apiReducer
 });
 
 const composeEnhancers = composeWithDevTools({

@@ -3,11 +3,11 @@ import { IPais } from './Interfaces';
 
 
 
-function getRandomCountry(countriesToShow :Array<IPais>,excluidos : Array<IPais>) {
+function getRandomCountry(countriesToShow :Array<IPais>) {
   let limitemaximo = countriesToShow.length;
-  console.log("Limite maximo........." + limitemaximo);  
+  
   let index = Math.floor(Math.random() * limitemaximo);
-  console.log("index........." + index);  
+  
   return index;
 }
 
@@ -20,7 +20,7 @@ function calcularIndiceMaximoParaObtenerCincoPaises(longitud : number){
     while(indiceInicialTemp > indiceInicialMaximo){
        indiceInicialTemp  = Math.floor(Math.random() * longitud);
     }
-    console.log(indiceInicialTemp);
+    
     return indiceInicialTemp;
   }
   
@@ -45,14 +45,32 @@ export function countriesByContinent(indicefilter : number, paises : Array<IPais
 
   let indiceRandom = calcularIndiceMaximoParaObtenerCincoPaises(listaAMostar.length);
 
-  console.log("indiceRandom........." + indiceRandom);  
+  
 
   let listaFinal = listaAMostar.slice(indiceRandom, (indiceRandom + 5));
   
-  let DatosJuego = { listaPaises: listaFinal, paisActual: getRandomCountry(listaFinal,excluidos) };
+  let DatosJuego = { listaPaises: listaFinal, paisActual: getRandomCountry(listaFinal) };
 
  
   return DatosJuego;
 }
+
+
+export function obtenerTop5Random(paises : Array<IPais> ): any {
+
+  if(paises.length <=0){
+     return { listaPaises: []  as Array<IPais>, paisActual: {} as IPais };
+  }  
+  let listaAMostar = paises;  
+  let indiceRandom = calcularIndiceMaximoParaObtenerCincoPaises(listaAMostar.length);
+  let listaFinal = listaAMostar.slice(indiceRandom, (indiceRandom + 5));
+  
+  let DatosJuego = { listaPaises: listaFinal, paisActual: getRandomCountry(listaFinal) };
+
+ 
+  return DatosJuego;
+}
+
+
 
 
