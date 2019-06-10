@@ -39,7 +39,7 @@ export interface ICountryState {
 export enum GameActionTypes {
   NEXT_COUNTRY = 'NEXT_COUNTRY',
   REQUEST_COUNTRIES_BY_CONTINENT = 'REQUEST_COUNTRIES_BY_CONTINENT',
-  GET_ALL = 'GET_ALL',  
+  GET_ALL_SUCCESS = 'GET_ALL_SUCCESS',  
 }
 // Interface for 
 export interface INextCountryAction {
@@ -56,7 +56,7 @@ export interface IRequestContryByContinentAction {
 
 // Interface for Get All Action Type
 export interface ICharacterGetAllAction {
-  type: GameActionTypes.GET_ALL;
+  type: GameActionTypes.GET_ALL_SUCCESS;
   paises: IPais[];
 }
 //////////////////////////////////////////////
@@ -70,7 +70,8 @@ export interface IApiState {
 // Create Action Constants
 export enum ApiActionTypes {  
   BEGIN_API_CALL = 'BEGIN_API_CALL',
-  API_CALL_ERROR = 'API_CALL_ERROR'
+  API_CALL_ERROR = 'API_CALL_ERROR',
+  API_CALL_SUCCESS = 'API_CALL_SUCCESS',
 
 }
 export interface IBeginApiCallAction {
@@ -81,6 +82,9 @@ export interface IErrorApiAction {
   type: ApiActionTypes.API_CALL_ERROR;  
 }
 
+export interface IApiCallSucess {
+  type: ApiActionTypes.API_CALL_SUCCESS;  
+}
 
 
 

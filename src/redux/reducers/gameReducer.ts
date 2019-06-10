@@ -7,7 +7,7 @@ import initialState  from "./initialState";
 
 export const gameReducer: Reducer<ICountryState, GameActions> = (state = initialState.defaultState, action) => {
   
-  
+  console.log(action);
   switch (action.type) {
     case (GameActionTypes.NEXT_COUNTRY):        
       return {
@@ -22,7 +22,7 @@ export const gameReducer: Reducer<ICountryState, GameActions> = (state = initial
         selectedTabIndex : action.index,
         paisesMostrandose: countriesByContinent(action.index,action.paises, [] as Array<IPais>).listaPaises
       };
-      case(GameActionTypes.GET_ALL):      
+      case(GameActionTypes.GET_ALL_SUCCESS):      
       return{
         ...state,
         listaTodosLosPaises: action.paises,
