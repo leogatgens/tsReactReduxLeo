@@ -5,7 +5,7 @@ import { IAppState } from './redux/Store';
 import Footer from './views/game/components/Footer';
 import Header from './shared/component/Header';
 import { Continents } from "./shared/data";
-import * as countryacciones from "./redux/actions/CountryActions";
+import * as countryacciones from "./redux/actions/GameActions";
 import * as characteracciones from "./redux/actions/CharacterActions";
 import { AnyAction, bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';

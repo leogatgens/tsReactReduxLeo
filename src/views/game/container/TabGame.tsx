@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import * as countryacciones from "../../../redux/actions/CountryActions";
+import * as countryacciones from "../../../redux/actions/GameActions";
 import * as characteracciones from "../../../redux/actions/CharacterActions";
 import { connect } from "react-redux";
 import { CountryImage } from "../components/Flag";

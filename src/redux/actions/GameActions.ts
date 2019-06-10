@@ -1,4 +1,3 @@
-import { ApiActionTypes } from './../Interfaces';
 import { INextCountryAction,IRequestContryByContinentAction, GameActionTypes,
    ICharacterGetAllAction, 
    ICharacterState,
