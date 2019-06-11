@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import { IAppState } from './redux/Store';
+import { IAppState } from './redux/Interfaces';
 import Footer from './views/game/components/Footer';
 import Header from './shared/component/Header';
 import { Continents } from "./shared/data";

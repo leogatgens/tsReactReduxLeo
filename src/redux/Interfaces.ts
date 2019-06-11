@@ -95,3 +95,11 @@ export interface IApiCallSucess {
 
 
 
+
+
+
+export interface IAppState {
+  countryState: IInterfazState;
+  PaisState: ICountryState;
+  ApiState: IApiState;
+}

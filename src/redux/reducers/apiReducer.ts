@@ -11,8 +11,7 @@ export const apiReducer: Reducer<IApiState, ApiActions> = (
     case  ApiActionTypes.BEGIN_API_CALL : {
       return {
         ...state,
-        apiCallsInProgress : state.apiCallsInProgress + 1,
-          
+        apiCallsInProgress : state.apiCallsInProgress + 1,          
       };
     }
     case ApiActionTypes.API_CALL_ERROR : {
@@ -31,6 +30,3 @@ export const apiReducer: Reducer<IApiState, ApiActions> = (
       return state;
   }
 };
-function actionTypeEndsInSuccess(type : any) {
-  return type.substring(type.length - 8) === "_SUCCESS";
-}

@@ -11,7 +11,7 @@ import { Options } from "../components/Options";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction, bindActionCreators } from "redux";
 import { ICountryState, IPais, IApiState } from "../../../redux/Interfaces";
-import { IAppState } from "../../../redux/Store";
+import { IAppState } from "../../../redux/Interfaces";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = {
