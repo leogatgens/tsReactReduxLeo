@@ -1,16 +1,11 @@
 import { INextCountryAction,IRequestContryByContinentAction, GameActionTypes,
   IGameGetAllContriesAction, 
-   ICharacterState,
-   IPais,IGameGetContinentsAction} from '../Interfaces';
-// Import redux types
+   IPais,IGameGetContinentsAction, IInterfazState} from '../Interfaces';
 import { ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';
 import { beginApiCall, apiCallError, apiCallSucess } from './apiStatusActions';
-/* 
-Combine the action types with a union (we assume there are more)
-example: export type CharacterActions = IGetAllAction | IGetOneAction ... 
-*/
+
 export type GameActions = INextCountryAction | IRequestContryByContinentAction | IGameGetAllContriesAction;
 export const nextCountry = (index : number,paises : IPais[]) => {
   return { type: GameActionTypes.NEXT_COUNTRY , index,paises }
@@ -27,10 +22,8 @@ export function loadContinentsSuccess(paises : string[]) {
   return { type: GameActionTypes.GET_CONTINENTS_SUCCESS, paises };
 }
 
-/* Get All Action
-<Promise<Return Type>, State Interface, Type of Param, Type of Action> */
 export const getAllCountries: ActionCreator<
-  ThunkAction<Promise<any>, ICharacterState, null, IGameGetAllContriesAction>
+  ThunkAction<Promise<any>, IInterfazState, null, IGameGetAllContriesAction>
 > = () => {
   return async (dispatch: Dispatch) => {
     try {
@@ -46,7 +39,7 @@ export const getAllCountries: ActionCreator<
 };
 
 export const getAllContinents: ActionCreator<
-  ThunkAction<Promise<any>, ICharacterState, null, IGameGetContinentsAction>
+  ThunkAction<Promise<any>, IInterfazState, null, IGameGetContinentsAction>
 > = () => {
   return async (dispatch: Dispatch) => {
     try {

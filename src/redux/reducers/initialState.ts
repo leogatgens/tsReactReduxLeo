@@ -1,7 +1,7 @@
-import { ICharacterState, ICountryState, IPais, IApiState } from "../Interfaces";
+import { IInterfazState, ICountryState, IPais, IApiState } from "../Interfaces";
 
 // Define the initial state
-const initialCharacterState: ICharacterState = {  
+const initialCharacterState: IInterfazState = {  
     colorDivPrincipal : 'white'
   };
   

@@ -2,19 +2,19 @@
 // Import Reducer type
 import { Reducer } from 'redux';
 import {
-  CharacterActions  
-} from '../actions/CharacterActions';
-import { ICharacterState,CharacterActionTypes } from '../Interfaces';
+  InterfazActions
+} from '../actions/InterfazActions';
+import { IInterfazState,InterfazActionTypes } from '../Interfaces';
 import initialState from './initialState';
 
 
 
-export const characterReducer: Reducer<ICharacterState, CharacterActions> = (
+export const characterReducer: Reducer<IInterfazState, InterfazActions> = (
   state = initialState.initialCharacterState,
   action
 ) => {
   switch (action.type) {
-    case CharacterActionTypes.CHANGE_COLOR: {
+    case InterfazActionTypes.CHANGE_COLOR: {
       return {
         ...state,
         colorDivPrincipal: action.color,

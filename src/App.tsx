@@ -6,7 +6,7 @@ import Footer from './views/game/components/Footer';
 import Header from './shared/component/Header';
 import { Continents } from "./shared/data";
 import * as countryacciones from "./redux/actions/GameActions";
-import * as characteracciones from "./redux/actions/CharacterActions";
+import * as characteracciones from "./redux/actions/InterfazActions";
 import { AnyAction, bindActionCreators } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import TabGame from './views/game/container/TabGame';
@@ -33,8 +33,7 @@ class App extends React.Component<IProps> {
     this.props.countryaccions.RequestContinents(index,this.props.propiedades.PaisState.listaTodosLosPaises);
   }
 
-  public render() {
- 
+  public render() { 
   return (   
     <React.Fragment>
     <div
@@ -49,23 +48,18 @@ class App extends React.Component<IProps> {
             data={Continents}
             handleIndexChange={this.handleIndexChange}
             selectedIndex={this.props.propiedades.PaisState.selectedTabIndex}
-          /> 
-      
+          />       
       </div>
       </React.Fragment>
   );
   }
 };
 
-// Grab the characters from the store and make them available on props
 const mapStateToProps = (store: IAppState) => {
   return {
-    propiedades: store,
-    
+    propiedades: store,    
   };
 };
-
-
 function mapDispatchToProps(dispatch :ThunkDispatch<any, any, AnyAction>) {
   return {
     countryaccions: bindActionCreators(countryacciones, dispatch),

@@ -13,8 +13,4 @@ export function apiCallSucess() {
   return { type: ApiActionTypes.API_CALL_SUCCESS };
 }
 
-
-
-
-
 export type ApiActions =  IBeginApiCallAction | IErrorApiAction | IApiCallSucess;

@@ -4,15 +4,15 @@ export interface ICharacter {
   url: string;
 }
 // Define the Character State
-export interface ICharacterState {  
+export interface IInterfazState {  
   readonly colorDivPrincipal: string;  
 }
 // Create Action Constants
-export enum CharacterActionTypes {  
+export enum InterfazActionTypes {  
   CHANGE_COLOR = 'CHANGE_COLOR'
 }
-export interface ICharacterChangeColorAction {
-  type: CharacterActionTypes.CHANGE_COLOR;
+export interface IInterfazChangeColorAction {
+  type: InterfazActionTypes.CHANGE_COLOR;
   color: string;
 }
 //////////////////////////////////////////////

@@ -17,12 +17,12 @@ import {
 import {
   gameReducer
 } from './reducers/gameReducer';
-import { ICharacterState, ICountryState, IApiState } from "./Interfaces";
+import { IInterfazState, ICountryState, IApiState } from "./Interfaces";
 import { apiReducer } from './reducers/apiReducer';
 
 // Create an interface for the application state
 export interface IAppState {
-  countryState: ICharacterState;
+  countryState: IInterfazState;
   PaisState: ICountryState;
   ApiState : IApiState;
 }
