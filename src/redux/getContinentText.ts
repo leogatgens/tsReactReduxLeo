@@ -30,26 +30,29 @@ function calcularIndiceMaximoParaObtenerCincoPaises(longitud : number){
 export function countriesByContinent(indicefilter : number, paises : Array<IPais>,excluidos : Array<IPais> ):any {
 
   if(paises.length <=0){
-     return { listaPaises: []  as Array<IPais>, paisActual: {} as IPais };
+     return { listaPaises: []  as Array<IPais>, indicePaisActual: 0 };
   }
 
   let filter = Continents[indicefilter];
 
-  let listaAMostar = []  as Array<IPais>;
+  let listaAMostar = null;
   if (filter !== 'All') {
     listaAMostar = paises.filter(x => x.continent === filter);
-    console.log("Filtrando.........");  
+    
   } else {
     listaAMostar = paises;  
   }
 
   let indiceRandom = calcularIndiceMaximoParaObtenerCincoPaises(listaAMostar.length);
 
-  
+  console.log("indiceRandom:" + indiceRandom);
 
   let listaFinal = listaAMostar.slice(indiceRandom, (indiceRandom + 5));
+
+  console.log("listaFinal:");
+  console.log( listaFinal);
   
-  let DatosJuego = { listaPaises: listaFinal, paisActual: getRandomCountry(listaFinal) };
+  let DatosJuego = { listaPaises: listaFinal, indicePaisActual: getRandomCountry(listaFinal) };
 
  
   return DatosJuego;
@@ -59,13 +62,13 @@ export function countriesByContinent(indicefilter : number, paises : Array<IPais
 export function obtenerTop5Random(paises : Array<IPais> ): any {
 
   if(paises.length <=0){
-     return { listaPaises: []  as Array<IPais>, paisActual: {} as IPais };
+     return { listaPaises: []  as Array<IPais>, indicePaisActual: 0 };
   }  
   let listaAMostar = paises;  
   let indiceRandom = calcularIndiceMaximoParaObtenerCincoPaises(listaAMostar.length);
   let listaFinal = listaAMostar.slice(indiceRandom, (indiceRandom + 5));
   
-  let DatosJuego = { listaPaises: listaFinal, paisActual: getRandomCountry(listaFinal) };
+  let DatosJuego = { listaPaises: listaFinal, indicePaisActual: getRandomCountry(listaFinal) };
 
  
   return DatosJuego;

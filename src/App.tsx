@@ -19,6 +19,14 @@ interface IProps {
 }
 
 class App extends React.Component<IProps> {
+
+  componentDidMount() {
+    this.props.countryaccions.getAllContinents().catch((error : any) => {
+      console.log(error);
+      alert("Loading courses failed" + error);
+    });
+  }
+
    handleIndexChange = (index: number) => {   
      
     this.props.characteraccions.CambiarFondo("white");

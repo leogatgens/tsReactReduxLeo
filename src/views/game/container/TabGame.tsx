@@ -28,7 +28,7 @@ interface IProps {
 
 class TabGame extends React.Component<IProps> {
   componentDidMount() {
-    this.props.countryaccions.getAllCharacters().catch((error : any) => {
+    this.props.countryaccions.getAllCountries().catch((error : any) => {
       console.log(error);
       alert("Loading courses failed" + error);
     });
@@ -54,7 +54,7 @@ class TabGame extends React.Component<IProps> {
 
  
   render() {
-    console.log("....redering");
+    console.log("....redering Tab Game");
     let index = this.props.gameProps.indexCountry;
     let countriesToShow = [] as Array<IPais>;
     let actualCountry = {} as IPais;

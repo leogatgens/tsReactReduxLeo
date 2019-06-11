@@ -40,6 +40,7 @@ export enum GameActionTypes {
   NEXT_COUNTRY = 'NEXT_COUNTRY',
   REQUEST_COUNTRIES_BY_CONTINENT = 'REQUEST_COUNTRIES_BY_CONTINENT',
   GET_ALL_SUCCESS = 'GET_ALL_SUCCESS',  
+  GET_CONTINENTS_SUCCESS = 'GET_CONTINENTS_SUCCESS',  
 }
 // Interface for 
 export interface INextCountryAction {
@@ -55,8 +56,13 @@ export interface IRequestContryByContinentAction {
 }
 
 // Interface for Get All Action Type
-export interface ICharacterGetAllAction {
+export interface IGameGetAllContriesAction {
   type: GameActionTypes.GET_ALL_SUCCESS;
+  paises: IPais[];
+}
+
+export interface IGameGetContinentsAction {
+  type: GameActionTypes.GET_CONTINENTS_SUCCESS;
   paises: IPais[];
 }
 //////////////////////////////////////////////

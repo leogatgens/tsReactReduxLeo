@@ -7,20 +7,22 @@ import initialState  from "./initialState";
 
 export const gameReducer: Reducer<ICountryState, GameActions> = (state = initialState.defaultState, action) => {
   
-  console.log(action);
+  let resultado  = null;
   switch (action.type) {
-    case (GameActionTypes.NEXT_COUNTRY):        
+    case (GameActionTypes.NEXT_COUNTRY):   
+     resultado = countriesByContinent(action.index,action.paises,  [] as Array<IPais>)
       return {
         ...state,
-        indexCountry: 0,
-        paisesMostrandose: countriesByContinent(action.index,action.paises,  [] as Array<IPais>).listaPaises
+        indexCountry: resultado.indicePaisActual,
+        paisesMostrandose: resultado.listaPaises
       };
       case(GameActionTypes.REQUEST_COUNTRIES_BY_CONTINENT):  
+       resultado = countriesByContinent(action.index,action.paises,  [] as Array<IPais>)
       return{
         ...state,
-        indexCountry: 0,
+        indexCountry: resultado.indicePaisActual,
         selectedTabIndex : action.index,
-        paisesMostrandose: countriesByContinent(action.index,action.paises, [] as Array<IPais>).listaPaises
+        paisesMostrandose: resultado.listaPaises
       };
       case(GameActionTypes.GET_ALL_SUCCESS):      
       return{
