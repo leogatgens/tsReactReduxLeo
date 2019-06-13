@@ -11,7 +11,7 @@ import  { IAppState } from "./redux/Interfaces";
 import * as serviceWorker from "./serviceWorker";
 //import "./index.css";
 import App from "./App";
-import configureStore from "./redux/Store";
+import configureStore,{history} from "./redux/Store";
 
 interface IProps {
   store: Store<IAppState>;
@@ -24,7 +24,7 @@ and wraps the App component with Provider, giving props to containers
 const Root: React.SFC<IProps> = props => {
   return (
     <Provider store={props.store}>
-      <App />
+      <App history={history}/>
     </Provider>
   );
 };

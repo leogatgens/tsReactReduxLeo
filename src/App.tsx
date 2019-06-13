@@ -1,69 +1,18 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import './App.css';
-import { IAppState } from './redux/Interfaces';
-import Footer from './views/game/components/Footer';
-import Header from './shared/component/Header';
-import { Continents } from "./shared/data";
-import * as countryacciones from "./redux/actions/GameActions";
-import * as characteracciones from "./redux/actions/InterfazActions";
-import { AnyAction, bindActionCreators } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
-import TabGame from './views/game/container/TabGame';
+import React from 'react'
+import { History } from 'history'
+import { ConnectedRouter } from 'connected-react-router'
+import MainFrame from './views/game/container/MainFrame'
 
-// Create the containers interface
-interface IProps {
-  propiedades: IAppState;
-  countryaccions: any;
-  characteraccions: any;
+interface AppProps {
+  history: History;
 }
 
-class App extends React.Component<IProps> {
-
-  componentDidMount() {
-    this.props.countryaccions.getAllContinents().catch((error : any) => {
-      console.log(error);
-      alert("Loading courses failed" + error);
-    });
-  }
-
-   handleIndexChange = (index: number) => {   
-     
-    this.props.characteraccions.CambiarFondo("white");
-    this.props.countryaccions.RequestContinents(index,this.props.propiedades.PaisState.listaTodosLosPaises);
-  }
-
-  public render() { 
-  return (   
-    <React.Fragment>
-    <div
-          style={{
-            background: this.props.propiedades.countryState.colorDivPrincipal,
-        
-          }}
-        >
-      <Header/>  
-      <TabGame/>
-       <Footer
-            data={Continents}
-            handleIndexChange={this.handleIndexChange}
-            selectedIndex={this.props.propiedades.PaisState.selectedTabIndex}
-          />       
-      </div>
-      </React.Fragment>
-  );
-  }
-};
-
-const mapStateToProps = (store: IAppState) => {
-  return {
-    propiedades: store,    
-  };
-};
-function mapDispatchToProps(dispatch :ThunkDispatch<any, any, AnyAction>) {
-  return {
-    countryaccions: bindActionCreators(countryacciones, dispatch),
-    characteraccions: bindActionCreators(characteracciones, dispatch)
-  }
+const App = ({ history }: AppProps) => {
+  return (
+    //<ConnectedRouter history={history}>
+      <MainFrame></MainFrame>
+    //</ConnectedRouter>
+  )
 }
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+
+export default App
