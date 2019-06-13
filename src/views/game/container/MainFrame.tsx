@@ -42,7 +42,7 @@ class MainFrame extends React.Component<IProps> {
         
           }}
         >
-      <Header/>  
+ 
       <TabGame/>
        <Footer
             data={Continents}

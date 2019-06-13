@@ -17,10 +17,9 @@ interface IProps {
   store: Store<IAppState>;
 }
 
-/* 
-Create a root component that receives the store via props
-and wraps the App component with Provider, giving props to containers
-*/
+
+// Generate the store
+const store = configureStore();
 const Root: React.SFC<IProps> = props => {
   return (
     <Provider store={props.store}>
@@ -29,8 +28,6 @@ const Root: React.SFC<IProps> = props => {
   );
 };
 
-// Generate the store
-const store = configureStore();
 // Render the App
 ReactDOM.render(<Root store={store} />, document.getElementById(
   "root"
