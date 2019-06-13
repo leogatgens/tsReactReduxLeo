@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 import {rootReducer} from "./reducers/rootReducer";
 import { IAppState } from "./Interfaces";
 import { createBrowserHistory } from 'history'
-import { routerMiddleware } from "connected-react-router";
+
 
 
 export const history = createBrowserHistory()
@@ -18,6 +18,6 @@ export default function configureStore(): Store<IAppState, any> {
   return createStore(
     rootReducer,
     undefined,
-    composeEnhancers(applyMiddleware(routerMiddleware(history), thunk,reduxImmutableStateInvariant()))
+    composeEnhancers(applyMiddleware( thunk,reduxImmutableStateInvariant()))
   );
 }
