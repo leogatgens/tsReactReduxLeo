@@ -1,12 +1,16 @@
  import { List,Avatar,Icon } from 'antd';
 import React from 'react';
-import { TituloPrincipal } from '../../../../components/estiloshtml';
+import { TituloPrincipal } from "../../../../../shared/estiloshtml";
+
+interface IProps{
+  data : any
+}
 
 
-class  WishList extends React.Component {  
+class  WishList extends React.Component<IProps> {  
 
 
- convertirFecha = (fechatexto) =>{
+ convertirFecha = (fechatexto : string) =>{
         
   if(typeof fechatexto == "string"){
    var dateobj= new Date(fechatexto);     
@@ -18,24 +22,24 @@ class  WishList extends React.Component {
  
  return fechatexto;
 }
-  remove = (CountryId) => {  
+  remove = (CountryId : number) => {  
     this.props.data.onDeleteItem(CountryId);       
   }
 
 render(){
-
- const {initLoading, datawishlist} = this.props.data.data.state;
+console.log(this);
+ //const {initLoading, datawishlist} = this.props.data.data.state;
  console.log("Rendering");
 
   return(
     <div>                          
     <TituloPrincipal>Tus futuros viajes </TituloPrincipal>
-        <List 
+        {/* <List 
           itemLayout="horizontal"
           style={{ marginLeft:10 }}
           loading={initLoading}
           dataSource={datawishlist}
-          renderItem={item => (
+          renderItem={(item : any) => (
             <List.Item actions={[
               <Icon
                 key={item.idTrip}
@@ -54,7 +58,7 @@ render(){
            
             </List.Item>                            
           )}
-        />                
+        />                 */}
 </div>);
 
 }

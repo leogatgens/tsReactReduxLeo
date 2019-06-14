@@ -1,10 +1,10 @@
 import React from "react";
-
 import MainFrame from "./views/game/container/MainFrame";
 import { BrowserRouter, Route } from "react-router-dom";
 import { History } from "history";
 import Header from "./shared/component/Header";
 import Homebydevice from "./views/youtrip/home/scenes/homebydevice"
+import TripsContainer from "./views/youtrip/tovisit/services/tripsContainer"
 interface AppProps {
   history: History;
 }
@@ -35,6 +35,7 @@ const App = ({ history }: AppProps) => {
         <Route path="/about" component={About} ></Route>
         <Route path="/contact" component={Contact} ></Route>
         <Route path="/yourstrips" component={Homebydevice} ></Route>
+        <Route path="/porvisitar" component={TripsContainer} ></Route>
         
       </div>
     </BrowserRouter>
