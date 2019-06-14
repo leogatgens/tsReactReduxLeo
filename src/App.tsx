@@ -4,6 +4,7 @@ import MainFrame from "./views/game/container/MainFrame";
 import { BrowserRouter, Route } from "react-router-dom";
 import { History } from "history";
 import Header from "./shared/component/Header";
+import Homebydevice from "./views/youtrip/home/scenes/homebydevice"
 interface AppProps {
   history: History;
 }
@@ -33,6 +34,8 @@ const App = ({ history }: AppProps) => {
         <Route exact path="/" component={MainFrame} ></Route>
         <Route path="/about" component={About} ></Route>
         <Route path="/contact" component={Contact} ></Route>
+        <Route path="/yourstrips" component={Homebydevice} ></Route>
+        
       </div>
     </BrowserRouter>
   );

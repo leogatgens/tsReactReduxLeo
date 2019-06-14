@@ -16,6 +16,7 @@ class Header extends React.Component {
         <Button component={Link} to="/">Game</Button>  
         <Button component={Link} to="/about">About</Button>  
         <Button component={Link} to="/contact">contact</Button>        
+        <Button component={Link} to="/yourstrips">Your Trips</Button>     
       </Toolbar>
   </AppBar>
   </Fragment>
