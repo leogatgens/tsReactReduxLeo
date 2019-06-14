@@ -1,7 +1,7 @@
 import React from "react";
 
 import MainFrame from "./views/game/container/MainFrame";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { History } from "history";
 import Header from "./shared/component/Header";
 interface AppProps {

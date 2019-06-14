@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-//import './App.css';
 import { IAppState } from '../../../redux/Interfaces';
 import Footer from '../components/Footer';
-import Header from '../../../shared/component/Header';
 import { Continents } from "../../../shared/data";
 import * as countryacciones from "../../../redux/actions/GameActions";
 import * as characteracciones from "../../../redux/actions/InterfazActions";
@@ -23,7 +21,7 @@ class MainFrame extends React.Component<IProps> {
   componentDidMount() {
     this.props.countryaccions.getAllContinents().catch((error : any) => {
       console.log(error);
-      alert("Loading courses failed" + error);
+      
     });
   }
 

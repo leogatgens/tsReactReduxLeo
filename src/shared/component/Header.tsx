@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Typography, Button } from '@material-ui/core';
-import {Link, NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 class Header extends React.Component {  
   render(){

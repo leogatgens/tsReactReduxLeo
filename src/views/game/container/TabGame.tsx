@@ -30,7 +30,7 @@ class TabGame extends React.Component<IProps> {
   componentDidMount() {
     this.props.countryaccions.getAllCountries().catch((error : any) => {
       console.log(error);
-      alert("Loading courses failed" + error);
+      
     });
   }
 
