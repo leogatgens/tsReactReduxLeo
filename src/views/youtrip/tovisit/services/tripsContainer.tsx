@@ -19,8 +19,8 @@ class TripsContainer extends React.Component {
     // if (this.props.filtro !== prevProps.filtro) {
     //   this.listarautomovilespormarca(this.props.filtro);
     // }
-  } 
-  componentDidMount() {    
+  }
+  componentDidMount() {
     this.ObtainWishList();
     this.ListAllCountries();
   }
@@ -118,4 +118,4 @@ class TripsContainer extends React.Component {
   }
 }
 
-export  default  TripsContainer;
+export default TripsContainer;
