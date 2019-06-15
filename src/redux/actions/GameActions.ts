@@ -5,6 +5,7 @@ import { ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';
 import { beginApiCall, apiCallError, apiCallSucess } from './apiStatusActions';
+import { GLOBALS } from '../../globals/globals-variables';
 
 export type GameActions = INextCountryAction | IRequestContryByContinentAction | IGameGetAllContriesAction;
 export const nextCountry = (index : number,paises : IPais[]) => {
@@ -28,7 +29,8 @@ export const getAllCountries: ActionCreator<
   return async (dispatch: Dispatch) => {
     try {
       dispatch(beginApiCall());
-      const response  = await axios.get('https://localhost:44319/api/paises');      
+      const serviceUrl = `${GLOBALS.rootAPI}/game/paises`;
+      const response  = await axios.get(serviceUrl);      
       dispatch(loadCountriesSuccess(response.data));
       dispatch(apiCallSucess());
     } catch (err) {
@@ -44,7 +46,8 @@ export const getAllContinents: ActionCreator<
   return async (dispatch: Dispatch) => {
     try {
       dispatch(beginApiCall());
-      const response  = await axios.get('https://localhost:44319/api/continent');      
+      const serviceUrl = `${GLOBALS.rootAPI}/game/paises`;
+      const response  = await axios.get(serviceUrl);      
       dispatch(loadContinentsSuccess(response.data));
       dispatch(apiCallSucess());
     } catch (err) {

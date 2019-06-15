@@ -25,16 +25,26 @@ const Contact = () =>{
   )
 }
 
+const ProfileForm = () =>{
+  return (
+    <div>
+      <p>Formulario para datos del usuario</p>
+    </div>
+  )
+}
+
+
 
 const App = ({ history }: AppProps) => {
   return (
     <BrowserRouter>
       <div>
         <Header />
-        <Route exact path="/" component={MainFrame} ></Route>
+        <Route exact path="/" component={Homebydevice} ></Route>
         <Route path="/about" component={About} ></Route>
         <Route path="/contact" component={Contact} ></Route>
-        <Route path="/yourstrips" component={Homebydevice} ></Route>
+        <Route path="/game" component={MainFrame} ></Route>
+        <Route path="/profile" component={ProfileForm} ></Route>
         <Route path="/porvisitar" component={TripsContainer} ></Route>
         
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { message } from "antd";
-import { GLOBALS } from "../../globals/globals-variables";
+import { GLOBALS } from "../../../../globals/globals-variables";
 import TabsView from "../scenes/tabsview";
 
 class TripsContainer extends React.Component {
@@ -14,14 +14,8 @@ class TripsContainer extends React.Component {
     };
   }
 
-  componentDidUpdate(prevProps: any) {
-    // Typical usage (don't forget to compare props):
-    // if (this.props.filtro !== prevProps.filtro) {
-    //   this.listarautomovilespormarca(this.props.filtro);
-    // }
-  }
   componentDidMount() {
-    this.ObtainWishList();
+    //this.ObtainWishList();
     this.ListAllCountries();
   }
 
@@ -48,16 +42,22 @@ class TripsContainer extends React.Component {
 
   ListAllCountries = () => {
     const serviceUrl = `${GLOBALS.rootAPI}/paises`;
-    fetch(serviceUrl)
-      .then(res => {
+    var miInit = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    fetch(serviceUrl, miInit)
+      .then(res => {        
         return res.json();
       })
-      .then(result => {
+      .then(result => {        
         this.setState({
           datacountries: result
         });
       })
-      .catch(error => this.setState({ error: error.message }));
+      .catch(error => console.log(error));
   };
 
   handleAddedCountry = () => {

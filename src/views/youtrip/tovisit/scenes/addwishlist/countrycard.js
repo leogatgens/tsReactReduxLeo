@@ -1,6 +1,6 @@
 import { Card, Button, message, DatePicker } from "antd";
 import React from "react";
-import { GLOBALS } from "../../../globals/globals-variables";
+import { GLOBALS } from "../../../../../globals/globals-variables";
 import moment from "moment";
 
 let selectedDate = moment();

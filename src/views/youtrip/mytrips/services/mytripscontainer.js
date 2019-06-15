@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import TabsControl from '../components/mytripsPage'
-import { GLOBALS} from '../../globals/globals-variables';
+import { GLOBALS} from '../../../../globals/globals-variables';
 
 
 class TripsOption extends React.Component {  

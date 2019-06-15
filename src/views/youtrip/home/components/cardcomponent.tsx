@@ -1,7 +1,7 @@
 import { Card } from 'antd';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { GLOBALS} from '../../globals/globals-variables';
+import { GLOBALS} from '../../../../globals/globals-variables';
 import 'antd/dist/antd.css';
 
 const ContenedorCardsMobile = () => {

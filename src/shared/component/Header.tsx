@@ -13,10 +13,10 @@ class Header extends React.Component {
         <Typography variant="h4" >
           Países del planeta tierra
         </Typography>            
-        <Button component={Link} to="/">Game</Button>  
+        <Button component={Link} to="/">Yours Trips</Button>  
         <Button component={Link} to="/about">About</Button>  
         <Button component={Link} to="/contact">contact</Button>        
-        <Button component={Link} to="/yourstrips">Your Trips</Button>     
+        <Button component={Link} to="/game">Game</Button>     
       </Toolbar>
   </AppBar>
   </Fragment>

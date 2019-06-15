@@ -1,7 +1,7 @@
 import { Card, Col, Row,Icon,Avatar } from 'antd';
 import React from 'react';
 import { NavLink} from 'react-router-dom';
-import { GLOBALS} from '../../globals/globals-variables';
+import { GLOBALS} from '../../../../globals/globals-variables';
 const { Meta } = Card;
 
 
