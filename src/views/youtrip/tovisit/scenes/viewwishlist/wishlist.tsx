@@ -25,10 +25,8 @@ class WishList extends React.Component<IProps> {
     this.props.data.onDeleteItem(CountryId);
   };
 
-  render() {
-    console.log(this);
+  render() {    
     const { initLoading, datawishlist } = this.props.data.data.state;
-
     return (
       <div>
         <TituloPrincipal>Tus futuros viajes </TituloPrincipal>

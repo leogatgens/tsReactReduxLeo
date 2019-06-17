@@ -15,7 +15,7 @@ class TripsContainer extends React.Component {
   }
 
   componentDidMount() {
-    //this.ObtainWishList();
+    this.ObtainWishList();
     this.ListAllCountries();
   }
 
@@ -24,8 +24,11 @@ class TripsContainer extends React.Component {
     const serviceUrl = `${
       GLOBALS.rootAPI
     }/travelers/${"parent.auth.userProfile"}/wishlists`;
-    var miInit = {
-      headers: { Authorization: `Bearer ${"parent.auth.getAccessToken()"}` }
+    let miInit = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
     };
     fetch(serviceUrl, miInit)
       .then(res => {
@@ -37,12 +40,17 @@ class TripsContainer extends React.Component {
           datawishlist: result
         });
       })
-      .catch(error => console.log(error));
+      .catch(error => { 
+        this.setState({
+          initLoading: false          
+        });
+        console.log(error)}
+      );
   }
 
   ListAllCountries = () => {
     const serviceUrl = `${GLOBALS.rootAPI}/paises`;
-    var miInit = {
+    let miInit = {
       method: "GET",
       headers: {
         "Content-Type": "application/json"

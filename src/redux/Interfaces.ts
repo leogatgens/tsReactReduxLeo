@@ -88,7 +88,7 @@ export interface IErrorApiAction {
   type: ApiActionTypes.API_CALL_ERROR;  
 }
 
-export interface IApiCallSucess {
+export interface IApiCallSucessAction {
   type: ApiActionTypes.API_CALL_SUCCESS;  
 }
 
@@ -102,4 +102,25 @@ export interface IAppState {
   countryState: IInterfazState;
   PaisState: ICountryState;
   ApiState: IApiState;
+  wishListState : IWishListState;
 }
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+////////////////////////////////////////////
+
+// Create Action Constants
+export enum WishListActionTypes {  
+  GET_WISH_LIST = 'GET_WISH_LIST',  
+  GET_CONTINENTS_SUCCESS = 'GET_CONTINENTS_SUCCESS',  
+}
+
+export interface IWishListState {  
+  wishList : [],  
+  emailUsuario : string 
+}
+
+export interface IGetWishListAction {
+  type: WishListActionTypes.GET_WISH_LIST;  
+}
+
+

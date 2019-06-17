@@ -1,5 +1,6 @@
 
-import { ApiActionTypes, IBeginApiCallAction, IErrorApiAction,IApiCallSucess } from "../Interfaces";
+
+import { ApiActionTypes, IBeginApiCallAction,IApiCallSucessAction,IErrorApiAction} from "../Interfaces";
 
 export function beginApiCall() {
   return { type: ApiActionTypes.BEGIN_API_CALL };
@@ -13,4 +14,4 @@ export function apiCallSucess() {
   return { type: ApiActionTypes.API_CALL_SUCCESS };
 }
 
-export type ApiActions =  IBeginApiCallAction | IErrorApiAction | IApiCallSucess;
+export type ApiActions =  IBeginApiCallAction | IErrorApiAction | IApiCallSucessAction;

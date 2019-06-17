@@ -1,4 +1,4 @@
-import { IInterfazState, ICountryState, IPais, IApiState } from "../Interfaces";
+import { IInterfazState, ICountryState, IPais, IApiState, IWishListState } from "../Interfaces";
 
 // Define the initial state
 const initialCharacterState: IInterfazState = {  
@@ -18,11 +18,17 @@ const initialCharacterState: IInterfazState = {
   const initialApiState: IApiState = {  
     apiCallsInProgress : 0
   };
+
+  const wishListState: IWishListState = {
+    wishList: [], 
+    emailUsuario : ''
+  }
   
 
   export default {
     initialCharacterState: initialCharacterState,
     defaultState: defaultState,
-    initialApiState: initialApiState
+    initialApiState: initialApiState,
+    wishListState : wishListState
   };
   
