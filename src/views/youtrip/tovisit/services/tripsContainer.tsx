@@ -2,8 +2,13 @@ import React from "react";
 import { message } from "antd";
 import { GLOBALS } from "../../../../globals/globals-variables";
 import TabsView from "../scenes/tabsview";
+import { IWishListState, IAppState } from "../../../../redux/Interfaces";
+import { connect } from "react-redux";
 
-class TripsContainer extends React.Component {
+interface IProps {  
+  wishListProps : IWishListState;
+}
+class TripsContainer extends React.Component<IProps> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -19,11 +24,10 @@ class TripsContainer extends React.Component {
     this.ListAllCountries();
   }
 
-  ObtainWishList() {
-    const parent = this.props;
+  ObtainWishList() {   
     const serviceUrl = `${
       GLOBALS.rootAPI
-    }/travelers/${"parent.auth.userProfile"}/wishlists`;
+    }/travelers/${this.props.wishListProps.emailUsuario}/wishlists`;
     let miInit = {
       method: "GET",
       headers: {
@@ -31,7 +35,7 @@ class TripsContainer extends React.Component {
       }
     };
     fetch(serviceUrl, miInit)
-      .then(res => {
+      .then(res => {        
         return res.json();
       })
       .then(result => {
@@ -110,6 +114,7 @@ class TripsContainer extends React.Component {
   }
 
   render() {
+    
     const dependencias = {
       data: this.props,
       state: this.state
@@ -126,4 +131,10 @@ class TripsContainer extends React.Component {
   }
 }
 
-export default TripsContainer;
+function mapStateToProps(state: IAppState) {
+  return {
+    wishListProps : state.wishListState,
+  };
+}
+
+export default connect(mapStateToProps)(TripsContainer);

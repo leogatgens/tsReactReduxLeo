@@ -1,9 +1,11 @@
 import { List, Avatar, Icon } from "antd";
 import React from "react";
 import { TituloPrincipal } from "../../../../../shared/estiloshtml";
+import { IAppState, IWishListState } from "../../../../../redux/Interfaces";
+import { connect } from "react-redux";
 
 interface IProps {
-  data: any;
+  data: any;  
 }
 
 class WishList extends React.Component<IProps> {
@@ -26,6 +28,7 @@ class WishList extends React.Component<IProps> {
   };
 
   render() {    
+    
     const { initLoading, datawishlist } = this.props.data.data.state;
     return (
       <div>
@@ -70,4 +73,6 @@ class WishList extends React.Component<IProps> {
   }
 }
 
-export { WishList };
+
+
+export default WishList;

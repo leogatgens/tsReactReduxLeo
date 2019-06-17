@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs } from "antd";
-import { WishList } from "./viewwishlist/wishlist";
+import  WishList from "./viewwishlist/wishlist";
 import { Wrapper } from "../../../../shared/estilos";
 import { TituloPrincipal } from "../../../../shared/estiloshtml";
 import { SelectCountry } from "./addwishlist/selectcountry";

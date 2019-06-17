@@ -21,7 +21,7 @@ const initialCharacterState: IInterfazState = {
 
   const wishListState: IWishListState = {
     wishList: [], 
-    emailUsuario : ''
+    emailUsuario : 'leogatgens@gmail.com'
   }
   
 
