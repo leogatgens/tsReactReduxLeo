@@ -13,14 +13,13 @@ class CountryCard extends React.Component {
     const newCountry = {
       IdPais: this.props.valor.key,
       DateTrip: selectedDate,
-      ClientId: this.props.props.data.data.data.auth.userProfile
+      ClientId: "leogatgens@gmail.com"//this.props.props.data.data.data.auth.userProfile
     };
     const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
       newCountry.ClientId
     }/wishlists`;
     var miInit = {
-      headers: {
-        Authorization: `Bearer ${this.props.props.data.data.data.auth.getAccessToken()}`,
+      headers: {      
         Accept: "application/json",
         "Content-Type": "application/json"
       },
@@ -32,8 +31,8 @@ class CountryCard extends React.Component {
       .then(res => {
         if (res.ok) {
           message.success("successfully added");
-
-          this.props.props.data.onAddItem();
+          console.log(this);
+          this.props.onAddItem();
         } else {
           message.error("Try again");
         }
@@ -44,7 +43,7 @@ class CountryCard extends React.Component {
       });
   };
   render() {
-    console.log(this);
+    
     const valor = this.props.valor;
     return (
       <div>

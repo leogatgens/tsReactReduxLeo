@@ -19,7 +19,7 @@ const TabsView = (props: any) => {
           <TabPane tab="Add to Wish List" key="2">
             <Wrapper>
               <TituloPrincipal>Países por visitar</TituloPrincipal>
-              <SelectCountry datacountries={props.dependencias.datacountries} />
+              <SelectCountry datacountries={props.dependencias.datacountries} onAddItem={props.onAddItem} />
             </Wrapper>
           </TabPane>
         </Tabs>

@@ -4,7 +4,8 @@ import { CountryCard } from "./countrycard";
 
 const Option = Select.Option;
 interface IProps {
-  datacountries: [];
+  datacountries: [];   
+  onAddItem : (CountryId : number) => void;
 }
 class SelectCountry extends React.Component<IProps, any> {
   constructor(props: any) {
@@ -46,7 +47,7 @@ class SelectCountry extends React.Component<IProps, any> {
           {options}
         </Select>
         {this.state.selectedvalue.label !== "" ? (
-          <CountryCard props={this.props} valor={this.state.selectedvalue} />
+          <CountryCard props={this.props} valor={this.state.selectedvalue} onAddItem={(e : any) => {this.props.onAddItem(e)}} />
         ) : null}
       </React.Fragment>
     );

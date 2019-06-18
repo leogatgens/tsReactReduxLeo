@@ -28,7 +28,7 @@ class WishList extends React.Component<IProps,any> {
   };
 
   render() {
-    console.log(this);
+    
     const { initLoading, datawishlist } = this.props.data;
     return (
       <div>
