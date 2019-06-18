@@ -115,14 +115,11 @@ class TripsContainer extends React.Component<IProps> {
 
   render() {
     
-    const dependencias = {
-      data: this.props,
-      state: this.state
-    };
+
     return (
       <div>
         <TabsView
-          data={dependencias}
+          dependencias={this.state}
           onDeleteItem={this.handleRemoveItem}
           onAddItem={this.handleAddedCountry}
         />

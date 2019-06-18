@@ -45,12 +45,10 @@ export function countriesByContinent(indicefilter : number, paises : Array<IPais
 
   let indiceRandom = calcularIndiceMaximoParaObtenerCincoPaises(listaAMostar.length);
 
-  console.log("indiceRandom:" + indiceRandom);
+
 
   let listaFinal = listaAMostar.slice(indiceRandom, (indiceRandom + 5));
 
-  console.log("listaFinal:");
-  console.log( listaFinal);
   
   let DatosJuego = { listaPaises: listaFinal, indicePaisActual: getRandomCountry(listaFinal) };
 

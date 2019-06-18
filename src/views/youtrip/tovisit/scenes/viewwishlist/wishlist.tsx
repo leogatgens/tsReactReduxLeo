@@ -4,10 +4,11 @@ import { TituloPrincipal } from "../../../../../shared/estiloshtml";
 
 
 interface IProps {
-  data: any;  
+  data: any;   
+  onDeleteItem : (CountryId : number) => void;
 }
 
-class WishList extends React.Component<IProps> {
+class WishList extends React.Component<IProps,any> {
   convertirFecha = (fechatexto: string) => {
     if (typeof fechatexto == "string") {
       var dateobj = new Date(fechatexto);
@@ -23,12 +24,12 @@ class WishList extends React.Component<IProps> {
     return fechatexto;
   };
   remove = (CountryId: number) => {
-    this.props.data.onDeleteItem(CountryId);
+    this.props.onDeleteItem(CountryId);
   };
 
-  render() {    
-    
-    const { initLoading, datawishlist } = this.props.data.data.state;
+  render() {
+    console.log(this);
+    const { initLoading, datawishlist } = this.props.data;
     return (
       <div>
         <TituloPrincipal>Tus futuros viajes </TituloPrincipal>

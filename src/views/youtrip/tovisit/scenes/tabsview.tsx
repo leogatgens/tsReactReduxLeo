@@ -8,17 +8,18 @@ import { SelectCountry } from "./addwishlist/selectcountry";
 const TabPane = Tabs.TabPane;
 
 const TabsView = (props: any) => {
+  
   return (
     <div>
       {
         <Tabs defaultActiveKey="1" onChange={props.callback}>
           <TabPane tab="Wish list" key="1">
-            <WishList data={props} />
+            <WishList data={props.dependencias} onDeleteItem={props.onDeleteItem} />
           </TabPane>
           <TabPane tab="Add to Wish List" key="2">
             <Wrapper>
               <TituloPrincipal>Países por visitar</TituloPrincipal>
-              <SelectCountry data={props} />
+              <SelectCountry datacountries={props.dependencias.datacountries} />
             </Wrapper>
           </TabPane>
         </Tabs>

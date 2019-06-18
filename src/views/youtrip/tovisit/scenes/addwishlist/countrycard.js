@@ -44,6 +44,7 @@ class CountryCard extends React.Component {
       });
   };
   render() {
+    console.log(this);
     const valor = this.props.valor;
     return (
       <div>
