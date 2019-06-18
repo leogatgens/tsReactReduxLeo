@@ -1,8 +1,7 @@
 import { List, Avatar, Icon } from "antd";
 import React from "react";
 import { TituloPrincipal } from "../../../../../shared/estiloshtml";
-import { IAppState, IWishListState } from "../../../../../redux/Interfaces";
-import { connect } from "react-redux";
+
 
 interface IProps {
   data: any;  
