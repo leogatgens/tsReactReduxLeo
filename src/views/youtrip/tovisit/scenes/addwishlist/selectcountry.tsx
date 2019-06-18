@@ -1,5 +1,6 @@
 import { Select } from "antd";
 import React from "react";
+import { CountryCard } from "./countrycard";
 
 
 const Option = Select.Option;
@@ -32,15 +33,23 @@ class SelectCountry extends React.Component<IProps,any> {
     console.log(this.props.data.data.state.datacountries);
     const options = this.props.data.data.state.datacountries.map((item:any) => <Option key={item.idCountry}>{item.name}</Option>);
     return (
-      <Select    style={{ width: 320 }}     
-        value={this.state.value}      
+      <React.Fragment>
+      <Select   
+      labelInValue
+      showSearch
+      placeholder="Select a country"
+      optionFilterProp="children"
+      style={{ width: '100%' }}       
         defaultActiveFirstOption={false}        
-        filterOption={false}        
+        filterOption={(input, option : any) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}      
         onChange={this.handleChange}
         notFoundContent={null}
+
       >
         {options}
       </Select>
+      {this.state.selectedvalue.label !== "" ?   <CountryCard props={ this.props} valor = {this.state.selectedvalue}/> : null}   
+      </React.Fragment>
     );
   }
 }
