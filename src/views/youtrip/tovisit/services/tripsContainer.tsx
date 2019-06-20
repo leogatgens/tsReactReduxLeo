@@ -4,7 +4,7 @@ import { GLOBALS } from "../../../../globals/globals-variables";
 import TabsView from "../scenes/tabsview";
 import { IWishListState, IAppState } from "../../../../redux/Interfaces";
 import { connect } from "react-redux";
-
+import axios from "axios"
 interface IProps {
   wishListProps: IWishListState;
 }
@@ -76,6 +76,27 @@ class TripsContainer extends React.Component<IProps, any> {
     this.ObtainWishList();
   };
 
+  // handleRemoveItem = async (value: any) => {    
+  //     try {
+  //       const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
+  //         this.props.wishListProps.emailUsuario
+  //       }/wishlists/${value}`;
+    
+  //       const response  = await axios.delete(serviceUrl); 
+                
+  //       if (response.status === 204) {
+  //               message.success("Deleted");
+  //               this.refreshData(value);
+  //        } else {
+  //               message.error("Try again");
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //       throw err;
+  //     }
+    
+  // };
+  
   handleRemoveItem = (value: any) => {    
     const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
       this.props.wishListProps.emailUsuario
@@ -97,6 +118,8 @@ class TripsContainer extends React.Component<IProps, any> {
         message.error("Ocurrio un error inesperado opsssTry again");
       });
   };
+
+ 
 
   refreshData(value: any) {
     let listaNueva = this.state.datawishlist;
