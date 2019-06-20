@@ -5,10 +5,10 @@ import TabsView from "../scenes/tabsview";
 import { IWishListState, IAppState } from "../../../../redux/Interfaces";
 import { connect } from "react-redux";
 
-interface IProps {  
-  wishListProps : IWishListState;
+interface IProps {
+  wishListProps: IWishListState;
 }
-class TripsContainer extends React.Component<IProps> {
+class TripsContainer extends React.Component<IProps, any> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -24,10 +24,10 @@ class TripsContainer extends React.Component<IProps> {
     this.ListAllCountries();
   }
 
-  ObtainWishList() {   
-    const serviceUrl = `${
-      GLOBALS.rootAPI
-    }/travelers/${this.props.wishListProps.emailUsuario}/wishlists`;
+  ObtainWishList() {
+    const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
+      this.props.wishListProps.emailUsuario
+    }/wishlists`;
     let miInit = {
       method: "GET",
       headers: {
@@ -35,7 +35,7 @@ class TripsContainer extends React.Component<IProps> {
       }
     };
     fetch(serviceUrl, miInit)
-      .then(res => {        
+      .then(res => {
         return res.json();
       })
       .then(result => {
@@ -44,12 +44,12 @@ class TripsContainer extends React.Component<IProps> {
           datawishlist: result
         });
       })
-      .catch(error => { 
+      .catch(error => {
         this.setState({
-          initLoading: false          
+          initLoading: false
         });
-        console.log(error)}
-      );
+        console.log(error);
+      });
   }
 
   ListAllCountries = () => {
@@ -61,10 +61,10 @@ class TripsContainer extends React.Component<IProps> {
       }
     };
     fetch(serviceUrl, miInit)
-      .then(res => {        
+      .then(res => {
         return res.json();
       })
-      .then(result => {        
+      .then(result => {
         this.setState({
           datacountries: result
         });
@@ -72,23 +72,19 @@ class TripsContainer extends React.Component<IProps> {
       .catch(error => console.log(error));
   };
 
-  handleAddedCountry = () => {
+  handleAddedCountry = () => {    
     this.ObtainWishList();
   };
 
-  handleRemoveItem = (value: any) => {
-    const serviceUrl = `${
-      GLOBALS.rootAPI
-    }/travelers/${"this.props.auth.userProfile"}/wishlists/${value}`;
+  handleRemoveItem = (value: any) => {    
+    const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
+      this.props.wishListProps.emailUsuario
+    }/wishlists/${value}`;
     var miInit = {
-      headers: {
-        Authorization: `Bearer ${"this.props.auth.getAccessToken()"}`
-      },
       method: "DELETE"
     };
-
     fetch(serviceUrl, miInit)
-      .then(res => {
+      .then(res => {    
         if (res.ok) {
           message.success("Deleted");
           this.refreshData(value);
@@ -98,12 +94,13 @@ class TripsContainer extends React.Component<IProps> {
       })
       .catch(error => {
         console.log(error);
-        message.error("Try again");
+        message.error("Ocurrio un error inesperado opsssTry again");
       });
   };
 
   refreshData(value: any) {
-    let listaNueva = {} as object[];
+    let listaNueva = this.state.datawishlist;
+
     const filteredItems = listaNueva.filter(
       (item: any) => item.idTrip !== value
     );
@@ -114,8 +111,6 @@ class TripsContainer extends React.Component<IProps> {
   }
 
   render() {
-    
-
     return (
       <div>
         <TabsView
@@ -130,7 +125,7 @@ class TripsContainer extends React.Component<IProps> {
 
 function mapStateToProps(state: IAppState) {
   return {
-    wishListProps : state.wishListState,
+    wishListProps: state.wishListState
   };
 }
 

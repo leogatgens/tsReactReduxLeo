@@ -23,7 +23,8 @@ class WishList extends React.Component<IProps,any> {
 
     return fechatexto;
   };
-  remove = (CountryId: number) => {
+  remove = (CountryId: number) => {    
+    console.log(CountryId);
     this.props.onDeleteItem(CountryId);
   };
 
