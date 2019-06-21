@@ -15,7 +15,7 @@ import { IAppState } from "../../../redux/Interfaces";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = {
-  Paper: { padding: 20, marginTop: 20, marginBottom: 10, height: 320 }
+  Paper: { padding: 20, marginTop: 20, marginBottom: 10, height: 350 }
 };
 
 // Create the containers interface

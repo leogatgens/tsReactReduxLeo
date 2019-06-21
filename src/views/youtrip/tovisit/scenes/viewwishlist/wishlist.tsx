@@ -8,8 +8,11 @@ interface IProps {
   onDeleteItem : (CountryId : number) => void;
 }
 
-class WishList extends React.Component<IProps,any> {
-  convertirFecha = (fechatexto: string) => {
+const WishList = (props : IProps) =>{
+
+  const { initLoading, datawishlist } = props.data;
+  
+ const convertirFecha = (fechatexto: string) => {
     if (typeof fechatexto == "string") {
       var dateobj = new Date(fechatexto);
       var year = dateobj.getFullYear();
@@ -23,14 +26,14 @@ class WishList extends React.Component<IProps,any> {
 
     return fechatexto;
   };
-  remove = (CountryId: number) => {    
-    console.log(CountryId);
-    this.props.onDeleteItem(CountryId);
+
+  const remove = (CountryId: any) => {
+    props.onDeleteItem(CountryId);
   };
 
-  render() {
     
-    const { initLoading, datawishlist } = this.props.data;
+   
+    
     return (
       <div>
         <TituloPrincipal>Tus futuros viajes </TituloPrincipal>
@@ -46,7 +49,7 @@ class WishList extends React.Component<IProps,any> {
                   key={item.idTrip}
                   type="close-circle"
                   theme="filled"
-                  onClick={this.remove.bind(this, item.idTrip)}
+                  onClick={() => remove(item.idTrip)}
                 />
               ]}
             >
@@ -63,7 +66,7 @@ class WishList extends React.Component<IProps,any> {
                 }
                 description={
                   `Viaje a ${item.name} planeado en  ` +
-                  this.convertirFecha(item.annoDeLaVisita)
+                  convertirFecha(item.annoDeLaVisita)
                 }
               />
             </List.Item>
@@ -71,7 +74,7 @@ class WishList extends React.Component<IProps,any> {
         />
       </div>
     );
-  }
+  
 }
 
 

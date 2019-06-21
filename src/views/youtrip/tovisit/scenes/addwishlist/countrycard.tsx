@@ -1,24 +1,26 @@
-import { Card, Button, message, DatePicker } from "antd";
+import { Card, Button,DatePicker } from "antd";
 import React from "react";
 import moment from "moment";
 
 let selectedDate = moment();
 
-class CountryCard extends React.Component<any> {
-  onChange(date : any) {
+const CountryCard = (props: any) => {
+
+  const onChange = (date : any) => {
     selectedDate = date;
   }
-  AddItemToWishList = () => {
+
+  const AddItemToWishList = () => {
     const newWishtCountry = {
-      IdPais: this.props.valor.key,
+      IdPais: props.valor.key,
       DateTrip: selectedDate,
       ClientId: null
     };
-   this.props.onAddItem(newWishtCountry);
+   props.onAddItem(newWishtCountry);
   };
-  render() {
+  
     
-    const valor = this.props.valor;
+    const valor = props.valor;
     return (
       <div>
         <Card
@@ -41,19 +43,19 @@ class CountryCard extends React.Component<any> {
 
           <DatePicker
             defaultValue={moment().add(60, "days")}
-            onChange={this.onChange}
+            onChange={onChange}
           />
           <Button
             style={{ marginLeft: 10 }}
             icon="plus"
-            onClick={this.AddItemToWishList}
+            onClick={AddItemToWishList}
           >
             Add to list
           </Button>
         </Card>
       </div>
     );
-  }
+  
 }
 
 export { CountryCard };
