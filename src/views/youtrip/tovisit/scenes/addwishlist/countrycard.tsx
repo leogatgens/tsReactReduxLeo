@@ -1,46 +1,20 @@
 import { Card, Button, message, DatePicker } from "antd";
 import React from "react";
-import { GLOBALS } from "../../../../../globals/globals-variables";
 import moment from "moment";
 
 let selectedDate = moment();
 
-class CountryCard extends React.Component {
-  onChange(date) {
+class CountryCard extends React.Component<any> {
+  onChange(date : any) {
     selectedDate = date;
   }
   AddItemToWishList = () => {
-    const newCountry = {
+    const newWishtCountry = {
       IdPais: this.props.valor.key,
       DateTrip: selectedDate,
-      ClientId: "leogatgens@gmail.com"//this.props.props.data.data.data.auth.userProfile
+      ClientId: null
     };
-    const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
-      newCountry.ClientId
-    }/wishlists`;
-    var miInit = {
-      headers: {      
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      method: "post",
-      body: JSON.stringify(newCountry)
-    };
-
-    fetch(serviceUrl, miInit)
-      .then(res => {
-        if (res.ok) {
-          message.success("successfully added");
-          console.log(this);
-          this.props.onAddItem();
-        } else {
-          message.error("Try again");
-        }
-      })
-      .catch(error => {
-        console.log(error);
-        message.error("Try again");
-      });
+   this.props.onAddItem(newWishtCountry);
   };
   render() {
     

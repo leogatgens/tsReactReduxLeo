@@ -4,8 +4,7 @@ import { GLOBALS } from "../../../../globals/globals-variables";
 import TabsView from "../scenes/tabsview";
 import { IWishListState, IAppState } from "../../../../redux/Interfaces";
 import { connect } from "react-redux";
-import axios from "axios"
-import { async } from "q";
+import axios from "axios";
 interface IProps {
   wishListProps: IWishListState;
 }
@@ -25,58 +24,77 @@ class TripsContainer extends React.Component<IProps, any> {
     this.ListAllCountries();
   }
 
- 
-
   ObtainWishList = async () => {
     try {
-
-    const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
-      this.props.wishListProps.emailUsuario
-    }/wishlists`;
-    let miInit = {    
-      headers: {
-        "Content-Type": "application/json"
-      }
-    };
-    const response  = await axios.get(serviceUrl,miInit);   
-        this.setState({
-          initLoading: false,
-          datawishlist: response.data});
-
-        } catch (err) {
-          this.setState({
-            initLoading: false
-          });
-          console.log(err);
+      const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
+        this.props.wishListProps.emailUsuario
+      }/wishlists`;
+      let miInit = {
+        headers: {
+          "Content-Type": "application/json"
         }
- 
-  }
-
-  ListAllCountries = async () => {
-    try {
-    const serviceUrl = `${GLOBALS.rootAPI}/paises`;
-    let miInit = {      
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-    const response  = await axios.get(serviceUrl,miInit);  
-    console.log(response);
-        this.setState({
-          datacountries: response.data
-        });
-   
-    } catch (err) {  
+      };
+      const response = await axios.get(serviceUrl, miInit);
+      this.setState({
+        initLoading: false,
+        datawishlist: response.data
+      });
+    } catch (err) {
+      this.setState({
+        initLoading: false
+      });
       console.log(err);
     }
   };
 
-  handleAddedCountry = () => {    
-    this.ObtainWishList();
+  ListAllCountries = async () => {
+    try {
+      const serviceUrl = `${GLOBALS.rootAPI}/paises`;
+      let miInit = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+      const response = await axios.get(serviceUrl, miInit);
+      console.log(response);
+      this.setState({
+        datacountries: response.data
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  
-  handleRemoveItem = (value: any) => {    
+  handleAddedCountry = (newWishtCountry: any) => {
+
+    newWishtCountry.ClientId =  this.props.wishListProps.emailUsuario;
+    const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
+      newWishtCountry.ClientId
+    }/wishlists`;
+    var miInit = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      method: "post",
+      body: JSON.stringify(newWishtCountry)
+    };
+    fetch(serviceUrl, miInit)
+      .then(res => {
+        if (res.ok) {
+          message.success("successfully added");
+          this.ObtainWishList();
+        } else {
+          message.error("Try again");
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        message.error("Try again");
+      });
+  };
+
+  handleRemoveItem = (value: any) => {
     const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
       this.props.wishListProps.emailUsuario
     }/wishlists/${value}`;
@@ -84,7 +102,7 @@ class TripsContainer extends React.Component<IProps, any> {
       method: "DELETE"
     };
     fetch(serviceUrl, miInit)
-      .then(res => {    
+      .then(res => {
         if (res.ok) {
           message.success("Deleted");
           this.refreshData(value);
@@ -97,8 +115,6 @@ class TripsContainer extends React.Component<IProps, any> {
         message.error("Ocurrio un error inesperado opsssTry again");
       });
   };
-
- 
 
   refreshData(value: any) {
     let listaNueva = this.state.datawishlist;
