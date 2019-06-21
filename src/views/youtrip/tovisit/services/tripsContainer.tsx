@@ -5,6 +5,7 @@ import TabsView from "../scenes/tabsview";
 import { IWishListState, IAppState } from "../../../../redux/Interfaces";
 import { connect } from "react-redux";
 import axios from "axios"
+import { async } from "q";
 interface IProps {
   wishListProps: IWishListState;
 }
@@ -24,78 +25,56 @@ class TripsContainer extends React.Component<IProps, any> {
     this.ListAllCountries();
   }
 
-  ObtainWishList() {
+ 
+
+  ObtainWishList = async () => {
+    try {
+
     const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
       this.props.wishListProps.emailUsuario
     }/wishlists`;
-    let miInit = {
-      method: "GET",
+    let miInit = {    
       headers: {
         "Content-Type": "application/json"
       }
     };
-    fetch(serviceUrl, miInit)
-      .then(res => {
-        return res.json();
-      })
-      .then(result => {
+    const response  = await axios.get(serviceUrl,miInit);   
         this.setState({
           initLoading: false,
-          datawishlist: result
-        });
-      })
-      .catch(error => {
-        this.setState({
-          initLoading: false
-        });
-        console.log(error);
-      });
+          datawishlist: response.data});
+
+        } catch (err) {
+          this.setState({
+            initLoading: false
+          });
+          console.log(err);
+        }
+ 
   }
 
-  ListAllCountries = () => {
+  ListAllCountries = async () => {
+    try {
     const serviceUrl = `${GLOBALS.rootAPI}/paises`;
-    let miInit = {
-      method: "GET",
+    let miInit = {      
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json'
       }
     };
-    fetch(serviceUrl, miInit)
-      .then(res => {
-        return res.json();
-      })
-      .then(result => {
+    const response  = await axios.get(serviceUrl,miInit);  
+    console.log(response);
         this.setState({
-          datacountries: result
+          datacountries: response.data
         });
-      })
-      .catch(error => console.log(error));
+   
+    } catch (err) {  
+      console.log(err);
+    }
   };
 
   handleAddedCountry = () => {    
     this.ObtainWishList();
   };
 
-  // handleRemoveItem = async (value: any) => {    
-  //     try {
-  //       const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
-  //         this.props.wishListProps.emailUsuario
-  //       }/wishlists/${value}`;
-    
-  //       const response  = await axios.delete(serviceUrl); 
-                
-  //       if (response.status === 204) {
-  //               message.success("Deleted");
-  //               this.refreshData(value);
-  //        } else {
-  //               message.error("Try again");
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //       throw err;
-  //     }
-    
-  // };
   
   handleRemoveItem = (value: any) => {    
     const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
