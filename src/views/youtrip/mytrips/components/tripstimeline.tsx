@@ -1,7 +1,13 @@
 import { Timeline, Icon } from "antd";
 import React from "react";
 
-const TripsTimeLine = (props : any) => {
+interface IProps {
+  data: [];
+}
+const TripsTimeLine = (props : IProps) => {
+
+  const indiceFinal = props.data.length - 1;
+  
   const  pintarSegunIndice = (i : number, item : any, indiceFinal:number) => {
     if (i === 0) {
       return (
@@ -48,11 +54,6 @@ const TripsTimeLine = (props : any) => {
 
     return fechatexto;
   }
-
-  
-  console.log(props.data);
-
-  const indiceFinal = props.data.length - 1;
 
   return (
     <div style={{ marginLeft: 10 }}>

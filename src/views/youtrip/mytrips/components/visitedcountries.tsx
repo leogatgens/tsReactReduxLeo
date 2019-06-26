@@ -4,26 +4,31 @@ import React from "react";
 import { TituloPrincipal } from "../../../../shared/estiloshtml";
 import { IPaisVisitado } from "../../../../redux/Interfaces";
 
-
-
-function eliminarPaisesDuplicados(trips : any) {
-  const idPaises = new Set();
-  const paisesVisitados = [] as Array<IPaisVisitado>;
-
-  trips.forEach((trip : any) => {
-    if (idPaises.has(trip.idPais) === false) {
-      paisesVisitados.push(trip);
-    }
-    idPaises.add(trip.idPais);
-  });
-  return paisesVisitados;
-}
-const VisitedCountries = (props : any) => {
+interface IProps {
+  data: { 
+    data : [],
+     initLoading : boolean
+    };
   
+}
+
+const VisitedCountries = (props : IProps) => {
+  const  eliminarPaisesDuplicados = (trips: Array<IPaisVisitado>) => {
+    const idPaises = new Set();
+    const paisesVisitados = [] as Array<IPaisVisitado>;
+  
+    trips.forEach((trip : any) => {
+      if (idPaises.has(trip.idPais) === false) {
+        paisesVisitados.push(trip);
+      }
+      idPaises.add(trip.idPais);
+    });
+    return paisesVisitados;
+  }
+
 
   const { initLoading, data } = props.data;
   const paiseseSinduplicados = eliminarPaisesDuplicados(data);
-
   return (
     <div>
       <TextButtons />
