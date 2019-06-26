@@ -1,8 +1,8 @@
 import { List, Avatar } from "antd";
-import TextButtons from "./filtromenu";
 import React from "react";
 import { TituloPrincipal } from "../../../../shared/estiloshtml";
 import { IPaisVisitado } from "../../../../redux/Interfaces";
+import FormDialog from "./addtrip";
 
 interface IProps {
   data: { 
@@ -31,7 +31,7 @@ const VisitedCountries = (props : IProps) => {
   const paiseseSinduplicados = eliminarPaisesDuplicados(data);
   return (
     <div>
-      <TextButtons />
+      <FormDialog />
       <TituloPrincipal>
         Has visitado {paiseseSinduplicados.length} países
       </TituloPrincipal>
