@@ -1,13 +1,13 @@
 import React from 'react';
 import {Tabs } from 'antd';
 
-import { TituloPrincipal } from '../../../components/estiloshtml';
-import  PendingTimeLine  from './timeline';
-import  ContriesListTab  from './visitedcountries';
+import { TituloPrincipal } from '../../../../shared/estiloshtml'
+import  PendingTimeLine  from './tripstimeline';
+import  VisitedCountries  from './visitedcountries';
 
 const TabPane = Tabs.TabPane;
 
-class TabsControl extends React.Component {
+class MyTripsPage extends React.Component {
 
 
   render(){
@@ -15,11 +15,11 @@ class TabsControl extends React.Component {
     return(
       <Tabs defaultActiveKey="1" onChange={this.callback}>   
         <TabPane tab="Lista países visitados" key="1">
-           <ContriesListTab data={this.props}></ContriesListTab>
+           <VisitedCountries data={this.props.data}></VisitedCountries>
         </TabPane>      
         <TabPane tab="Historia de tus viajes" key="2">
           <TituloPrincipal>El cronograma de tus viajes.</TituloPrincipal>                    
-          <PendingTimeLine data={this.props}></PendingTimeLine>
+          <PendingTimeLine data={this.props.data.data}></PendingTimeLine>
         </TabPane>    
       </Tabs>  
 
@@ -28,4 +28,4 @@ class TabsControl extends React.Component {
 }
 
 
-export default TabsControl;
+export default MyTripsPage;

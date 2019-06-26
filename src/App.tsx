@@ -5,6 +5,7 @@ import { History } from "history";
 import Header from "./shared/component/Header";
 import Homebydevice from "./views/youtrip/home/scenes/homebydevice"
 import TripsContainer from "./views/youtrip/tovisit/services/tripsContainer"
+import TripsOption from "./views/youtrip/mytrips/services/mytripscontainer";
 interface AppProps {
   history: History;
 }
@@ -46,6 +47,7 @@ const App = ({ history }: AppProps) => {
         <Route path="/game" component={MainFrame} ></Route>
         <Route path="/profile" component={ProfileForm} ></Route>
         <Route path="/porvisitar" component={TripsContainer} ></Route>
+        <Route path="/misviajes" component={TripsOption} ></Route>
         
       </div>
     </BrowserRouter>

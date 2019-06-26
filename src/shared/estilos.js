@@ -45,7 +45,7 @@ const TomatoButton = styled(Button)`
 
 // This could be react-router-dom's Link for example
 const Link = ({ className, children }) => (
-    <a className={className}>
+    <a className={className}> 
       {children}
     </a>
   );

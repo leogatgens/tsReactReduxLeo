@@ -19,9 +19,13 @@ class TripsContainer extends React.Component<IProps, any> {
     };
   }
 
+  componentDidUpdate(){
+    console.log("componentDidUpdate TripsContainer");
+  }
   componentDidMount() {
     this.ObtainWishList();
     this.ListAllCountries();
+    console.log("componentDidMount TripsContainer");
   }
 
   ObtainWishList = async () => {
@@ -82,7 +86,7 @@ class TripsContainer extends React.Component<IProps, any> {
     fetch(serviceUrl, miInit)
       .then(res => {
         if (res.ok) {
-          message.success("successfully added");
+          message.success("País agregado correctamente.");
           this.ObtainWishList();
         } else {
           message.error("Try again");
@@ -104,7 +108,7 @@ class TripsContainer extends React.Component<IProps, any> {
     fetch(serviceUrl, miInit)
       .then(res => {
         if (res.ok) {
-          message.success("Deleted");
+          message.success("País eliminado de la lista.");
           this.refreshData(value);
         } else {
           message.error("Try again");
