@@ -124,3 +124,11 @@ export interface IGetWishListAction {
 }
 
 
+
+
+export interface IPaisVisitado {  
+  id : number,
+  pais: string,
+  urlFlag: string,
+  continent: string
+}

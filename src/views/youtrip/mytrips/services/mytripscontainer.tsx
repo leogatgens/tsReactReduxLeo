@@ -4,7 +4,7 @@ import MyTripsPage from "../components/MyTripsPage";
 import { GLOBALS } from "../../../../globals/globals-variables";
 
 class TripsOption extends React.Component {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
       initLoading: true,
@@ -31,13 +31,13 @@ class TripsOption extends React.Component {
           data: result
         });
       })
-      .catch(error => this.setState({ error: error.message, initLoading : false }));
+      .catch(error =>
+        this.setState({ error: error.message, initLoading: false })
+      );
   }
 
   render() {
-    return (
-      <MyTripsPage data={this.state} />
-    );
+    return <MyTripsPage data={this.state} />;
   }
 }
 

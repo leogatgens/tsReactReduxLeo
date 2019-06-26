@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { IAppState } from '../../../redux/Interfaces';
+import { IAppState, ICountryState, IInterfazState } from '../../../redux/Interfaces';
 import Footer from '../components/Footer';
 import { Continents } from "../../../shared/data";
 import * as countryacciones from "../../../redux/actions/GameActions";
@@ -11,7 +11,8 @@ import TabGame from './TabGame';
 
 // Create the containers interface
 interface IProps {
-  propiedades: IAppState;
+  countryState: IInterfazState;
+  PaisState : ICountryState;
   countryaccions: any;
   characteraccions: any;
 }
@@ -28,15 +29,16 @@ class MainFrame extends React.Component<IProps> {
    handleIndexChange = (index: number) => {   
      
     this.props.characteraccions.CambiarFondo("white");
-    this.props.countryaccions.RequestContinents(index,this.props.propiedades.PaisState.listaTodosLosPaises);
+    this.props.countryaccions.RequestContinents(index,this.props.PaisState.listaTodosLosPaises);
   }
 
   public render() { 
+    console.log("....redering MainFrame");
   return (   
     <React.Fragment>
     <div
           style={{
-            background: this.props.propiedades.countryState.colorDivPrincipal,
+            background: this.props.countryState.colorDivPrincipal,
         
           }}
         >
@@ -45,7 +47,7 @@ class MainFrame extends React.Component<IProps> {
        <Footer
             data={Continents}
             handleIndexChange={this.handleIndexChange}
-            selectedIndex={this.props.propiedades.PaisState.selectedTabIndex}
+            selectedIndex={this.props.PaisState.selectedTabIndex}
           />       
       </div>
       </React.Fragment>
@@ -55,7 +57,8 @@ class MainFrame extends React.Component<IProps> {
 
 const mapStateToProps = (store: IAppState) => {
   return {
-    propiedades: store,    
+    countryState: store.countryState,   
+    PaisState : store.PaisState
   };
 };
 function mapDispatchToProps(dispatch :ThunkDispatch<any, any, AnyAction>) {

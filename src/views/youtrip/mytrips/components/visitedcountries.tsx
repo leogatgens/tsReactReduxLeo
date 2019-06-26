@@ -2,12 +2,15 @@ import { List, Avatar } from "antd";
 import TextButtons from "./filtromenu";
 import React from "react";
 import { TituloPrincipal } from "../../../../shared/estiloshtml";
+import { IPaisVisitado } from "../../../../redux/Interfaces";
 
-function eliminarPaisesDuplicados(trips) {
+
+
+function eliminarPaisesDuplicados(trips : any) {
   const idPaises = new Set();
-  const paisesVisitados = [];
+  const paisesVisitados = [] as Array<IPaisVisitado>;
 
-  trips.forEach(trip => {
+  trips.forEach((trip : any) => {
     if (idPaises.has(trip.idPais) === false) {
       paisesVisitados.push(trip);
     }
@@ -15,7 +18,7 @@ function eliminarPaisesDuplicados(trips) {
   });
   return paisesVisitados;
 }
-const VisitedCountries = (props) => {
+const VisitedCountries = (props : any) => {
   
 
   const { initLoading, data } = props.data;

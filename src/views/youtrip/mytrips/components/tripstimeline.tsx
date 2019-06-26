@@ -1,9 +1,8 @@
 import { Timeline, Icon } from "antd";
 import React from "react";
 
-const TripsTimeLine = props => {
-
-  const  pintarSegunIndice = (i, item, indiceFinal) => {
+const TripsTimeLine = (props : any) => {
+  const  pintarSegunIndice = (i : number, item : any, indiceFinal:number) => {
     if (i === 0) {
       return (
         <Timeline.Item
@@ -35,7 +34,7 @@ const TripsTimeLine = props => {
       );
     }
   }
-  const convertirFecha = (fechatexto)  =>{
+  const convertirFecha = (fechatexto : string)  =>{
     if (typeof fechatexto == "string") {
       var dateobj = new Date(fechatexto);
       var year = dateobj.getFullYear();
@@ -58,7 +57,7 @@ const TripsTimeLine = props => {
   return (
     <div style={{ marginLeft: 10 }}>
       <Timeline>
-        {props.data.map((item, i) =>
+        {props.data.map((item : any, i : number) =>
           pintarSegunIndice(i, item, indiceFinal)
         )}
       </Timeline>

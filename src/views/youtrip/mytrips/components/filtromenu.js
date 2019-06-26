@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-const styles = theme => ({
+const styles = (theme ) => ({
   button: {
     margin: theme.spacing.unit,
   },
@@ -12,7 +12,7 @@ const styles = theme => ({
   },
 });
 
-function TextButtons(props) {
+const  TextButtons = (props) => {
   const { classes } = props;
   return (
     <div>
