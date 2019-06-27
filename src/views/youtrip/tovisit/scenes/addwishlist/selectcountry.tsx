@@ -6,7 +6,7 @@ import { IPaisCompleto, INuevoWishItemPais, IKeyValuePair } from "../../../../..
 const Option = Select.Option;
 interface IProps {
   datacountries: IPaisCompleto[];   
-  onAddItem : (CountryId : INuevoWishItemPais) => void;
+  onAddItem :  (CountryId : INuevoWishItemPais) => void;
 }
 interface IState {
   selectedvalue: IKeyValuePair
@@ -28,7 +28,7 @@ class SelectCountry extends React.Component<IProps, IState> {
   };
 
   render() {
-    
+    console.log(this);
     const options = this.props.datacountries.map((item: IPaisCompleto) => (
       <Option key={item.idCountry}>{item.name}</Option>
     ));
@@ -53,7 +53,7 @@ class SelectCountry extends React.Component<IProps, IState> {
           {options}
         </Select>
         {this.state.selectedvalue.label !== "" ? (
-          <CountryCard props={this.props} valor={this.state.selectedvalue} 
+          <CountryCard data={this.props.datacountries} valor={this.state.selectedvalue} 
           onAddItem={(e : INuevoWishItemPais) => {                        
             this.props.onAddItem(e)
           }} />

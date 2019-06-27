@@ -15,7 +15,7 @@ interface IProps {
 }
 
 const TabsView = (props: IProps) => {
-  
+  console.log(props);
   return (
     <div>
       {

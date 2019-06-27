@@ -9,7 +9,7 @@ interface IProps{
   data : IPaisCompleto[];
   valor : IKeyValuePair;
 }
-const CountryCard = (props: any) => {
+const CountryCard = (props: IProps) => {
 console.log(props);
   const onChange = (date : any) => {
     selectedDate = date;
