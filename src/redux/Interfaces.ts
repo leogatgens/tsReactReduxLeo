@@ -168,6 +168,6 @@ export interface INuevoWishItemPais {
 
 export interface IKeyValuePair {  
   key:number;
-  label: string;
+  value: string;
 
 }

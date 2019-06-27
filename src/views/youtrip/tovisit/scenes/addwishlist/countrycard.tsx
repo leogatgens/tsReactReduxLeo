@@ -10,8 +10,8 @@ interface IProps{
   valor : IKeyValuePair;
 }
 const CountryCard = (props: IProps) => {
-console.log(props);
-  const onChange = (date : any) => {
+
+  const onChange = (date : moment.Moment) => {
     selectedDate = date;
   }
 
@@ -27,20 +27,20 @@ console.log(props);
     return (
       <div>
         <Card
-          title={valor.label}
+          title={valor.value}
           bordered={false}
           style={{ width: "100%", marginTop: 10 }}
         >
-          <p>Continente: {valor.label} </p>
-          <p>Capital: {valor.label} </p>
+          <p>Continente: {valor.value} </p>
+          <p>Capital: {valor.value} </p>
           <p>
             More information about{" "}
             <a
-              href={"https://www.google.com/search?q=" + valor.label}
+              href={"https://www.google.com/search?q=" + valor.value}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {valor.label}
+              {valor.value}
             </a>
           </p>
 

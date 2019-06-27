@@ -17,8 +17,8 @@ class SelectCountry extends React.Component<IProps, IState> {
     this.state = {
       selectedvalue: {
         key: -1,
-        label: ""
-      }
+        value: ""
+      } as IKeyValuePair
     };
   }
   handleChange = (value: any) => {
@@ -52,11 +52,9 @@ class SelectCountry extends React.Component<IProps, IState> {
         >
           {options}
         </Select>
-        {this.state.selectedvalue.label !== "" ? (
+        {this.state.selectedvalue.value !== "" ? (
           <CountryCard data={this.props.datacountries} valor={this.state.selectedvalue} 
-          onAddItem={(e : INuevoWishItemPais) => {                        
-            this.props.onAddItem(e)
-          }} />
+          onAddItem={this.props.onAddItem} />
         ) : null}
       </React.Fragment>
     );
