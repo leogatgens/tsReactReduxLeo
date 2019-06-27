@@ -4,15 +4,22 @@ import  WishList from "./viewwishlist/wishlist";
 import { Wrapper } from "../../../../shared/estilos";
 import { TituloPrincipal } from "../../../../shared/estiloshtml";
 import { SelectCountry } from "./addwishlist/selectcountry";
+import { IStateTripsContainer } from "../../../../redux/Interfaces";
 
 const TabPane = Tabs.TabPane;
 
-const TabsView = (props: any) => {
+interface IProps {
+  dependencias: IStateTripsContainer;
+  onDeleteItem :  (CountryId : number) => void;
+  onAddItem :  (CountryId : number) => void;
+}
+
+const TabsView = (props: IProps) => {
   
   return (
     <div>
       {
-        <Tabs defaultActiveKey="1" onChange={props.callback}>
+        <Tabs defaultActiveKey="1">
           <TabPane tab="Wish list" key="1">
             <WishList data={props.dependencias} onDeleteItem={props.onDeleteItem} />
           </TabPane>
