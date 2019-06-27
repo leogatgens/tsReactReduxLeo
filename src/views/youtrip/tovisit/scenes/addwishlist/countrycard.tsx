@@ -1,11 +1,11 @@
 import { Card, Button,DatePicker } from "antd";
 import React from "react";
 import moment from "moment";
-import { IPaisCompleto } from "../../../../../redux/Interfaces";
+import { IPaisCompleto, IWishListItem } from "../../../../../redux/Interfaces";
 
 let selectedDate = moment();
 interface IProps{
-  onAddItem : () => void;
+  onAddItem : (wishItem : IWishListItem) => void;
   data : IPaisCompleto[];
   valor : object;
 }
@@ -16,12 +16,8 @@ console.log(props);
   }
 
   const AddItemToWishList = () => {
-    const newWishtCountry = {
-      IdPais: props.valor.key,
-      DateTrip: selectedDate,
-      ClientId: null
-    };
-   props.onAddItem(newWishtCountry);
+    const model = {} as IWishListItem;
+   props.onAddItem(model);
   };
   
     

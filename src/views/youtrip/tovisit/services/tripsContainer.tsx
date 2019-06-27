@@ -2,7 +2,7 @@ import React from "react";
 import { message } from "antd";
 import { GLOBALS } from "../../../../globals/globals-variables";
 import TabsView from "../scenes/tabsview";
-import { IWishListState, IAppState,IStateTripsContainer,IWishListItem, IPaisCompleto } from "../../../../redux/Interfaces";
+import { IWishListState, IAppState,IStateTripsContainer,IWishListItem, IPaisCompleto, INuevoWishItemPais } from "../../../../redux/Interfaces";
 import { connect } from "react-redux";
 import axios from "axios";
 
@@ -12,7 +12,7 @@ interface IProps {
 
 
 class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
-  constructor(props: any) {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       initLoading: true,
@@ -72,9 +72,13 @@ class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
     }
   };
 
-  handleAddedCountry = (newWishtCountry: any) => {
-
-    newWishtCountry.ClientId =  this.props.wishListProps.emailUsuario;
+  handleAddedCountry = (newWishtItemCountry: INuevoWishItemPais) => {
+    let newWishtCountry = {
+      IdPais: newWishtItemCountry.IdPais,
+      DateTrip: newWishtItemCountry.DateTrip,
+      ClientId: this.props.wishListProps.emailUsuario
+    };
+    
     const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
       newWishtCountry.ClientId
     }/wishlists`;
@@ -101,7 +105,7 @@ class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
       });
   };
 
-  handleRemoveItem = (value: any) => {
+  handleRemoveItem = (value: number) => {
     const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
       this.props.wishListProps.emailUsuario
     }/wishlists/${value}`;

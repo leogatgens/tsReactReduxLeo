@@ -4,14 +4,14 @@ import  WishList from "./viewwishlist/wishlist";
 import { Wrapper } from "../../../../shared/estilos";
 import { TituloPrincipal } from "../../../../shared/estiloshtml";
 import { SelectCountry } from "./addwishlist/selectcountry";
-import { IStateTripsContainer } from "../../../../redux/Interfaces";
+import { IStateTripsContainer, INuevoWishItemPais } from "../../../../redux/Interfaces";
 
 const TabPane = Tabs.TabPane;
 
 interface IProps {
   dependencias: IStateTripsContainer;
   onDeleteItem :  (CountryId : number) => void;
-  onAddItem :  (CountryId : number) => void;
+  onAddItem :  (CountryId : INuevoWishItemPais) => void;
 }
 
 const TabsView = (props: IProps) => {

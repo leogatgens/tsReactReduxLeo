@@ -1,12 +1,12 @@
 import { Select } from "antd";
 import React from "react";
 import { CountryCard } from "./countrycard";
-import { IPaisCompleto } from "../../../../../redux/Interfaces";
+import { IPaisCompleto, INuevoWishItemPais } from "../../../../../redux/Interfaces";
 
 const Option = Select.Option;
 interface IProps {
   datacountries: IPaisCompleto[];   
-  onAddItem : (CountryId : number) => void;
+  onAddItem : (CountryId : INuevoWishItemPais) => void;
 }
 class SelectCountry extends React.Component<IProps, any> {
   constructor(props: any) {

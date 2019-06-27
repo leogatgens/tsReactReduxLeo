@@ -1,3 +1,5 @@
+import moment from "moment";
+
 // Define the Character type
 export interface ICharacter {
   name: string;  
@@ -154,5 +156,12 @@ export interface IPaisCompleto {
   idCountry: number;
   name: string;
   urlFlag:string;
+}
+
+
+export interface INuevoWishItemPais {  
+  IdPais:number,
+  DateTrip: moment.Moment,
+
 }
 
