@@ -1,11 +1,16 @@
 import { Card, Button,DatePicker } from "antd";
 import React from "react";
 import moment from "moment";
+import { IPaisCompleto } from "../../../../../redux/Interfaces";
 
 let selectedDate = moment();
-
+interface IProps{
+  onAddItem : () => void;
+  data : IPaisCompleto[];
+  valor : object;
+}
 const CountryCard = (props: any) => {
-
+console.log(props);
   const onChange = (date : any) => {
     selectedDate = date;
   }
