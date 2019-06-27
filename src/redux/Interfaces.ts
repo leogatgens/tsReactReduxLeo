@@ -160,8 +160,14 @@ export interface IPaisCompleto {
 
 
 export interface INuevoWishItemPais {  
-  IdPais:number,
-  DateTrip: moment.Moment,
+  IdPais:number;
+  DateTrip: moment.Moment;
 
 }
 
+
+export interface IKeyValuePair {  
+  key:number;
+  label: string;
+
+}
