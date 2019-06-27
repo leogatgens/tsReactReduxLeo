@@ -63,7 +63,7 @@ class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
         }
       };
       const response = await axios.get(serviceUrl, miInit);
-      console.log(response);
+      
       this.setState({
         datacountries: response.data
       });
@@ -131,7 +131,7 @@ class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
     let listaNueva = this.state.datawishlist;
 
     const filteredItems = listaNueva.filter(
-      (item: any) => item.idTrip !== value
+      (item: IWishListItem) => item.idTrip !== value
     );
     this.setState({
       datawishlist: filteredItems,

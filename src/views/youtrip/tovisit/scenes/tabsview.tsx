@@ -21,7 +21,7 @@ const TabsView = (props: IProps) => {
       {
         <Tabs defaultActiveKey="1">
           <TabPane tab="Wish list" key="1">
-            <WishList data={props.dependencias} onDeleteItem={props.onDeleteItem} />
+            <WishList datawishlist={props.dependencias.datawishlist} onDeleteItem={props.onDeleteItem} initLoading={props.dependencias.initLoading} />
           </TabPane>
           <TabPane tab="Add to Wish List" key="2">
             <Wrapper>

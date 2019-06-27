@@ -8,8 +8,14 @@ interface IProps {
   datacountries: IPaisCompleto[];   
   onAddItem : (CountryId : INuevoWishItemPais) => void;
 }
-class SelectCountry extends React.Component<IProps, any> {
-  constructor(props: any) {
+interface IState {
+  selectedvalue: {
+    key: number,
+    label: string
+  }
+}
+class SelectCountry extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       selectedvalue: {
@@ -26,7 +32,7 @@ class SelectCountry extends React.Component<IProps, any> {
 
   render() {
     
-    const options = this.props.datacountries.map((item: any) => (
+    const options = this.props.datacountries.map((item: IPaisCompleto) => (
       <Option key={item.idCountry}>{item.name}</Option>
     ));
     return (
@@ -38,7 +44,7 @@ class SelectCountry extends React.Component<IProps, any> {
           optionFilterProp="children"
           style={{ width: "100%" }}
           defaultActiveFirstOption={false}
-          filterOption={(input, option: any) =>
+          filterOption={(input : string, option: any) =>            
             option.props.children.toLowerCase().indexOf(input.toLowerCase()) >=
             0
           }
@@ -48,7 +54,10 @@ class SelectCountry extends React.Component<IProps, any> {
           {options}
         </Select>
         {this.state.selectedvalue.label !== "" ? (
-          <CountryCard props={this.props} valor={this.state.selectedvalue} onAddItem={(e : any) => {this.props.onAddItem(e)}} />
+          <CountryCard props={this.props} valor={this.state.selectedvalue} 
+          onAddItem={(e : INuevoWishItemPais) => {                        
+            this.props.onAddItem(e)
+          }} />
         ) : null}
       </React.Fragment>
     );

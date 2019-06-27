@@ -1,16 +1,18 @@
 import { List, Avatar, Icon } from "antd";
 import React from "react";
 import { TituloPrincipal } from "../../../../../shared/estiloshtml";
+import { IWishListItem } from "../../../../../redux/Interfaces";
 
 
 interface IProps {
-  data: any;   
+  initLoading: boolean;  
+  datawishlist  : IWishListItem[];
   onDeleteItem : (CountryId : number) => void;
 }
 
 const WishList = (props : IProps) =>{
 
-  const { initLoading, datawishlist } = props.data;
+  const { initLoading, datawishlist } = props;
   
  const convertirFecha = (fechatexto: string) => {
     if (typeof fechatexto == "string") {
@@ -27,7 +29,7 @@ const WishList = (props : IProps) =>{
     return fechatexto;
   };
 
-  const remove = (CountryId: any) => {
+  const remove = (CountryId: number) => {
     props.onDeleteItem(CountryId);
   };
 
