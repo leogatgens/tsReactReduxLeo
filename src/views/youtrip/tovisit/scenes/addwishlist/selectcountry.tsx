@@ -1,7 +1,7 @@
 import { Select } from "antd";
 import React from "react";
 import { CountryCard } from "./countrycard";
-import { IPaisCompleto, INuevoWishItemPais } from "../../../../../redux/Interfaces";
+import { IPaisCompleto, INuevoWishItemPais, IKeyValuePair } from "../../../../../redux/Interfaces";
 
 const Option = Select.Option;
 interface IProps {
@@ -9,10 +9,7 @@ interface IProps {
   onAddItem : (CountryId : INuevoWishItemPais) => void;
 }
 interface IState {
-  selectedvalue: {
-    key: number,
-    label: string
-  }
+  selectedvalue: IKeyValuePair
 }
 class SelectCountry extends React.Component<IProps, IState> {
   constructor(props: IProps) {
@@ -44,9 +41,11 @@ class SelectCountry extends React.Component<IProps, IState> {
           optionFilterProp="children"
           style={{ width: "100%" }}
           defaultActiveFirstOption={false}
-          filterOption={(input : string, option: any) =>            
-            option.props.children.toLowerCase().indexOf(input.toLowerCase()) >=
-            0
+          filterOption={(input : string, option: any )   => {        
+            return option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+          }   
+     
+         
           }
           onChange={this.handleChange}
           notFoundContent={null}

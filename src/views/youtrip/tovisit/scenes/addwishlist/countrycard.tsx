@@ -10,7 +10,7 @@ interface IProps{
   valor : IKeyValuePair;
 }
 const CountryCard = (props: any) => {
-
+console.log(props);
   const onChange = (date : any) => {
     selectedDate = date;
   }
