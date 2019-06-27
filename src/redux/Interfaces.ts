@@ -132,3 +132,27 @@ export interface IPaisVisitado {
   urlFlag: string,
   continent: string
 }
+
+export interface IWishListItem {
+  idTrip: number;
+  idPais: number;
+  name: string;
+  urlFlag: string;
+  annoDeLaVisita: string;
+}
+
+export interface IStateTripsContainer {
+  initLoading: boolean;
+  datacountries: IPaisCompleto[];
+  datawishlist: IWishListItem[];
+  error: string;
+}
+
+export interface IPaisCompleto {
+  capital: string;
+  continent: string;
+  idCountry: number;
+  name: string;
+  urlFlag:string;
+}
+

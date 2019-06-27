@@ -2,19 +2,22 @@ import React from "react";
 import { message } from "antd";
 import { GLOBALS } from "../../../../globals/globals-variables";
 import TabsView from "../scenes/tabsview";
-import { IWishListState, IAppState } from "../../../../redux/Interfaces";
+import { IWishListState, IAppState,IStateTripsContainer,IWishListItem, IPaisCompleto } from "../../../../redux/Interfaces";
 import { connect } from "react-redux";
 import axios from "axios";
+
 interface IProps {
   wishListProps: IWishListState;
 }
-class TripsContainer extends React.Component<IProps, any> {
+
+
+class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
   constructor(props: any) {
     super(props);
     this.state = {
       initLoading: true,
-      datacountries: [],
-      datawishlist: [],
+      datacountries: [] as Array<IPaisCompleto>,
+      datawishlist:  [] as Array<IWishListItem>,
       error: ""
     };
   }
@@ -120,7 +123,7 @@ class TripsContainer extends React.Component<IProps, any> {
       });
   };
 
-  refreshData(value: any) {
+  refreshData(value: number) {
     let listaNueva = this.state.datawishlist;
 
     const filteredItems = listaNueva.filter(
