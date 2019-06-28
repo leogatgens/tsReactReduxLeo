@@ -42,7 +42,7 @@ class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
         }
       };
       const response = await axios.get(serviceUrl, miInit);
-      console.log(response.data);
+      
       this.setState({
         initLoading: false,
         datawishlist: response.data

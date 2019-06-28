@@ -4,11 +4,10 @@ import { TituloPrincipal } from "../../../../shared/estiloshtml";
 import { IPaisVisitado } from "../../../../redux/Interfaces";
 import FormDialog from "./addtrip";
 
-interface IProps {
-  data: { 
-    data : [],
-     initLoading : boolean
-    };
+interface IProps {  
+  misviajes : [];
+  initLoading : boolean;
+  
   
 }
 
@@ -27,7 +26,8 @@ const VisitedCountries = (props : IProps) => {
   }
 
 
-  const { initLoading, data } = props.data;
+  const   data  = props.misviajes;
+  const initLoading = props.initLoading
   const paiseseSinduplicados = eliminarPaisesDuplicados(data);
   return (
     <div>

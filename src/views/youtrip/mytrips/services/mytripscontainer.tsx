@@ -3,14 +3,23 @@ import "antd/dist/antd.css";
 import MyTripsPage from "../components/MyTripsPage";
 import { GLOBALS } from "../../../../globals/globals-variables";
 
-class TripsOption extends React.Component {
-  constructor(props: any) {
+
+interface IState {
+  initLoading: boolean;
+  misviajes: [];
+  error: string;
+};
+interface IProps {
+
+}
+class TripsOption extends React.Component<IProps,IState> {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       initLoading: true,
-      data: [],
+      misviajes: [],
       error: ""
-    };
+    } as IState;
   }
   componentDidMount() {
     const serviceUrl = `${
@@ -28,7 +37,7 @@ class TripsOption extends React.Component {
       .then(result => {
         this.setState({
           initLoading: false,
-          data: result
+          misviajes: result
         });
       })
       .catch(error =>
@@ -37,7 +46,7 @@ class TripsOption extends React.Component {
   }
 
   render() {
-    return <MyTripsPage data={this.state} />;
+    return <MyTripsPage misviajes={this.state.misviajes} initLoading={this.state.initLoading} />;
   }
 }
 
