@@ -5,9 +5,8 @@ import { IPaisCompleto, INuevoWishItemPais,IKeyValuePair } from "../../../../../
 
 let selectedDate = moment();
 interface IProps{
-  onAddItem : (wishItem : INuevoWishItemPais) => void;
-  data : IPaisCompleto[];
-  valor : IKeyValuePair;
+  onAddItem : (wishItem : INuevoWishItemPais) => void;  
+  valor : IPaisCompleto;
 }
 const CountryCard = (props: IProps) => {
 
@@ -17,30 +16,30 @@ const CountryCard = (props: IProps) => {
 
   const AddItemToWishList = () => {
     const model = {} as INuevoWishItemPais;
-    model.IdPais = props.valor.key;
+    model.IdPais = props.valor.idCountry;
     model.DateTrip = selectedDate;
    props.onAddItem(model);
   };
-  
+  console.log(props);
     
-    const valor = props.valor;
+    const pais = props.valor;
     return (
       <div>
         <Card
-          title={valor.value}
+          title={pais.name}
           bordered={false}
           style={{ width: "100%", marginTop: 10 }}
         >
-          <p>Continente: {valor.value} </p>
-          <p>Capital: {valor.value} </p>
+          <p>Continente: {pais.continent} </p>
+          <p>Capital: {pais.capital} </p>
           <p>
             More information about{" "}
             <a
-              href={"https://www.google.com/search?q=" + valor.value}
+              href={"https://www.google.com/search?q=" + pais.name}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {valor.value}
+              {pais.name}
             </a>
           </p>
 

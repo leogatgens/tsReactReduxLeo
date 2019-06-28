@@ -21,6 +21,15 @@ class SelectCountry extends React.Component<IProps, IState> {
       } as IKeyValuePair
     };
   }
+  obtenerPaisSeleccionado = (key:number) : IPaisCompleto  =>{          
+    let result =  this.props.datacountries.find(x => x.idCountry == key);    
+   if(result === undefined )
+   {
+     return {} as IPaisCompleto;
+   }
+    return result;
+  }
+
   handleChange = (value: any) => {
     this.setState({
       selectedvalue: value
@@ -28,7 +37,7 @@ class SelectCountry extends React.Component<IProps, IState> {
   };
 
   render() {
-    console.log(this);
+    
     const options = this.props.datacountries.map((item: IPaisCompleto) => (
       <Option key={item.idCountry}>{item.name}</Option>
     ));
@@ -53,7 +62,7 @@ class SelectCountry extends React.Component<IProps, IState> {
           {options}
         </Select>
         {this.state.selectedvalue.value !== "" ? (
-          <CountryCard data={this.props.datacountries} valor={this.state.selectedvalue} 
+          <CountryCard  valor={this.obtenerPaisSeleccionado(this.state.selectedvalue.key)} 
           onAddItem={this.props.onAddItem} />
         ) : null}
       </React.Fragment>
