@@ -104,7 +104,7 @@ export interface IAppState {
   countryState: IInterfazState;
   PaisState: ICountryState;
   ApiState: IApiState;
-  wishListState : IYoursTripsState;
+  yoursTripsState : IYoursTripsState;
 }
 //////////////////////////////////////////////
 //////////////////////////////////////////////
@@ -117,7 +117,7 @@ export enum YoursTripsActionTypes {
 }
 
 export interface IYoursTripsState {  
-  allCountries : [],  
+  allCountries : IPaisCompleto[],  
   emailUsuario : string 
 }
 
@@ -173,5 +173,4 @@ export interface INuevoWishItemPais {
 export interface IKeyValuePair {  
   key:number;
   value: string;
-
 }

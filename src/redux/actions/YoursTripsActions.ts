@@ -8,7 +8,7 @@ import axios from 'axios';
   
 export type YoursTripsActions =  IGetYoursTripsAction;
 
-  export function GetAllCountriesSuccess(allCountries : []) {
+   function GetAllCountriesSuccess(allCountries : []) {
     return { type: YoursTripsActionTypes.GET_ALL_COUNTRIES_LIST, allCountries };
   }
   
@@ -18,7 +18,7 @@ export type YoursTripsActions =  IGetYoursTripsAction;
     return async (dispatch: Dispatch) => {
       try {
         dispatch(beginApiCall());
-        const serviceUrl = `${GLOBALS.rootAPI}/game/paises`;
+        const serviceUrl = `${GLOBALS.rootAPI}/paises`;
         const response  = await axios.get(serviceUrl);      
         dispatch(GetAllCountriesSuccess(response.data));
         dispatch(apiCallSucess());

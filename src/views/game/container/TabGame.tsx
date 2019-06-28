@@ -10,7 +10,11 @@ import { CountryImage } from "../components/Flag";
 import { Options } from "../components/Options";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction, bindActionCreators } from "redux";
-import { ICountryState, IPais, IApiState } from "../../../redux/InterfacesRedux";
+import {
+  ICountryState,
+  IPais,
+  IApiState
+} from "../../../redux/InterfacesRedux";
 import { IAppState } from "../../../redux/InterfacesRedux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -28,10 +32,11 @@ interface IProps {
 
 class TabGame extends React.Component<IProps> {
   componentDidMount() {
-    this.props.countryaccions.getAllCountries().catch((error : any) => {
-      console.log(error);
-      
-    });
+    if (this.props.gameProps.listaTodosLosPaises.length <= 0) {
+      this.props.countryaccions.getAllCountries().catch((error: any) => {
+        console.log(error);
+      });
+    }
   }
 
   handleChange = (key: number) => (event: any, value: any) => {
@@ -52,7 +57,6 @@ class TabGame extends React.Component<IProps> {
     this.props.characteraccions.CambiarFondo("white");
   };
 
- 
   render() {
     console.log("....redering Tab Game");
     let index = this.props.gameProps.indexCountry;
@@ -69,9 +73,9 @@ class TabGame extends React.Component<IProps> {
       <Grid container spacing={1}>
         <Grid item xs={3}>
           <Paper style={styles.Paper}>
-            {this.props.apiProps.apiCallsInProgress === 0 ?
-            <CountryImage propiedades={actualCountry} /> : (
-
+            {this.props.apiProps.apiCallsInProgress === 0 ? (
+              <CountryImage propiedades={actualCountry} />
+            ) : (
               <Grid
                 container
                 justify="center"
@@ -130,7 +134,7 @@ class TabGame extends React.Component<IProps> {
 function mapStateToProps(state: IAppState) {
   return {
     gameProps: state.PaisState,
-    apiProps : state.ApiState
+    apiProps: state.ApiState
   };
 }
 

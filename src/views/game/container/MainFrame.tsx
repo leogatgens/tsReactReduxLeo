@@ -11,7 +11,7 @@ import TabGame from './TabGame';
 
 // Create the containers interface
 interface IProps {
-  countryState: IInterfazState;
+  interfazProps: IInterfazState;
   PaisState : ICountryState;
   countryaccions: any;
   characteraccions: any;
@@ -19,15 +19,8 @@ interface IProps {
 
 class MainFrame extends React.Component<IProps> {
 
-  componentDidMount() {
-    this.props.countryaccions.getAllContinents().catch((error : any) => {
-      console.log(error);
-      
-    });
-  }
 
-   handleIndexChange = (index: number) => {   
-     
+   handleIndexChange = (index: number) => {     
     this.props.characteraccions.CambiarFondo("white");
     this.props.countryaccions.RequestContinents(index,this.props.PaisState.listaTodosLosPaises);
   }
@@ -38,7 +31,7 @@ class MainFrame extends React.Component<IProps> {
     <React.Fragment>
     <div
           style={{
-            background: this.props.countryState.colorDivPrincipal,
+            background: this.props.interfazProps.colorDivPrincipal,
         
           }}
         >
@@ -57,7 +50,7 @@ class MainFrame extends React.Component<IProps> {
 
 const mapStateToProps = (store: IAppState) => {
   return {
-    countryState: store.countryState,   
+    interfazProps: store.countryState,   
     PaisState : store.PaisState
   };
 };

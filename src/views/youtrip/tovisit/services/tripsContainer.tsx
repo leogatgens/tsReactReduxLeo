@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 interface IProps {
-  wishListProps: IYoursTripsState;
+  yoursTripsProps: IYoursTripsState;
 }
 
 
@@ -16,7 +16,7 @@ class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
     super(props);
     this.state = {
       initLoading: true,
-      datacountries: [] as Array<IPaisCompleto>,
+      datacountries: this.props.yoursTripsProps.allCountries,
       datawishlist:  [] as Array<IWishListItem>,
       error: ""
     };
@@ -26,15 +26,14 @@ class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
     console.log("componentDidUpdate TripsContainer");
   }
   componentDidMount() {
-    this.ObtainWishList();
-    this.ListAllCountries();
+    this.ObtainWishList();    
     console.log("componentDidMount TripsContainer");
   }
 
   ObtainWishList = async () => {
     try {
       const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
-        this.props.wishListProps.emailUsuario
+        this.props.yoursTripsProps.emailUsuario
       }/wishlists`;
       let miInit = {
         headers: {
@@ -55,29 +54,13 @@ class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
     }
   };
 
-  ListAllCountries = async () => {
-    try {
-      const serviceUrl = `${GLOBALS.rootAPI}/paises`;
-      let miInit = {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      };
-      const response = await axios.get(serviceUrl, miInit);
-      
-      this.setState({
-        datacountries: response.data
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  
 
   handleAddedCountry = (newWishtItemCountry: INuevoWishItemPais) => {
     let newWishtCountry = {
       IdPais: newWishtItemCountry.IdPais,
       DateTrip: newWishtItemCountry.DateTrip,
-      ClientId: this.props.wishListProps.emailUsuario
+      ClientId: this.props.yoursTripsProps.emailUsuario
     };
     
     const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
@@ -108,7 +91,7 @@ class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
 
   handleRemoveItem = (value: number) => {
     const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
-      this.props.wishListProps.emailUsuario
+      this.props.yoursTripsProps.emailUsuario
     }/wishlists/${value}`;
     var miInit = {
       method: "DELETE"
@@ -141,6 +124,7 @@ class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
   }
 
   render() {
+    
     return (
       <div>
         <TabsView
@@ -155,7 +139,7 @@ class TripsContainer extends React.Component<IProps, IStateTripsContainer> {
 
 function mapStateToProps(state: IAppState) {
   return {
-    wishListProps: state.wishListState
+    yoursTripsProps: state.yoursTripsState
   };
 }
 

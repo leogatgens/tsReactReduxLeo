@@ -7,7 +7,7 @@ import initialState from './initialState';
 
 
 
-export const wishListReducer: Reducer<IYoursTripsState, YoursTripsActions> = (
+export const yoursTripsReducer: Reducer<IYoursTripsState, YoursTripsActions> = (
   state = initialState.yoursTripsState,
   action
 ) => {
