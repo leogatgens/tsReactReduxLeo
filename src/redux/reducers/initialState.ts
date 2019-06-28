@@ -20,7 +20,7 @@ const initialCharacterState: IInterfazState = {
   };
 
   const yoursTripsState: IYoursTripsState = {
-    wishList: [], 
+    allCountries: [], 
     emailUsuario : 'leogatgens@gmail.com'
   }
   

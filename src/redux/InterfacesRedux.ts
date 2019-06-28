@@ -111,20 +111,24 @@ export interface IAppState {
 ////////////////////////////////////////////
 
 // Create Action Constants
-export enum WishListActionTypes {  
-  GET_WISH_LIST = 'GET_WISH_LIST',  
-  GET_CONTINENTS_SUCCESS = 'GET_CONTINENTS_SUCCESS',  
+export enum YoursTripsActionTypes {  
+  GET_ALL_COUNTRIES_LIST = 'GET_ALL_COUNTRIES_LIST'
+  
 }
 
 export interface IYoursTripsState {  
-  wishList : [],  
+  allCountries : [],  
   emailUsuario : string 
 }
 
-export interface IGetWishListAction {
-  type: WishListActionTypes.GET_WISH_LIST;  
+export interface IGetYoursTripsAction {
+  type: YoursTripsActionTypes.GET_ALL_COUNTRIES_LIST;  
+  allCountries : [];
 }
 
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+////////////////////////////////////////////
 
 
 

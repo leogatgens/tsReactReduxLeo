@@ -1,4 +1,4 @@
-import { WishListActionTypes, IGetWishListAction, IYoursTripsState } from "../InterfacesRedux";
+import { YoursTripsActionTypes, IGetYoursTripsAction, IYoursTripsState } from "../InterfacesRedux";
 import { beginApiCall, apiCallSucess, apiCallError } from "./apiStatusActions";
 import { GLOBALS } from "../../globals/globals-variables";
 import { ActionCreator, Dispatch } from "redux";
@@ -6,21 +6,21 @@ import { ThunkAction } from "redux-thunk";
 import axios from 'axios';
 
   
-export type WishListActions =  IGetWishListAction;
+export type YoursTripsActions =  IGetYoursTripsAction;
 
-  export function loadWhishListSuccess(wishList : any) {
-    return { type: WishListActionTypes.GET_WISH_LIST, wishList };
+  export function GetAllCountriesSuccess(allCountries : []) {
+    return { type: YoursTripsActionTypes.GET_ALL_COUNTRIES_LIST, allCountries };
   }
   
-  export const getWishList: ActionCreator<
-    ThunkAction<Promise<any>, IYoursTripsState, null, IGetWishListAction>
+  export const ListCountries: ActionCreator<
+    ThunkAction<Promise<any>, IYoursTripsState, null, IGetYoursTripsAction>
   > = () => {
     return async (dispatch: Dispatch) => {
       try {
         dispatch(beginApiCall());
         const serviceUrl = `${GLOBALS.rootAPI}/game/paises`;
         const response  = await axios.get(serviceUrl);      
-        dispatch(loadWhishListSuccess(response.data));
+        dispatch(GetAllCountriesSuccess(response.data));
         dispatch(apiCallSucess());
       } catch (err) {
         dispatch(apiCallError());
