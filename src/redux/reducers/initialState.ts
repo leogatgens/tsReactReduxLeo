@@ -1,4 +1,4 @@
-import { IInterfazState, ICountryState, IPais, IApiState, IWishListState } from "../InterfacesRedux";
+import { IInterfazState, ICountryState, IPais, IApiState, IYoursTripsState } from "../InterfacesRedux";
 
 // Define the initial state
 const initialCharacterState: IInterfazState = {  
@@ -19,7 +19,7 @@ const initialCharacterState: IInterfazState = {
     apiCallsInProgress : 0
   };
 
-  const wishListState: IWishListState = {
+  const yoursTripsState: IYoursTripsState = {
     wishList: [], 
     emailUsuario : 'leogatgens@gmail.com'
   }
@@ -29,6 +29,6 @@ const initialCharacterState: IInterfazState = {
     initialCharacterState: initialCharacterState,
     defaultState: defaultState,
     initialApiState: initialApiState,
-    wishListState : wishListState
+    yoursTripsState : yoursTripsState
   };
   

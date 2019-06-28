@@ -2,8 +2,7 @@ import { InterfazActionTypes,IInterfazChangeColorAction } from '../InterfacesRed
 
 
 export const CambiarFondo = (color : string) => {
-  return { type: InterfazActionTypes.CHANGE_COLOR , color }
-}
+  return { type: InterfazActionTypes.CHANGE_COLOR , color }}
 
 export type InterfazActions =  IInterfazChangeColorAction;
 

@@ -104,7 +104,7 @@ export interface IAppState {
   countryState: IInterfazState;
   PaisState: ICountryState;
   ApiState: IApiState;
-  wishListState : IWishListState;
+  wishListState : IYoursTripsState;
 }
 //////////////////////////////////////////////
 //////////////////////////////////////////////
@@ -116,7 +116,7 @@ export enum WishListActionTypes {
   GET_CONTINENTS_SUCCESS = 'GET_CONTINENTS_SUCCESS',  
 }
 
-export interface IWishListState {  
+export interface IYoursTripsState {  
   wishList : [],  
   emailUsuario : string 
 }

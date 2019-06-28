@@ -1,4 +1,4 @@
-import { WishListActionTypes, IGetWishListAction, IWishListState } from "../InterfacesRedux";
+import { WishListActionTypes, IGetWishListAction, IYoursTripsState } from "../InterfacesRedux";
 import { beginApiCall, apiCallSucess, apiCallError } from "./apiStatusActions";
 import { GLOBALS } from "../../globals/globals-variables";
 import { ActionCreator, Dispatch } from "redux";
@@ -8,13 +8,12 @@ import axios from 'axios';
   
 export type WishListActions =  IGetWishListAction;
 
-
   export function loadWhishListSuccess(wishList : any) {
     return { type: WishListActionTypes.GET_WISH_LIST, wishList };
   }
   
   export const getWishList: ActionCreator<
-    ThunkAction<Promise<any>, IWishListState, null, IGetWishListAction>
+    ThunkAction<Promise<any>, IYoursTripsState, null, IGetWishListAction>
   > = () => {
     return async (dispatch: Dispatch) => {
       try {

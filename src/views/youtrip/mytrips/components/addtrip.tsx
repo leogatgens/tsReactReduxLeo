@@ -19,13 +19,13 @@ const useStyles = makeStyles((theme: Theme) =>
     textField: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
-      width: 200,
+      width: 400,
     },
     dense: {
       marginTop: 19,
     },
     menu: {
-      width: 200,
+      width: 400,
     },
   }),
 );
@@ -115,20 +115,7 @@ export default function FormDialog() {
           </option>
         ))}
       </TextField>
-           
-            <TextField
-            id="outlined-full-width"
-            label="Label"
-            style={{ margin: 8 }}
-            placeholder="Placeholder"
-            helperText="Full width!"
-            fullWidth
-            margin="normal"
-            variant="outlined"
-            InputLabelProps={{
-            shrink: true,
-            }}
-        />
+   
             <TextField
             id="date"
             label="Birthday"
