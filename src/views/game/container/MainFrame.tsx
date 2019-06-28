@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { IAppState, ICountryState, IInterfazState } from '../../../redux/Interfaces';
+import { IAppState, ICountryState, IInterfazState } from '../../../redux/InterfacesRedux';
 import Footer from '../components/Footer';
 import { Continents } from "../../../shared/data";
 import * as countryacciones from "../../../redux/actions/GameActions";

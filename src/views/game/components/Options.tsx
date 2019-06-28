@@ -1,7 +1,7 @@
 import React from 'react';
 import {List,ListItem,ListItemText} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import { IPais } from '../../../redux/Interfaces';
+import { IPais } from '../../../redux/InterfacesRedux';
 // Create the containers interface
 interface IProps {
   data: IPais[],  

@@ -1,4 +1,4 @@
-import { WishListActionTypes, IGetWishListAction, IWishListState } from "../Interfaces";
+import { WishListActionTypes, IGetWishListAction, IWishListState } from "../InterfacesRedux";
 import { beginApiCall, apiCallSucess, apiCallError } from "./apiStatusActions";
 import { GLOBALS } from "../../globals/globals-variables";
 import { ActionCreator, Dispatch } from "redux";

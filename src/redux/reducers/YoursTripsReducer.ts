@@ -1,8 +1,8 @@
-import { WishListActions } from './../actions/wishListActions';
+import { WishListActions } from '../actions/YoursTripsActions';
 // Import Reducer type
 import { Reducer } from 'redux';
 
-import { IWishListState } from '../Interfaces';
+import { IWishListState } from '../InterfacesRedux';
 import initialState from './initialState';
 
 

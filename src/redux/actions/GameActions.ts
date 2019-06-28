@@ -1,6 +1,6 @@
 import { INextCountryAction,IRequestContryByContinentAction, GameActionTypes,
   IGameGetAllContriesAction, 
-   IPais,IGameGetContinentsAction, IInterfazState} from '../Interfaces';
+   IPais,IGameGetContinentsAction, IInterfazState} from '../InterfacesRedux';
 import { ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';

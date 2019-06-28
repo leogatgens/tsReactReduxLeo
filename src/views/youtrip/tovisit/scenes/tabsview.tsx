@@ -4,7 +4,7 @@ import  WishList from "./viewwishlist/wishlist";
 import { Wrapper } from "../../../../shared/estilos";
 import { TituloPrincipal } from "../../../../shared/estiloshtml";
 import { SelectCountry } from "./addwishlist/selectcountry";
-import { IStateTripsContainer, INuevoWishItemPais } from "../../../../redux/Interfaces";
+import { IStateTripsContainer, INuevoWishItemPais } from "../../../../redux/InterfacesRedux";
 
 const TabPane = Tabs.TabPane;
 

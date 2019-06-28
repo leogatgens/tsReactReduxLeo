@@ -1,5 +1,5 @@
 import { ApiActions } from './../actions/apiStatusActions';
-import { ApiActionTypes, IApiState } from './../Interfaces';
+import { ApiActionTypes, IApiState } from '../InterfacesRedux';
 import { Reducer } from 'redux';
 import initialState from './initialState';
 

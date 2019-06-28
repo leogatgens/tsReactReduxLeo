@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 // Store type from Redux
 import { Store } from "redux";
 // Import the store function and state
-import  { IAppState } from "./redux/Interfaces";
+import  { IAppState } from "./redux/InterfacesRedux";
 
 import * as serviceWorker from "./serviceWorker";
 //import "./index.css";

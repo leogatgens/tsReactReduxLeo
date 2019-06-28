@@ -1,4 +1,4 @@
-import { IInterfazState, ICountryState, IPais, IApiState, IWishListState } from "../Interfaces";
+import { IInterfazState, ICountryState, IPais, IApiState, IWishListState } from "../InterfacesRedux";
 
 // Define the initial state
 const initialCharacterState: IInterfazState = {  

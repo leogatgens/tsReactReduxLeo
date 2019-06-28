@@ -1,4 +1,4 @@
-import { InterfazActionTypes,IInterfazChangeColorAction } from '../Interfaces';
+import { InterfazActionTypes,IInterfazChangeColorAction } from '../InterfacesRedux';
 
 
 export const CambiarFondo = (color : string) => {

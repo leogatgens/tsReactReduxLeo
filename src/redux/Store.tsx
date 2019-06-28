@@ -3,7 +3,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
 import thunk from "redux-thunk";
 import {rootReducer} from "./reducers/rootReducer";
-import { IAppState } from "./Interfaces";
+import { IAppState } from "./InterfacesRedux";
 import { createBrowserHistory } from 'history'
 
 

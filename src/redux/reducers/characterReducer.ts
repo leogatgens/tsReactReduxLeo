@@ -4,7 +4,7 @@ import { Reducer } from 'redux';
 import {
   InterfazActions
 } from '../actions/InterfazActions';
-import { IInterfazState,InterfazActionTypes } from '../Interfaces';
+import { IInterfazState,InterfazActionTypes } from '../InterfacesRedux';
 import initialState from './initialState';
 
 

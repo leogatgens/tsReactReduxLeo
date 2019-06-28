@@ -1,7 +1,7 @@
 import { Select } from "antd";
 import React from "react";
 import { CountryCard } from "./countrycard";
-import { IPaisCompleto, INuevoWishItemPais, IKeyValuePair } from "../../../../../redux/Interfaces";
+import { IPaisCompleto, INuevoWishItemPais, IKeyValuePair } from "../../../../../redux/InterfacesRedux";
 
 const Option = Select.Option;
 interface IProps {

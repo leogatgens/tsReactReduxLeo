@@ -1,7 +1,7 @@
 import { List, Avatar, Icon } from "antd";
 import React from "react";
 import { TituloPrincipal } from "../../../../../shared/estiloshtml";
-import { IWishListItem } from "../../../../../redux/Interfaces";
+import { IWishListItem } from "../../../../../redux/InterfacesRedux";
 
 interface IProps {
   initLoading: boolean;

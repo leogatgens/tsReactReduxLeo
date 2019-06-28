@@ -1,5 +1,5 @@
 import { Continents } from '../shared/data';
-import { IPais } from './Interfaces';
+import { IPais } from './InterfacesRedux';
 
 
 
