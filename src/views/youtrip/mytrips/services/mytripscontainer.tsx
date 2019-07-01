@@ -2,20 +2,22 @@ import React from "react";
 import "antd/dist/antd.css";
 import MyTripsPage from "../components/MyTripsPage";
 import { GLOBALS } from "../../../../globals/globals-variables";
-import { IPaisVisitado } from "../../../../redux/InterfaceModels";
+import {
+  IPaisVisitado,
+  INuevoViajeResgistrado
+} from "../../../../redux/InterfaceModels";
 import { connect } from "react-redux";
 import { IAppState, IYoursTripsState } from "../../../../redux/interfaceStates";
-
 
 interface IState {
   initLoading: boolean;
   misviajes: IPaisVisitado[];
   error: string;
-};
+}
 interface IProps {
   yoursTripsProps: IYoursTripsState;
 }
-class MyTripsContainer extends React.Component<IProps,IState> {
+class MyTripsContainer extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
@@ -24,6 +26,26 @@ class MyTripsContainer extends React.Component<IProps,IState> {
       error: ""
     } as IState;
   }
+
+  onAddItem = (newVisitedCountry: INuevoViajeResgistrado) => {
+    newVisitedCountry.ClientId = this.props.yoursTripsProps.emailUsuario;
+    
+    const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
+      this.props.yoursTripsProps.emailUsuario
+    }/trips`;
+    let miInit = {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify(newVisitedCountry)
+    };
+    fetch(serviceUrl, miInit)
+      .then(res => {
+        console.log(res);
+       
+      }).catch(error => console.log(error));
+  };
   componentDidMount() {
     const serviceUrl = `${
       GLOBALS.rootAPI
@@ -49,13 +71,16 @@ class MyTripsContainer extends React.Component<IProps,IState> {
   }
 
   render() {
-    return <MyTripsPage 
-    misviajes={this.state.misviajes} 
-    initLoading={this.state.initLoading} 
-    allcountries={this.props.yoursTripsProps.allCountries} />;
+    return (
+      <MyTripsPage
+        misviajes={this.state.misviajes}
+        initLoading={this.state.initLoading}
+        allcountries={this.props.yoursTripsProps.allCountries}
+        onAddItem={this.onAddItem}
+      />
+    );
   }
 }
-
 
 function mapStateToProps(state: IAppState) {
   return {

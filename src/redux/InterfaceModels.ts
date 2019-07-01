@@ -50,3 +50,10 @@ export interface IKeyValuePair {
   key: number;
   value: string;
 }
+
+
+export interface INuevoViajeResgistrado {
+  IdPais: number;
+  VisitedDate: moment.Moment;
+  ClientId : string;
+}

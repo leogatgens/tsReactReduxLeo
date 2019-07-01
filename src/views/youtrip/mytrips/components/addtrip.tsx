@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -7,7 +7,11 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { IPaisCompleto } from "../../../../redux/InterfaceModels";
+import {
+  IPaisCompleto,
+  INuevoViajeResgistrado
+} from "../../../../redux/InterfaceModels";
+import moment from "moment";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,8 +33,10 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+let selectedDate = moment();
 interface IProps {
   allcountries: IPaisCompleto[];
+  onAddItem: (CountryId: INuevoViajeResgistrado) => void;
 }
 interface IState {
   name: string;
@@ -39,8 +45,12 @@ interface IState {
   currency: string;
 }
 
-export default function FormDialog(props : IProps) {
-  
+export default function FormDialog(props: IProps) {
+  const onChange = (event: SyntheticEvent) => {
+    console.log(event);
+    let target = event.target as HTMLInputElement;
+  };
+
   const [open, setOpen] = React.useState(false); // hooks react
 
   const [values, setValues] = React.useState<IState>({
@@ -58,9 +68,19 @@ export default function FormDialog(props : IProps) {
     setOpen(false);
   }
 
+  function handleSave() {
+    let model = {} as INuevoViajeResgistrado;
+    model.IdPais = Number(values.currency);
+    model.VisitedDate = selectedDate;
+
+    props.onAddItem(model);
+    setOpen(false);
+  }
+
   const handleChange = (name: keyof IState) => (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+    
     setValues({ ...values, [name]: event.target.value });
   };
 
@@ -107,7 +127,8 @@ export default function FormDialog(props : IProps) {
               id="date"
               label="Fecha de la visita"
               type="date"
-              defaultValue="2010-01-01"
+              onChange={onChange}
+              defaultValue={moment().format("YYYY-MM-DD")}
               className={classes.textField}
               InputLabelProps={{
                 shrink: true
@@ -119,7 +140,7 @@ export default function FormDialog(props : IProps) {
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleSave} color="primary">
             Guardar
           </Button>
         </DialogActions>

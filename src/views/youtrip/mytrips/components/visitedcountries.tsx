@@ -1,14 +1,14 @@
 import { List, Avatar } from "antd";
 import React from "react";
 import { TituloPrincipal } from "../../../../shared/estiloshtml";
-import { IPaisVisitado, IPaisCompleto } from "../../../../redux/InterfaceModels";
+import { IPaisVisitado, IPaisCompleto, INuevoViajeResgistrado } from "../../../../redux/InterfaceModels";
 import FormDialog from "./addtrip";
 
 interface IProps {  
   misviajes : IPaisVisitado[];
   initLoading : boolean;
   allcountries : IPaisCompleto[];
-  
+  onAddItem: (CountryId: INuevoViajeResgistrado) => void;
 }
 
 const VisitedCountries = (props : IProps) => {
@@ -18,9 +18,9 @@ const VisitedCountries = (props : IProps) => {
     const paisesVisitados = [] as Array<IPaisVisitado>;
   
     trips.forEach((trip : IPaisVisitado) => {
-      console.log(trip);
+      
       if (idPaises.has(trip.idPais) === false) {
-        console.log("visitado");
+      
         paisesVisitados.push(trip);
       }
       idPaises.add(trip.idPais);
@@ -34,7 +34,7 @@ const VisitedCountries = (props : IProps) => {
   const paiseseSinduplicados = eliminarPaisesDuplicados(data);
   return (
     <div>
-      <FormDialog allcountries = {props.allcountries} />
+      <FormDialog allcountries = {props.allcountries} onAddItem={props.onAddItem} />
       <TituloPrincipal>
         Has visitado {paiseseSinduplicados.length} países
       </TituloPrincipal>
