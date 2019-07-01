@@ -1,12 +1,11 @@
 
+
 // Import Reducer type
 import { Reducer } from 'redux';
-import {
-  InterfazActions
-} from '../actions/InterfazActions';
-import { IInterfazState } from '../InterfacesRedux';
+import { IInterfazState } from '../interfaceStates';
 import { InterfazActionTypes } from "../InterfacesActions";
 import initialState from './initialState';
+import { InterfazActions } from '../actions/InterfazActions';
 
 
 

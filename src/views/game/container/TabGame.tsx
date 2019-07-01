@@ -10,12 +10,12 @@ import { CountryImage } from "../components/Flag";
 import { Options } from "../components/Options";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction, bindActionCreators } from "redux";
+import { IPais } from "../../../redux/InterfaceModels";
 import {
+  IAppState,
   ICountryState,
-  IPais,
   IApiState
-} from "../../../redux/InterfacesRedux";
-import { IAppState } from "../../../redux/InterfacesRedux";
+} from "../../../redux/interfaceStates";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = {

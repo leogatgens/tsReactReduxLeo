@@ -1,4 +1,4 @@
-import {  IYoursTripsState } from "../InterfacesRedux";
+import {  IYoursTripsState } from "../interfaceStates";
 import { YoursTripsActionTypes, IGetYoursTripsAction } from "../InterfacesActions";
 import { beginApiCall, apiCallSucess, apiCallError } from "./apiStatusActions";
 import { GLOBALS } from "../../globals/globals-variables";

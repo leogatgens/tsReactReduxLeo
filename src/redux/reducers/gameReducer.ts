@@ -1,6 +1,7 @@
 import { Reducer } from 'redux';
 import {GameActions} from '../actions/GameActions'
-import { ICountryState, IPais } from '../InterfacesRedux';
+import {  IPais } from '../InterfaceModels';
+import { ICountryState } from '../interfaceStates';
 import {GameActionTypes} from '../InterfacesActions';
 import { countriesByContinent,obtenerTop5Random } from '../Helpers';
 import initialState  from "./initialState";

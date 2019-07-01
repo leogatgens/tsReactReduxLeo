@@ -1,7 +1,7 @@
 import { Card, Button,DatePicker } from "antd";
 import React from "react";
 import moment from "moment";
-import { IPaisCompleto, INuevoWishItemPais } from "../../../../../redux/InterfacesRedux";
+import { IPaisCompleto, INuevoWishItemPais } from "../../../../../redux/InterfaceModels";
 
 let selectedDate = moment();
 interface IProps{

@@ -2,7 +2,7 @@ import React from "react";
 import { ContenedorCardsMobile } from "../components/cardcomponent";
 import { ContenedorCardsBrowser } from "../components/horizontalcards";
 import { BrowserView, MobileView } from "react-device-detect";
-import { IAppState, IYoursTripsState } from "../../../../redux/InterfacesRedux";
+import { IAppState, IYoursTripsState } from "../../../../redux/interfaceStates";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction, bindActionCreators } from "redux";
 import * as tripsAcciones from "../../../../redux/actions/YoursTripsActions";
@@ -14,8 +14,9 @@ interface IProps {
 }
 class Homebydevice extends React.Component<IProps> {
   componentDidMount() {    
-    console.log(this.props.yoursTripsProps)
+    
     if (this.props.yoursTripsProps.allCountries.length === 0) {      
+      console.log("ListCountries");
       this.props.allTripsAccions.ListCountries().catch((error: any) => {
         console.log(error);
       });

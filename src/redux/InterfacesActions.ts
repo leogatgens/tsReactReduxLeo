@@ -1,4 +1,4 @@
-import { IPais } from "./InterfacesRedux";
+import { IPais } from "./InterfaceModels";
 
 // Create Action Constants
 export enum InterfazActionTypes {

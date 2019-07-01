@@ -1,7 +1,7 @@
 import { List, Avatar } from "antd";
 import React from "react";
 import { TituloPrincipal } from "../../../../shared/estiloshtml";
-import { IPaisVisitado } from "../../../../redux/InterfacesRedux";
+import { IPaisVisitado } from "../../../../redux/InterfaceModels";
 import FormDialog from "./addtrip";
 
 interface IProps {  

@@ -2,7 +2,9 @@ import { INextCountryAction,IRequestContryByContinentAction, GameActionTypes,
   IGameGetAllContriesAction, 
    IGameGetContinentsAction} from '../InterfacesActions';
    import { 
-     IPais, IInterfazState} from '../InterfacesRedux';
+     IPais} from '../InterfaceModels';
+     import { 
+       IInterfazState} from '../interfaceStates';
 import { ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';

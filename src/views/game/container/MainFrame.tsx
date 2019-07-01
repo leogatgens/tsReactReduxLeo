@@ -1,63 +1,69 @@
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { IAppState, ICountryState, IInterfazState } from '../../../redux/InterfacesRedux';
-import Footer from '../components/Footer';
+import * as React from "react";
+import { connect } from "react-redux";
+import {
+  IAppState,
+  ICountryState,
+  IInterfazState
+} from "../../../redux/interfaceStates";
+import Footer from "../components/Footer";
 import { Continents } from "../../../shared/data";
 import * as countryacciones from "../../../redux/actions/GameActions";
 import * as characteracciones from "../../../redux/actions/InterfazActions";
-import { AnyAction, bindActionCreators } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
-import TabGame from './TabGame';
+import { AnyAction, bindActionCreators } from "redux";
+import { ThunkDispatch } from "redux-thunk";
+import TabGame from "./TabGame";
 
 // Create the containers interface
 interface IProps {
   interfazProps: IInterfazState;
-  PaisState : ICountryState;
+  PaisState: ICountryState;
   countryaccions: any;
   characteraccions: any;
 }
 
 class MainFrame extends React.Component<IProps> {
-
-
-   handleIndexChange = (index: number) => {     
+  handleIndexChange = (index: number) => {
     this.props.characteraccions.CambiarFondo("white");
-    this.props.countryaccions.RequestContinents(index,this.props.PaisState.listaTodosLosPaises);
-  }
+    this.props.countryaccions.RequestContinents(
+      index,
+      this.props.PaisState.listaTodosLosPaises
+    );
+  };
 
-  public render() { 
+  public render() {
     console.log("....redering MainFrame");
-  return (   
-    <React.Fragment>
-    <div
+    return (
+      <React.Fragment>
+        <div
           style={{
-            background: this.props.interfazProps.colorDivPrincipal,
-        
+            background: this.props.interfazProps.colorDivPrincipal
           }}
         >
- 
-      <TabGame/>
-       <Footer
+          <TabGame />
+          <Footer
             data={Continents}
             handleIndexChange={this.handleIndexChange}
             selectedIndex={this.props.PaisState.selectedTabIndex}
-          />       
-      </div>
+          />
+        </div>
       </React.Fragment>
-  );
+    );
   }
-};
+}
 
 const mapStateToProps = (store: IAppState) => {
   return {
-    interfazProps: store.countryState,   
-    PaisState : store.PaisState
+    interfazProps: store.countryState,
+    PaisState: store.PaisState
   };
 };
-function mapDispatchToProps(dispatch :ThunkDispatch<any, any, AnyAction>) {
+function mapDispatchToProps(dispatch: ThunkDispatch<any, any, AnyAction>) {
   return {
     countryaccions: bindActionCreators(countryacciones, dispatch),
     characteraccions: bindActionCreators(characteracciones, dispatch)
-  }
+  };
 }
-export default connect(mapStateToProps,mapDispatchToProps)(MainFrame);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MainFrame);

@@ -2,7 +2,8 @@ import React from "react";
 import { message } from "antd";
 import { GLOBALS } from "../../../../globals/globals-variables";
 import TabsView from "../scenes/tabsview";
-import { IYoursTripsState, IAppState,IStateTripsContainer,IWishListItem,INuevoWishItemPais } from "../../../../redux/InterfacesRedux";
+import {  IStateTripsContainer,IWishListItem,INuevoWishItemPais } from "../../../../redux/InterfaceModels";
+import { IYoursTripsState, IAppState } from "../../../../redux/interfaceStates";
 import { connect } from "react-redux";
 import axios from "axios";
 
