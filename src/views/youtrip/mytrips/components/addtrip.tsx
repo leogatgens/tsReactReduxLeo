@@ -7,62 +7,47 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-
-
+import { IPaisCompleto } from "../../../../redux/InterfaceModels";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
-      display: 'flex',
-      flexWrap: 'wrap',
+      display: "flex",
+      flexWrap: "wrap"
     },
     textField: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
-      width: 400,
+      width: 400
     },
     dense: {
-      marginTop: 19,
+      marginTop: 19
     },
     menu: {
-      width: 400,
-    },
-  }),
+      width: 400
+    }
+  })
 );
-const currencies = [
-    {
-      value: 'USD',
-      label: '$',
-    },
-    {
-      value: 'EUR',
-      label: '€',
-    },
-    {
-      value: 'BTC',
-      label: '฿',
-    },
-    {
-      value: 'JPY',
-      label: '¥',
-    },
-  ];
 
-interface State {
+interface IProps {
+  allcountries: IPaisCompleto[];
+}
+interface IState {
   name: string;
   age: string;
   multiline: string;
   currency: string;
 }
 
-export default function FormDialog() {
-  const [open, setOpen] = React.useState(false); // hooks react
+export default function FormDialog(props : IProps) {
   
-  const [values, setValues] = React.useState<State>({
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
+  const [open, setOpen] = React.useState(false); // hooks react
+
+  const [values, setValues] = React.useState<IState>({
+    name: "Cat in the Hat",
+    age: "",
+    multiline: "Controlled",
+    currency: "EUR"
   });
   const classes = useStyles();
   function handleClickOpen() {
@@ -73,7 +58,9 @@ export default function FormDialog() {
     setOpen(false);
   }
 
-  const handleChange = (name: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (name: keyof IState) => (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
@@ -89,49 +76,44 @@ export default function FormDialog() {
       >
         <DialogTitle id="form-dialog-title">Agregar país visitado</DialogTitle>
         <DialogContent>
-        <DialogContentText>
+          <DialogContentText>
             Seleccione el país y la fecha de su visita.
           </DialogContentText>
-        <form className={classes.container}>
-        <TextField
-        id="standard-select-currency-native"
-        select
-        label="Native select"
-        className={classes.textField}
-        value={values.currency}
-        onChange={handleChange('currency')}
-        SelectProps={{
-          native: true,
-          MenuProps: {
-            className: classes.menu,
-          },
-        }}
-        helperText="Please select your currency"
-        margin="normal"
-      >
-        {currencies.map(option => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </TextField>
-   
+          <form className={classes.container}>
             <TextField
-            id="date"
-            label="Birthday"
-            type="date"
-            defaultValue="2010-01-01"
-            className={classes.textField}
-            InputLabelProps={{
-              shrink: true
-            }}
-          />
-            
+              id="standard-select-currency-native"
+              select
+              label="Seleccione el país"
+              className={classes.textField}
+              value={values.currency}
+              onChange={handleChange("currency")}
+              SelectProps={{
+                native: true,
+                MenuProps: {
+                  className: classes.menu
+                }
+              }}
+              helperText="Por favor selecciona tu país"
+              margin="normal"
+            >
+              {props.allcountries.map(option => (
+                <option key={option.idCountry} value={option.idCountry}>
+                  {option.name}
+                </option>
+              ))}
+            </TextField>
+
+            <TextField
+              id="date"
+              label="Fecha de la visita"
+              type="date"
+              defaultValue="2010-01-01"
+              className={classes.textField}
+              InputLabelProps={{
+                shrink: true
+              }}
+            />
           </form>
-  
-         
-         
-          
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

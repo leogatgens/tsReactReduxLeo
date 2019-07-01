@@ -3,6 +3,8 @@ import "antd/dist/antd.css";
 import MyTripsPage from "../components/MyTripsPage";
 import { GLOBALS } from "../../../../globals/globals-variables";
 import { IPaisVisitado } from "../../../../redux/InterfaceModels";
+import { connect } from "react-redux";
+import { IAppState, IYoursTripsState } from "../../../../redux/interfaceStates";
 
 
 interface IState {
@@ -11,7 +13,7 @@ interface IState {
   error: string;
 };
 interface IProps {
-
+  yoursTripsProps: IYoursTripsState;
 }
 class MyTripsContainer extends React.Component<IProps,IState> {
   constructor(props: IProps) {
@@ -47,8 +49,18 @@ class MyTripsContainer extends React.Component<IProps,IState> {
   }
 
   render() {
-    return <MyTripsPage misviajes={this.state.misviajes} initLoading={this.state.initLoading} />;
+    return <MyTripsPage 
+    misviajes={this.state.misviajes} 
+    initLoading={this.state.initLoading} 
+    allcountries={this.props.yoursTripsProps.allCountries} />;
   }
 }
 
-export default MyTripsContainer;
+
+function mapStateToProps(state: IAppState) {
+  return {
+    yoursTripsProps: state.yoursTripsState
+  };
+}
+
+export default connect(mapStateToProps)(MyTripsContainer);
