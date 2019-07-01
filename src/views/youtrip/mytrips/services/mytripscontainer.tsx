@@ -8,6 +8,7 @@ import {
 } from "../../../../redux/InterfaceModels";
 import { connect } from "react-redux";
 import { IAppState, IYoursTripsState } from "../../../../redux/interfaceStates";
+import { message } from "antd";
 
 interface IState {
   initLoading: boolean;
@@ -29,7 +30,7 @@ class MyTripsContainer extends React.Component<IProps, IState> {
 
   onAddItem = (newVisitedCountry: INuevoViajeResgistrado) => {
     newVisitedCountry.ClientId = this.props.yoursTripsProps.emailUsuario;
-    
+
     const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
       this.props.yoursTripsProps.emailUsuario
     }/trips`;
@@ -43,8 +44,13 @@ class MyTripsContainer extends React.Component<IProps, IState> {
     fetch(serviceUrl, miInit)
       .then(res => {
         console.log(res);
-       
-      }).catch(error => console.log(error));
+        if(res.status === 201){
+          message.success("País agregado correctamente.");
+        }else{
+          message.error("Try again");
+        }
+      })
+      .catch(error => console.log(error));
   };
   componentDidMount() {
     const serviceUrl = `${
