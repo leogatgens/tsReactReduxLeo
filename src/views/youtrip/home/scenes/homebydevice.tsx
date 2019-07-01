@@ -10,13 +10,13 @@ import { connect } from "react-redux";
 
 interface IProps {
   yoursTripsProps: IYoursTripsState;
-  tripsAcciones: any;
+  allTripsAccions: any;
 }
 class Homebydevice extends React.Component<IProps> {
   componentDidMount() {    
     console.log(this.props.yoursTripsProps)
     if (this.props.yoursTripsProps.allCountries.length === 0) {      
-      this.props.tripsAcciones.ListCountries().catch((error: any) => {
+      this.props.allTripsAccions.ListCountries().catch((error: any) => {
         console.log(error);
       });
     }
@@ -43,7 +43,7 @@ function mapStateToProps(state: IAppState) {
 
 function mapDispatchToProps(dispatch: ThunkDispatch<any, any, AnyAction>) {
   return {
-    tripsAcciones: bindActionCreators(tripsAcciones, dispatch)
+    allTripsAccions: bindActionCreators(tripsAcciones, dispatch)
   };
 }
 export default connect(
