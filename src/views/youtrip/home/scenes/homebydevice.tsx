@@ -14,7 +14,8 @@ interface IProps {
 }
 class Homebydevice extends React.Component<IProps> {
   componentDidMount() {    
-    if (this.props.yoursTripsProps.allCountries.length <= 0) {      
+    console.log(this.props.yoursTripsProps)
+    if (this.props.yoursTripsProps.allCountries.length === 0) {      
       this.props.tripsAcciones.ListCountries().catch((error: any) => {
         console.log(error);
       });

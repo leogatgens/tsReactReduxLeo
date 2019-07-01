@@ -21,8 +21,8 @@ class SelectCountry extends React.Component<IProps, IState> {
       } as IKeyValuePair
     };
   }
-  obtenerPaisSeleccionado = (key:number) : IPaisCompleto  =>{          
-    let result =  this.props.datacountries.find(x => x.idCountry == key);    
+  obtenerPaisSeleccionado = (key:number) : IPaisCompleto  =>{         
+    let result =  this.props.datacountries.find(x => x.idCountry === Number(key));    
    if(result === undefined )
    {
      return {} as IPaisCompleto;
@@ -30,7 +30,7 @@ class SelectCountry extends React.Component<IProps, IState> {
     return result;
   }
 
-  handleChange = (value: any) => {
+  handleChange = (value: any) => {    
     this.setState({
       selectedvalue: value
     });
