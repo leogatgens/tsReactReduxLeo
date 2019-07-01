@@ -1,6 +1,4 @@
-
-
-import { ApiActionTypes, IBeginApiCallAction,IApiCallSucessAction,IErrorApiAction} from "../InterfacesRedux";
+import { ApiActionTypes, IBeginApiCallAction,IApiCallSucessAction,IErrorApiAction} from "../InterfacesActions";
 
 export function beginApiCall() {
   return { type: ApiActionTypes.BEGIN_API_CALL };

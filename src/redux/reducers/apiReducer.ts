@@ -1,5 +1,7 @@
 import { ApiActions } from './../actions/apiStatusActions';
-import { ApiActionTypes, IApiState } from '../InterfacesRedux';
+import {  IApiState } from '../InterfacesRedux';
+import { ApiActionTypes } from '../InterfacesActions';
+
 import { Reducer } from 'redux';
 import initialState from './initialState';
 
@@ -30,3 +32,4 @@ export const apiReducer: Reducer<IApiState, ApiActions> = (
       return state;
   }
 };
+

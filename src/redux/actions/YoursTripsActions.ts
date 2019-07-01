@@ -1,9 +1,11 @@
-import { YoursTripsActionTypes, IGetYoursTripsAction, IYoursTripsState } from "../InterfacesRedux";
+import {  IYoursTripsState } from "../InterfacesRedux";
+import { YoursTripsActionTypes, IGetYoursTripsAction } from "../InterfacesActions";
 import { beginApiCall, apiCallSucess, apiCallError } from "./apiStatusActions";
 import { GLOBALS } from "../../globals/globals-variables";
 import { ActionCreator, Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
 import axios from 'axios';
+
 
   
 export type YoursTripsActions =  IGetYoursTripsAction;
