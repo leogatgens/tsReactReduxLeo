@@ -1,8 +1,9 @@
 import { Timeline, Icon } from "antd";
 import React from "react";
+import { IPaisVisitado } from "../../../../redux/InterfaceModels";
 
 interface IProps {
-  data: [];
+  data: IPaisVisitado[];
 }
 const TripsTimeLine = (props : IProps) => {
 

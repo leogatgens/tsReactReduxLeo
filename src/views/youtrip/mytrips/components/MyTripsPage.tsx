@@ -3,10 +3,11 @@ import {Tabs} from 'antd';
 import { TituloPrincipal } from '../../../../shared/estiloshtml'
 import  PendingTimeLine  from './tripstimeline';
 import  VisitedCountries  from './visitedcountries';
+import { IPaisVisitado } from '../../../../redux/InterfaceModels';
 
 const TabPane = Tabs.TabPane;
 interface IProps {
-  misviajes: [];
+  misviajes: IPaisVisitado[];
   initLoading : boolean;
 }
 const  MyTripsPage = (props : IProps ) => {

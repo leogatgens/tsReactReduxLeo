@@ -2,17 +2,18 @@ import React from "react";
 import "antd/dist/antd.css";
 import MyTripsPage from "../components/MyTripsPage";
 import { GLOBALS } from "../../../../globals/globals-variables";
+import { IPaisVisitado } from "../../../../redux/InterfaceModels";
 
 
 interface IState {
   initLoading: boolean;
-  misviajes: [];
+  misviajes: IPaisVisitado[];
   error: string;
 };
 interface IProps {
 
 }
-class TripsOption extends React.Component<IProps,IState> {
+class MyTripsContainer extends React.Component<IProps,IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
@@ -50,4 +51,4 @@ class TripsOption extends React.Component<IProps,IState> {
   }
 }
 
-export default TripsOption;
+export default MyTripsContainer;

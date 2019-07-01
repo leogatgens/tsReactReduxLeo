@@ -5,19 +5,22 @@ import { IPaisVisitado } from "../../../../redux/InterfaceModels";
 import FormDialog from "./addtrip";
 
 interface IProps {  
-  misviajes : [];
+  misviajes : IPaisVisitado[];
   initLoading : boolean;
   
   
 }
 
 const VisitedCountries = (props : IProps) => {
+  
   const  eliminarPaisesDuplicados = (trips: Array<IPaisVisitado>) => {
     const idPaises = new Set();
     const paisesVisitados = [] as Array<IPaisVisitado>;
   
-    trips.forEach((trip : any) => {
+    trips.forEach((trip : IPaisVisitado) => {
+      console.log(trip);
       if (idPaises.has(trip.idPais) === false) {
+        console.log("visitado");
         paisesVisitados.push(trip);
       }
       idPaises.add(trip.idPais);

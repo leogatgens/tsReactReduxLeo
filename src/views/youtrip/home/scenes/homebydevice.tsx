@@ -16,7 +16,7 @@ class Homebydevice extends React.Component<IProps> {
   componentDidMount() {    
     
     if (this.props.yoursTripsProps.allCountries.length === 0) {      
-      console.log("ListCountries");
+      
       this.props.allTripsAccions.ListCountries().catch((error: any) => {
         console.log(error);
       });

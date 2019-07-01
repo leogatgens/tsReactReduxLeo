@@ -10,10 +10,12 @@ export interface IPais {
 }
 
 export interface IPaisVisitado {
-  id: number;
+  idPais: number;
   pais: string;
   urlFlag: string;
   continent: string;
+  annoDeLaVisita: string;
+  codigoPais : string;
 }
 
 export interface IWishListItem {
