@@ -1,4 +1,4 @@
-import React, { SyntheticEvent } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -33,31 +33,28 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-let selectedDate = moment();
 interface IProps {
   allcountries: IPaisCompleto[];
   onAddItem: (CountryId: INuevoViajeResgistrado) => void;
 }
 interface IState {
-  name: string;
-  age: string;
-  multiline: string;
-  currency: string;
+  selectedDate: moment.Moment;
+  Idpais: number;
 }
 
 export default function FormDialog(props: IProps) {
-  const onChange = (event: SyntheticEvent) => {
-    console.log(event);
-    let target = event.target as HTMLInputElement;
+  const onChange = (name: keyof IState) => (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    let temp = moment(event.target.value, "YYYY-MM-DD");
+    setValues({ ...values, [name]: temp });
   };
 
   const [open, setOpen] = React.useState(false); // hooks react
 
   const [values, setValues] = React.useState<IState>({
-    name: "Cat in the Hat",
-    age: "",
-    multiline: "Controlled",
-    currency: "EUR"
+    selectedDate: moment(),
+    Idpais: props.allcountries[0].idCountry
   });
   const classes = useStyles();
   function handleClickOpen() {
@@ -68,19 +65,18 @@ export default function FormDialog(props: IProps) {
     setOpen(false);
   }
 
-  function handleSave() {
+  const handleSave = () => {
     let model = {} as INuevoViajeResgistrado;
-    model.IdPais = Number(values.currency);
-    model.VisitedDate = selectedDate;
-
+    model.IdPais = Number(values.Idpais);
+    model.VisitedDate = values.selectedDate;
+    debugger;
     props.onAddItem(model);
     setOpen(false);
-  }
+  };
 
   const handleChange = (name: keyof IState) => (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    
     setValues({ ...values, [name]: event.target.value });
   };
 
@@ -101,12 +97,12 @@ export default function FormDialog(props: IProps) {
           </DialogContentText>
           <form className={classes.container}>
             <TextField
-              id="standard-select-currency-native"
+              id="standard-select-country-native"
               select
               label="Seleccione el país"
               className={classes.textField}
-              value={values.currency}
-              onChange={handleChange("currency")}
+              value={values.Idpais}
+              onChange={handleChange("Idpais")}
               SelectProps={{
                 native: true,
                 MenuProps: {
@@ -127,7 +123,7 @@ export default function FormDialog(props: IProps) {
               id="date"
               label="Fecha de la visita"
               type="date"
-              onChange={onChange}
+              onChange={onChange("selectedDate")}
               defaultValue={moment().format("YYYY-MM-DD")}
               className={classes.textField}
               InputLabelProps={{

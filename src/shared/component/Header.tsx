@@ -10,7 +10,7 @@ class Header extends React.Component {
     <Fragment>
      <AppBar position="static" >
       <Toolbar>
-        <Typography variant="h4" >
+        <Typography variant="h4" style={{color:"white"}} >
           Países del planeta tierra
         </Typography>            
         <Button component={Link} to="/">Yours Trips</Button>  
