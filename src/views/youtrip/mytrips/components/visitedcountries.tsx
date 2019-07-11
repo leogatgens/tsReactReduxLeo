@@ -1,4 +1,4 @@
-import { List, Avatar } from "antd";
+import { List, Avatar, Icon } from "antd";
 import React from "react";
 import { TituloPrincipal } from "../../../../shared/estiloshtml";
 import { IPaisVisitado, IPaisCompleto, INuevoViajeResgistrado } from "../../../../redux/InterfaceModels";
@@ -27,7 +27,11 @@ const VisitedCountries = (props : IProps) => {
     });
     return paisesVisitados;
   }
-
+  const remove = (CountryId: number) => {
+    alert("Are you sure???");
+    console.log("remove" + CountryId.toString());
+//    props.onDeleteItem(CountryId);
+  };
 
   const   data  = props.misviajes;
   const initLoading = props.initLoading
@@ -44,7 +48,16 @@ const VisitedCountries = (props : IProps) => {
         loading={initLoading}
         dataSource={paiseseSinduplicados}
         renderItem={item => (
-          <List.Item>
+          <List.Item
+          actions={[
+            <Icon
+              key={item.idPais}
+              type="close-circle"
+              theme="filled"
+              onClick={() => remove(item.idPais)}
+            />
+          ]}
+          >
             <List.Item.Meta
               avatar={<Avatar src={item.urlFlag} />}
               title={
