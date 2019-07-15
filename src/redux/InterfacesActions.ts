@@ -21,12 +21,14 @@ export interface INextCountryAction {
   type: GameActionTypes.NEXT_COUNTRY;
   index: number;
   paises: IPais[];
+  continents: string[];
 }
 
 export interface IRequestContryByContinentAction {
   type: GameActionTypes.REQUEST_COUNTRIES_BY_CONTINENT;
   index: number;
   paises: IPais[];
+  continents: string[];
 }
 
 
@@ -35,9 +37,9 @@ export interface IGameGetAllContriesAction {
   paises: IPais[];
 }
 
-export interface IGameGetContinentsAction {
+export interface IGameGetAllContinentsAction {
   type: GameActionTypes.GET_CONTINENTS_SUCCESS;
-  paises: IPais[];
+  continents: string[];
 }
 
 // Create Action Constants

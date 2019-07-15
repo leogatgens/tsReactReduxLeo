@@ -6,7 +6,6 @@ import {
   IInterfazState
 } from "../../../redux/interfaceStates";
 import Footer from "../components/Footer";
-import { Continents } from "../../../shared/data";
 import * as countryacciones from "../../../redux/actions/GameActions";
 import * as characteracciones from "../../../redux/actions/InterfazActions";
 import { AnyAction, bindActionCreators } from "redux";
@@ -17,16 +16,27 @@ import TabGame from "./TabGame";
 interface IProps {
   interfazProps: IInterfazState;
   PaisState: ICountryState;
-  countryaccions: any;
+  gameactions: any;
   characteraccions: any;
+  
 }
-
 class MainFrame extends React.Component<IProps> {
+
+
+  componentDidMount() {
+    if (this.props.PaisState.continents.length <= 0) {
+      this.props.gameactions.getAllContinents().catch((error: any) => {
+        console.log(error);
+      });
+    }
+  }
+
   handleIndexChange = (index: number) => {
     this.props.characteraccions.CambiarFondo("white");
-    this.props.countryaccions.RequestContinents(
+    this.props.gameactions.RequestContinents(
       index,
-      this.props.PaisState.listaTodosLosPaises
+      this.props.PaisState.listaTodosLosPaises,
+      this.props.PaisState.continents
     );
   };
 
@@ -41,7 +51,7 @@ class MainFrame extends React.Component<IProps> {
         >
           <TabGame />
           <Footer
-            data={Continents}
+            data={this.props.PaisState.continents}
             handleIndexChange={this.handleIndexChange}
             selectedIndex={this.props.PaisState.selectedTabIndex}
           />
@@ -59,7 +69,7 @@ const mapStateToProps = (store: IAppState) => {
 };
 function mapDispatchToProps(dispatch: ThunkDispatch<any, any, AnyAction>) {
   return {
-    countryaccions: bindActionCreators(countryacciones, dispatch),
+    gameactions: bindActionCreators(countryacciones, dispatch),
     characteraccions: bindActionCreators(characteracciones, dispatch)
   };
 }

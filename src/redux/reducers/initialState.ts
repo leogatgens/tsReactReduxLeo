@@ -13,7 +13,8 @@ const initialCharacterState: IInterfazState = {
     indexCountry: 0,
     selectedTabIndex: 0,
     juegoIniciado : false,
-    emailUsuario : ''
+    emailUsuario : '',
+    continents : []
   }
 
   const initialApiState: IApiState = {  

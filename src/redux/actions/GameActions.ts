@@ -1,6 +1,6 @@
 import { INextCountryAction,IRequestContryByContinentAction, GameActionTypes,
-  IGameGetAllContriesAction, 
-   IGameGetContinentsAction} from '../InterfacesActions';
+  IGameGetAllContriesAction,    
+   IGameGetAllContinentsAction} from '../InterfacesActions';
    import { 
      IPais} from '../InterfaceModels';
      import { 
@@ -11,20 +11,21 @@ import axios from 'axios';
 import { beginApiCall, apiCallError, apiCallSucess } from './apiStatusActions';
 import { GLOBALS } from '../../globals/globals-variables';
 
-export type GameActions = INextCountryAction | IRequestContryByContinentAction | IGameGetAllContriesAction;
-export const nextCountry = (index : number,paises : IPais[]) => {
-  return { type: GameActionTypes.NEXT_COUNTRY , index,paises }
+export type GameActions = INextCountryAction | IRequestContryByContinentAction | IGameGetAllContriesAction | IGameGetAllContinentsAction;
+export const nextCountry = (index : number,paises : IPais[],continents : string[]) => {
+  return { type: GameActionTypes.NEXT_COUNTRY , index,paises,continents }
 }
-export const RequestContinents = (index : number,paises :IPais[]) => {
-  return { type: GameActionTypes.REQUEST_COUNTRIES_BY_CONTINENT, index,paises }
+export const RequestContinents = (index : number,paises :IPais[],continents : string[]) => {
+  return { type: GameActionTypes.REQUEST_COUNTRIES_BY_CONTINENT, index,paises,continents }
 }
 
 export function loadCountriesSuccess(paises : IPais[]) {
   return { type: GameActionTypes.GET_ALL_SUCCESS, paises };
 }
 
-export function loadContinentsSuccess(paises : string[]) {
-  return { type: GameActionTypes.GET_CONTINENTS_SUCCESS, paises };
+
+export function loadContinentsSuccess(continents : string[]) {
+  return { type: GameActionTypes.GET_CONTINENTS_SUCCESS, continents };
 }
 
 export const getAllCountries: ActionCreator<
@@ -45,12 +46,12 @@ export const getAllCountries: ActionCreator<
 };
 
 export const getAllContinents: ActionCreator<
-  ThunkAction<Promise<any>, IInterfazState, null, IGameGetContinentsAction>
+  ThunkAction<Promise<any>, IInterfazState, null, IGameGetAllContinentsAction>
 > = () => {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(beginApiCall());
-      const serviceUrl = `${GLOBALS.rootAPI}/game/paises`;
+      const serviceUrl = `${GLOBALS.rootAPI}/continent`;
       const response  = await axios.get(serviceUrl);      
       dispatch(loadContinentsSuccess(response.data));
       dispatch(apiCallSucess());

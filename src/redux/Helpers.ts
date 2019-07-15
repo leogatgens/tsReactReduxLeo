@@ -1,4 +1,3 @@
-import { Continents } from '../shared/data';
 import { IPais } from './InterfaceModels';
 
 
@@ -27,7 +26,7 @@ function calcularIndiceMaximoParaObtenerCincoPaises(longitud : number){
 
 }
 
-export function countriesByContinent(indicefilter : number, paises : Array<IPais>,excluidos : Array<IPais> ):any {
+export function countriesByContinent(indicefilter : number, paises : Array<IPais>,Continents : Array<string> ):any {
 
   if(paises.length <=0){
      return { listaPaises: []  as Array<IPais>, indicePaisActual: 0 };

@@ -37,4 +37,3 @@ export const ListapaisesJSON = [
 
 
 
-export const Continents = ['All','Europe','America','Asia','Africa','Oceania'];

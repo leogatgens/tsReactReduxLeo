@@ -12,6 +12,7 @@ export interface ICountryState {
   selectedTabIndex: number;
   juegoIniciado: boolean;
   emailUsuario: string;
+  continents:string[];
 }
 
 export interface IAppState {
