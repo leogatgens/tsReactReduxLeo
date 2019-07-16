@@ -34,8 +34,11 @@ export const getAllCountries: ActionCreator<
   return async (dispatch: Dispatch) => {
     try {
       dispatch(beginApiCall());
+      var config = {
+        headers: {'Access-Control-Allow-Origin': '*'}
+    };
       const serviceUrl = `${GLOBALS.rootAPI}/game/paises`;
-      const response  = await axios.get(serviceUrl);      
+      const response  = await axios.get(serviceUrl, config);      
       dispatch(loadCountriesSuccess(response.data));
       dispatch(apiCallSucess());
     } catch (err) {
@@ -51,8 +54,11 @@ export const getAllContinents: ActionCreator<
   return async (dispatch: Dispatch) => {
     try {
       dispatch(beginApiCall());
+      var config = {
+        headers: {'Access-Control-Allow-Origin': '*'}
+    };
       const serviceUrl = `${GLOBALS.rootAPI}/continent`;
-      const response  = await axios.get(serviceUrl);      
+      const response  = await axios.get(serviceUrl, config);      
       dispatch(loadContinentsSuccess(response.data));
       dispatch(apiCallSucess());
     } catch (err) {

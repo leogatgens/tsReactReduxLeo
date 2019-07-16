@@ -1,6 +1,7 @@
 import React from 'react'; // we need this to make JSX compile
 import { Typography } from '@material-ui/core';
 import { IPais } from '../../../redux/InterfaceModels';
+import { GLOBALS } from '../../../globals/globals-variables';
 
 
 interface IProps {
@@ -13,7 +14,7 @@ export const CountryImage: React.SFC<IProps> = (props) => {
   
   return (     
   <React.Fragment>    
-    <img src={props.propiedades.flagUrl ? props.propiedades.flagUrl : "http://localhost:3000/img/notfound.png"} alt="logo"  />
+    <img src={props.propiedades.flagUrl ? props.propiedades.flagUrl : `${GLOBALS.rootImages}/notfound.png`} alt="logo"  />
     <Typography variant="h6" align="center">
       ¿País?
     </Typography>

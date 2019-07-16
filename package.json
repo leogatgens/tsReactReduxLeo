@@ -2,6 +2,7 @@
   "name": "tsreactreduxleo",
   "version": "0.1.0",
   "private": true,
+  "homepage":  "https://youtripyouwish.s3.us-east-2.amazonaws.com/",
   "dependencies": {
     "@material-ui/core": "^4.2.0",
     "@types/history": "^4.7.2",
