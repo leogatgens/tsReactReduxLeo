@@ -1,30 +1,48 @@
-import { INextCountryAction,IRequestContryByContinentAction, GameActionTypes,
-  IGameGetAllContriesAction,    
-   IGameGetAllContinentsAction} from '../InterfacesActions';
-   import { 
-     IPais} from '../InterfaceModels';
-     import { 
-       IInterfazState} from '../interfaceStates';
-import { ActionCreator, Dispatch } from 'redux';
-import { ThunkAction } from 'redux-thunk';
-import axios from 'axios';
-import { beginApiCall, apiCallError, apiCallSucess } from './apiStatusActions';
-import { GLOBALS } from '../../globals/globals-variables';
+import {
+  INextCountryAction,
+  IRequestContryByContinentAction,
+  GameActionTypes,
+  IGameGetAllContriesAction,
+  IGameGetAllContinentsAction
+} from "../InterfacesActions";
+import { IPais } from "../InterfaceModels";
+import { IInterfazState } from "../interfaceStates";
+import { ActionCreator, Dispatch } from "redux";
+import { ThunkAction } from "redux-thunk";
+import axios from "axios";
+import { beginApiCall, apiCallError, apiCallSucess } from "./apiStatusActions";
+import { GLOBALS } from "../../globals/globals-variables";
 
-export type GameActions = INextCountryAction | IRequestContryByContinentAction | IGameGetAllContriesAction | IGameGetAllContinentsAction;
-export const nextCountry = (index : number,paises : IPais[],continents : string[]) => {
-  return { type: GameActionTypes.NEXT_COUNTRY , index,paises,continents }
-}
-export const RequestContinents = (index : number,paises :IPais[],continents : string[]) => {
-  return { type: GameActionTypes.REQUEST_COUNTRIES_BY_CONTINENT, index,paises,continents }
-}
+export type GameActions =
+  | INextCountryAction
+  | IRequestContryByContinentAction
+  | IGameGetAllContriesAction
+  | IGameGetAllContinentsAction;
+export const nextCountry = (
+  index: number,
+  paises: IPais[],
+  continents: string[]
+) => {
+  return { type: GameActionTypes.NEXT_COUNTRY, index, paises, continents };
+};
+export const RequestContinents = (
+  index: number,
+  paises: IPais[],
+  continents: string[]
+) => {
+  return {
+    type: GameActionTypes.REQUEST_COUNTRIES_BY_CONTINENT,
+    index,
+    paises,
+    continents
+  };
+};
 
-export function loadCountriesSuccess(paises : IPais[]) {
+export function loadCountriesSuccess(paises: IPais[]) {
   return { type: GameActionTypes.GET_ALL_SUCCESS, paises };
 }
 
-
-export function loadContinentsSuccess(continents : string[]) {
+export function loadContinentsSuccess(continents: string[]) {
   return { type: GameActionTypes.GET_CONTINENTS_SUCCESS, continents };
 }
 
@@ -35,10 +53,13 @@ export const getAllCountries: ActionCreator<
     try {
       dispatch(beginApiCall());
       var config = {
-        headers: {'Access-Control-Allow-Origin': '*'}
-    };
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json"
+        }
+      };
       const serviceUrl = `${GLOBALS.rootAPI}/game/paises`;
-      const response  = await axios.get(serviceUrl, config);      
+      const response = await axios.get(serviceUrl, config);
       dispatch(loadCountriesSuccess(response.data));
       dispatch(apiCallSucess());
     } catch (err) {
@@ -55,10 +76,13 @@ export const getAllContinents: ActionCreator<
     try {
       dispatch(beginApiCall());
       var config = {
-        headers: {'Access-Control-Allow-Origin': '*'}
-    };
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json"
+        }
+      };
       const serviceUrl = `${GLOBALS.rootAPI}/continent`;
-      const response  = await axios.get(serviceUrl, config);      
+      const response = await axios.get(serviceUrl, config);
       dispatch(loadContinentsSuccess(response.data));
       dispatch(apiCallSucess());
     } catch (err) {
@@ -67,4 +91,3 @@ export const getAllContinents: ActionCreator<
     }
   };
 };
-

@@ -13,6 +13,8 @@ interface IProps {
   allTripsAccions: any;
 }
 class Homebydevice extends React.Component<IProps> {
+
+
   componentDidMount() {    
     
     if (this.props.yoursTripsProps.allCountries.length === 0) {      
@@ -24,6 +26,7 @@ class Homebydevice extends React.Component<IProps> {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <BrowserView>

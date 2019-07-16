@@ -41,6 +41,7 @@ class MainFrame extends React.Component<IProps> {
   };
 
   public render() {
+    console.log(this.props);
     console.log("....redering MainFrame");
     return (
       <React.Fragment>

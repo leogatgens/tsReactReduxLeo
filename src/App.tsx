@@ -1,13 +1,12 @@
 import React from "react";
 import MainFrame from "./views/game/container/MainFrame";
-import { BrowserRouter, Route } from "react-router-dom";
-import { History } from "history";
+import { BrowserRouter, Route, Switch} from "react-router-dom";
 import Header from "./shared/component/Header";
 import Homebydevice from "./views/youtrip/home/scenes/homebydevice"
 import TripsContainer from "./views/youtrip/tovisit/services/tripsContainer"
 import MyTripsContainer from "./views/youtrip/mytrips/services/MyTripsContainer";
 interface AppProps {
-  history: History;
+  history: any;
 }
 
 const About = () =>{
@@ -36,11 +35,18 @@ const ProfileForm = () =>{
 
 
 
-const App = ({ history }: AppProps) => {
+const App = (props: AppProps) => {
+  
+  const path = (/#!(\/.*)$/.exec(props.history.location.hash) || [])[1];
+if (path) {
+  props.history.replace(path);
+}
+  console.log(props.history);
   return (
     <BrowserRouter>
       <div>
         <Header />
+        <Switch>
         <Route exact path="/" component={Homebydevice} ></Route>
         <Route path="/about" component={About} ></Route>
         <Route path="/contact" component={Contact} ></Route>
@@ -48,7 +54,7 @@ const App = ({ history }: AppProps) => {
         <Route path="/profile" component={ProfileForm} ></Route>
         <Route path="/porvisitar" component={TripsContainer} ></Route>
         <Route path="/misviajes" component={MyTripsContainer} ></Route>
-        
+        </Switch>
       </div>
     </BrowserRouter>
   );

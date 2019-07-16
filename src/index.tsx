@@ -17,10 +17,11 @@ interface IProps {
   store: Store<IAppState>;
 }
 
-
 // Generate the store
 const store = configureStore();
 const Root: React.SFC<IProps> = props => {
+
+
   return (
     <Provider store={props.store}>
       <App history={history}/>
