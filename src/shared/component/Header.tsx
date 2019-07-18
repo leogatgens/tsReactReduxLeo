@@ -11,7 +11,7 @@ class Header extends React.Component {
      <AppBar position="static" >
       <Toolbar>
         <Typography variant="h4" style={{color:"white"}} >
-          Países del planeta tierra
+          Tu diario de viaje  
         </Typography>            
         <Button component={Link} to="/">Yours Trips</Button>  
         <Button component={Link} to="/about">About</Button>  

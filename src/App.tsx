@@ -1,7 +1,8 @@
 import React from "react";
 import MainFrame from "./views/game/container/MainFrame";
 import { BrowserRouter, Route, Switch} from "react-router-dom";
-import Header from "./shared/component/Header";
+//import Header from "./shared/component/Header";
+import Header from "./shared/component/Header3";
 import Homebydevice from "./views/youtrip/home/scenes/homebydevice"
 import TripsContainer from "./views/youtrip/tovisit/services/tripsContainer"
 import MyTripsContainer from "./views/youtrip/mytrips/services/MyTripsContainer";
@@ -41,7 +42,7 @@ const App = (props: AppProps) => {
 if (path) {
   props.history.replace(path);
 }
-  console.log(props.history);
+  
   return (
     <BrowserRouter>
       <div>

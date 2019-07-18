@@ -26,7 +26,7 @@ class Homebydevice extends React.Component<IProps> {
   }
 
   render() {
-    console.log(this.props);
+    
     return (
       <div>
         <BrowserView>

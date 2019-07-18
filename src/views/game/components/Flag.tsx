@@ -10,11 +10,11 @@ interface IProps {
 }
 
 export const CountryImage: React.SFC<IProps> = (props) => { 
-  
+  console.log(props);
   
   return (     
   <React.Fragment>    
-    <img src={props.propiedades.flagUrl ? props.propiedades.flagUrl : `${GLOBALS.rootImages}/notfound.png`} alt="logo"  />
+    <img src={props.propiedades.flagUrl ? props.propiedades.flagUrl.replace("##CDN##",GLOBALS.rootImages) : `${GLOBALS.rootImages}/notfound.png`} alt="logo"  />
     <Typography variant="h6" align="center">
       ¿País?
     </Typography>
