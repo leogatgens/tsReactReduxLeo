@@ -11,8 +11,9 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import FlightLand from '@material-ui/icons/FlightLand';
+import FlightTakeoff from '@material-ui/icons/FlightTakeoff';
+import VideogameAsset from '@material-ui/icons/VideogameAsset';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 interface Iprops  extends RouteComponentProps<any> {
@@ -93,7 +94,31 @@ const useStyles = makeStyles((theme: Theme) =>
   function handleProfileMenuOpen(event: React.MouseEvent<HTMLElement>) {
     setAnchorEl(event.currentTarget);
   }
+  
 
+  function handleGame(event: React.MouseEvent<HTMLElement>) {
+    //setAnchorEl(event.currentTarget);
+    const location = {
+      pathname: '/game'
+    }       
+   props.history.push(location)
+  }
+
+  function handleFlightLand(event: React.MouseEvent<HTMLElement>) {
+    //setAnchorEl(event.currentTarget);
+    const location = {
+      pathname: '/misviajes'
+    }       
+   props.history.push(location)
+  }
+
+  function handleFlightTakeoff(event: React.MouseEvent<HTMLElement>) {
+    //setAnchorEl(event.currentTarget);
+    const location = {
+      pathname: '/porvisitar'
+    }       
+   props.history.push(location)
+  }
   function handleMobileMenuClose() {
     setMobileMoreAnchorEl(null);
   }
@@ -144,7 +169,7 @@ const useStyles = makeStyles((theme: Theme) =>
       <MenuItem>
         <IconButton aria-label="Show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="secondary">
-            <MailIcon />
+            <FlightLand />
           </Badge>
         </IconButton>
         <p>Messages</p>
@@ -152,7 +177,7 @@ const useStyles = makeStyles((theme: Theme) =>
       <MenuItem>
         <IconButton aria-label="Show 11 new notifications" color="inherit">
           <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
+            <FlightTakeoff />
           </Badge>
         </IconButton>
         <p>Notifications</p>
@@ -201,14 +226,19 @@ const useStyles = makeStyles((theme: Theme) =>
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="Show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
+          <IconButton aria-label="Show 4 new mails" color="inherit" onClick={handleGame}>
+              <Badge badgeContent={0} color="secondary">
+                <VideogameAsset />
               </Badge>
             </IconButton>
-            <IconButton aria-label="Show 17 new notifications" color="inherit">
+            <IconButton aria-label="Show 4 new mails" color="inherit" onClick={handleFlightLand}>
+              <Badge badgeContent={4} color="secondary">
+                <FlightLand />
+              </Badge>
+            </IconButton>
+            <IconButton aria-label="Show 17 new notifications" color="inherit"   onClick={handleFlightTakeoff}>
               <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+                <FlightTakeoff />
               </Badge>
             </IconButton>
             <IconButton
