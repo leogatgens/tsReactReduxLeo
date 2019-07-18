@@ -21,6 +21,7 @@ import FlightTakeoff from "@material-ui/icons/FlightTakeoff";
 import VideogameAsset from "@material-ui/icons/VideogameAsset";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { withRouter, RouteComponentProps } from "react-router-dom";
+import Tooltip from '@material-ui/core/Tooltip';
 interface Iprops extends RouteComponentProps<any> {}
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -255,27 +256,27 @@ function PrimarySearchAppBar(props: Iprops) {
               color="inherit"
               onClick={handleGame}
             >
-              <Badge badgeContent={0} color="secondary">
+            <Tooltip title="Juego" aria-label="Juego">
                 <VideogameAsset />
-              </Badge>
+            </Tooltip>
             </IconButton>
             <IconButton
               aria-label="Show 4 new mails"
               color="inherit"
               onClick={handleFlightLand}
             >
-              <Badge badgeContent={4} color="secondary">
+                <Tooltip title="Mis viajes" aria-label="Mis viajes">
                 <FlightLand />
-              </Badge>
+                </Tooltip >
             </IconButton>
             <IconButton
               aria-label="Show 17 new notifications"
               color="inherit"
               onClick={handleFlightTakeoff}
             >
-              <Badge badgeContent={17} color="secondary">
+              <Tooltip title="Por visitar" aria-label="Por visitar">
                 <FlightTakeoff />
-              </Badge>
+              </Tooltip >
             </IconButton>
             <IconButton
               edge="end"
