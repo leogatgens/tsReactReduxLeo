@@ -181,6 +181,8 @@ function PrimarySearchAppBar(props: Iprops) {
           </Badge>
         </IconButton>
         <p>Game</p>
+        </MenuItem>
+        <MenuItem>
         <IconButton
           aria-label="Show 4 new mails"
           color="inherit"
