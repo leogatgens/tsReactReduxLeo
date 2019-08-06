@@ -6,6 +6,10 @@ import Header from "./shared/component/Header3";
 import Homebydevice from "./views/youtrip/home/scenes/homebydevice"
 import TripsContainer from "./views/youtrip/tovisit/services/tripsContainer"
 import MyTripsContainer from "./views/youtrip/mytrips/services/MyTripsContainer";
+import PrivateRoute from './auth0/PrivateRoute';
+import Profile from "./shared/component/Profile";
+import { useAuth0 } from "./react-auth0-spa";
+
 interface AppProps {
   history: any;
 }
@@ -37,7 +41,8 @@ const ProfileForm = () =>{
 
 
 const App = (props: AppProps) => {
-  
+  console.log(props);
+  const { loading } = useAuth0();
   const path = (/#!(\/.*)$/.exec(props.history.location.hash) || [])[1];
 if (path) {
   props.history.replace(path);
@@ -52,9 +57,10 @@ if (path) {
         <Route path="/about" component={About} ></Route>
         <Route path="/contact" component={Contact} ></Route>
         <Route path="/game" component={MainFrame} ></Route>
-        <Route path="/profile" component={ProfileForm} ></Route>
+        <PrivateRoute path="/profile" component={Profile} ></PrivateRoute>
         <Route path="/porvisitar" component={TripsContainer} ></Route>
         <Route path="/misviajes" component={MyTripsContainer} ></Route>
+        {/* <PrivateRoute path="/profile" component={Profile} /> */}
         </Switch>
       </div>
     </BrowserRouter>

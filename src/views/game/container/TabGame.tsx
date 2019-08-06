@@ -19,7 +19,7 @@ import {
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = {
-  Paper: { padding: 20, marginTop: 20, marginBottom: 10, height: 350 }
+  Paper: { padding: 20, marginTop: 20, marginBottom: 10 }
 };
 
 // Create the containers interface
@@ -71,8 +71,8 @@ class TabGame extends React.Component<IProps> {
     }
 
     return (
-      <Grid container spacing={1}>
-        <Grid item xs={3}>
+      <Grid>
+        <Grid item>
           <Paper style={styles.Paper}>
             {this.props.apiProps.apiCallsInProgress === 0 ? (
               <CountryImage propiedades={actualCountry} />
@@ -92,7 +92,7 @@ class TabGame extends React.Component<IProps> {
             )}
           </Paper>
         </Grid>
-        <Grid item sm>
+        <Grid item>
           <Paper style={styles.Paper}>
             {this.props.apiProps.apiCallsInProgress === 0 ? (
               <Options
@@ -114,7 +114,7 @@ class TabGame extends React.Component<IProps> {
                 />
               </Grid>
             )}
-            <Grid container direction="column-reverse" alignContent="flex-end">
+            <Grid container >
               {countriesToShow.length > 0 ? (
                 <Button
                   variant="contained"

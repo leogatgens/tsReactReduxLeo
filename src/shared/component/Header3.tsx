@@ -129,6 +129,17 @@ function PrimarySearchAppBar(props: Iprops) {
     setMobileMoreAnchorEl(null);
   }
 
+  function handleProfile() {
+    console.log(props);
+    setAnchorEl(null);
+    handleMobileMenuClose();
+    const location = {
+      pathname: "/profile"
+    };
+    props.history.push(location);
+    //props.history.replace(location)
+  }
+
   function handleMenuClose() {
     console.log(props);
     setAnchorEl(null);
@@ -139,7 +150,6 @@ function PrimarySearchAppBar(props: Iprops) {
     props.history.push(location);
     //props.history.replace(location)
   }
-
   function handleMobileMenuOpen(event: React.MouseEvent<HTMLElement>) {
     setMobileMoreAnchorEl(event.currentTarget);
   }
@@ -155,7 +165,7 @@ function PrimarySearchAppBar(props: Iprops) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleProfile}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );

@@ -17,10 +17,10 @@ interface IProps {
 const useStyles = makeStyles(
   createStyles({
     card: {
-      maxWidth: 345,
+      
     },
     media: {
-      height: 200,
+      
     },
   }),
 );

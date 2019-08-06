@@ -12,25 +12,46 @@ import * as serviceWorker from "./serviceWorker";
 //import "./index.css";
 import App from "./App";
 import configureStore,{history} from "./redux/Store";
+import { Auth0Provider } from "./react-auth0-spa";
+import config from "./auth_config.json"
 
 interface IProps {
   store: Store<IAppState>;
+  funcion: any;
 }
+const onRedirectCallback = (appState : any) => {
+  console.log(appState);
+  window.history.replaceState(
+    {},
+    document.title,
+    appState && appState.targetUrl
+      ? appState.targetUrl
+      : window.location.pathname
+  );
+};
 
 // Generate the store
 const store = configureStore();
-const Root: React.SFC<IProps> = props => {
-
-
+const Root: React.SFC<IProps> = (props) => {
+  console.log(props);
+  
   return (
+    <Auth0Provider
+    domain={config.domain}
+    client_id={config.clientId}
+    redirect_uri={window.location.origin}
+    onRedirectCallback={props.funcion}
+  >
+    
     <Provider store={props.store}>
-      <App history={history}/>
+      <App history={history} />
     </Provider>
+    </Auth0Provider>
   );
 };
 
 // Render the App
-ReactDOM.render(<Root store={store} />, document.getElementById(
+ReactDOM.render(<Root store={store} funcion={onRedirectCallback} />, document.getElementById(
   "root"
 ) as HTMLElement);
 
