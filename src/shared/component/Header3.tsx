@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   fade,
   makeStyles,
@@ -21,7 +21,9 @@ import FlightTakeoff from "@material-ui/icons/FlightTakeoff";
 import VideogameAsset from "@material-ui/icons/VideogameAsset";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from "@material-ui/core/Tooltip";
+
+import { useAuth0 } from "../../react-auth0-spa";
 interface Iprops extends RouteComponentProps<any> {}
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -95,6 +97,11 @@ function PrimarySearchAppBar(props: Iprops) {
     setMobileMoreAnchorEl
   ] = React.useState<null | HTMLElement>(null);
 
+  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const logoutWithRedirect = () =>
+    logout({
+      returnTo: window.location.origin
+    });
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -133,13 +140,24 @@ function PrimarySearchAppBar(props: Iprops) {
     console.log(props);
     setAnchorEl(null);
     handleMobileMenuClose();
+    
     const location = {
       pathname: "/profile"
     };
     props.history.push(location);
     //props.history.replace(location)
   }
-
+  function handleLogin() {
+    console.log(props);
+    setAnchorEl(null);
+    handleMobileMenuClose();
+    loginWithRedirect({});
+    // const location = {
+    //   pathname: "/profile"
+    // };
+    // props.history.push(location);
+    //props.history.replace(location)
+  }
   function handleMenuClose() {
     console.log(props);
     setAnchorEl(null);
@@ -165,8 +183,13 @@ function PrimarySearchAppBar(props: Iprops) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleProfile}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      {isAuthenticated && (
+        <Fragment>
+        <MenuItem onClick={handleProfile}>My account</MenuItem>
+        <MenuItem onClick={logoutWithRedirect}>Logout</MenuItem>
+        </Fragment>
+      )}
+      {!isAuthenticated && <MenuItem onClick={handleLogin}>Login</MenuItem>}
     </Menu>
   );
 
@@ -192,8 +215,8 @@ function PrimarySearchAppBar(props: Iprops) {
           </Badge>
         </IconButton>
         <p>Game</p>
-        </MenuItem>
-        <MenuItem>
+      </MenuItem>
+      <MenuItem>
         <IconButton
           aria-label="Show 4 new mails"
           color="inherit"
@@ -266,18 +289,18 @@ function PrimarySearchAppBar(props: Iprops) {
               color="inherit"
               onClick={handleGame}
             >
-            <Tooltip title="Juego" aria-label="Juego">
+              <Tooltip title="Juego" aria-label="Juego">
                 <VideogameAsset />
-            </Tooltip>
+              </Tooltip>
             </IconButton>
             <IconButton
               aria-label="Show 4 new mails"
               color="inherit"
               onClick={handleFlightLand}
             >
-                <Tooltip title="Mis viajes" aria-label="Mis viajes">
+              <Tooltip title="Mis viajes" aria-label="Mis viajes">
                 <FlightLand />
-                </Tooltip >
+              </Tooltip>
             </IconButton>
             <IconButton
               aria-label="Show 17 new notifications"
@@ -286,7 +309,7 @@ function PrimarySearchAppBar(props: Iprops) {
             >
               <Tooltip title="Por visitar" aria-label="Por visitar">
                 <FlightTakeoff />
-              </Tooltip >
+              </Tooltip>
             </IconButton>
             <IconButton
               edge="end"
