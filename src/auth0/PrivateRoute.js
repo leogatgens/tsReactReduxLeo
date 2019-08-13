@@ -5,7 +5,7 @@ import { useAuth0 } from "../react-auth0-spa";
 
 const PrivateRoute = ({ component: Component, path, ...rest }) => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
- debugger;
+ 
   useEffect(() => {
     const fn = async () => {
       if (!isAuthenticated) {

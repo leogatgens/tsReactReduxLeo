@@ -69,7 +69,7 @@ export default function FormDialog(props: IProps) {
     let model = {} as INuevoViajeResgistrado;
     model.IdPais = Number(values.Idpais);
     model.VisitedDate = values.selectedDate;
-    debugger;
+    
     props.onAddItem(model);
     setOpen(false);
   };

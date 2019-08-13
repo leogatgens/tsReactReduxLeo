@@ -184,11 +184,18 @@ function PrimarySearchAppBar(props: Iprops) {
       onClose={handleMenuClose}
     >
       {isAuthenticated && (
-        <Fragment>
+        
         <MenuItem onClick={handleProfile}>My account</MenuItem>
-        <MenuItem onClick={logoutWithRedirect}>Logout</MenuItem>
-        </Fragment>
+        
+        
       )}
+          {isAuthenticated && (
+        
+        <MenuItem onClick={logoutWithRedirect}>Logout</MenuItem>
+        
+        
+      )}
+      
       {!isAuthenticated && <MenuItem onClick={handleLogin}>Login</MenuItem>}
     </Menu>
   );

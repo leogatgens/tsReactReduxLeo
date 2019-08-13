@@ -58,8 +58,8 @@ if (path) {
         <Route path="/contact" component={Contact} ></Route>
         <Route path="/game" component={MainFrame} ></Route>
         <PrivateRoute path="/profile" component={Profile} ></PrivateRoute>
-        <Route path="/porvisitar" component={TripsContainer} ></Route>
-        <Route path="/misviajes" component={MyTripsContainer} ></Route>
+        <PrivateRoute path="/porvisitar" component={TripsContainer} ></PrivateRoute>
+        <PrivateRoute path="/misviajes" component={MyTripsContainer} ></PrivateRoute>
         {/* <PrivateRoute path="/profile" component={Profile} /> */}
         </Switch>
       </div>
