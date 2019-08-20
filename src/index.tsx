@@ -32,17 +32,15 @@ const onRedirectCallback = (appState : any) => {
 
 // Generate the store
 const store = configureStore();
-const Root: React.SFC<IProps> = (props) => {
-  console.log(props);
+const Root = (props : IProps) => { 
   
   return (
     <Auth0Provider
     domain={config.domain}
     client_id={config.clientId}
     redirect_uri={window.location.origin}
-    onRedirectCallback={props.funcion}
-  >
-    
+    onRedirectCallback={props.funcion}>
+      
     <Provider store={props.store}>
       <App history={history} />
     </Provider>
