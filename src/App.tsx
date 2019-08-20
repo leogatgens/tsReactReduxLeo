@@ -28,13 +28,6 @@ const Contact = () => {
   );
 };
 
-const ProfileForm = () => {
-  return (
-    <div>
-      <p>Formulario para datos del usuario</p>
-    </div>
-  );
-};
 
 const App = (props: AppProps) => {
   const path = (/#!(\/.*)$/.exec(props.history.location.hash) || [])[1];
@@ -49,7 +42,7 @@ const App = (props: AppProps) => {
         <Switch>
           <Route exact path="/" component={Homebydevice} />
           <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
+          <PrivateRoute path="/contact" component={Contact} />
           <Route path="/game" component={MainFrame} />
           <Route path="/profile" component={Profile} />
           <Route path="/porvisitar" component={TripsContainer} />

@@ -17,6 +17,7 @@ interface IProps {
   onAddItem: (CountryId: INuevoViajeResgistrado) => void;
 }
 const MyTripsPage = (props: IProps) => {
+  console.log(props);
   return (
     <Tabs defaultActiveKey="1">
       <TabPane tab="Lista países visitados" key="1">

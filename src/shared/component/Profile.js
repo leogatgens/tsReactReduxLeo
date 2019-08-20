@@ -6,9 +6,10 @@ import Loading from "./Loading";
 import { useAuth0 } from "../../react-auth0-spa";
 
 const Profile = () => {
-  debugger;
+  
   const { loading, user,getTokenSilently } = useAuth0();
   const token =  getTokenSilently();
+  console.log(token);
   if (loading || !user) {
     return <Loading />;
   }

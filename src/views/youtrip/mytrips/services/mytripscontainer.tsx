@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "antd/dist/antd.css";
 import MyTripsPage from "../components/MyTripsPage";
 import { GLOBALS } from "../../../../globals/globals-variables";
@@ -18,21 +18,16 @@ interface IState {
 interface IProps {
   yoursTripsProps: IYoursTripsState;
 }
-class MyTripsContainer extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-      initLoading: true,
-      misviajes: [],
-      error: ""
-    } as IState;
-  }
+const MyTripsContainer = (props: IProps, state: IState) => {
+  const [error, seterror] = useState("");
+  const [misviajes, setmisviajes] = useState([]);
+  const [initLoading, setinitLoading] = useState(true);
 
-  onAddItem = (newVisitedCountry: INuevoViajeResgistrado) => {
-    newVisitedCountry.ClientId = this.props.yoursTripsProps.emailUsuario;
+  const onAddItem = (newVisitedCountry: INuevoViajeResgistrado) => {
+    newVisitedCountry.ClientId = props.yoursTripsProps.emailUsuario;
 
     const serviceUrl = `${GLOBALS.rootAPI}/travelers/${
-      this.props.yoursTripsProps.emailUsuario
+      props.yoursTripsProps.emailUsuario
     }/trips`;
     let miInit = {
       headers: {
@@ -44,16 +39,18 @@ class MyTripsContainer extends React.Component<IProps, IState> {
     fetch(serviceUrl, miInit)
       .then(res => {
         console.log(res);
-        if(res.status === 201){
+        if (res.status === 201) {
           message.success("País agregado correctamente.");
-        }else{
+        } else {
           message.error("Try again");
         }
       })
       .catch(error => console.log(error));
   };
-  componentDidMount() {
-    const serviceUrl = `${
+
+
+  useEffect(() => {
+      const serviceUrl = `${
       GLOBALS.rootAPI
     }/travelers/${"leogatgens@gmail.com"}/trips`;
     let miInit = {
@@ -65,28 +62,28 @@ class MyTripsContainer extends React.Component<IProps, IState> {
       .then(res => {
         return res.json();
       })
-      .then(result => {
-        this.setState({
-          initLoading: false,
-          misviajes: result
-        });
+      .then(result => {        
+          setinitLoading(false);
+          setmisviajes(result);
+        
       })
-      .catch(error =>
-        this.setState({ error: error.message, initLoading: false })
-      );
-  }
+      .catch(error =>{ 
+        seterror(error.message);
+        setinitLoading( false);
+      })
+      
+  },[]);
+ 
 
-  render() {
-    return (
-      <MyTripsPage
-        misviajes={this.state.misviajes}
-        initLoading={this.state.initLoading}
-        allcountries={this.props.yoursTripsProps.allCountries}
-        onAddItem={this.onAddItem}
-      />
-    );
-  }
-}
+  return (
+    <MyTripsPage
+      misviajes={misviajes}
+      initLoading={initLoading}
+      allcountries={props.yoursTripsProps.allCountries}
+      onAddItem={onAddItem}
+    />
+  );
+};
 
 function mapStateToProps(state: IAppState) {
   return {
