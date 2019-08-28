@@ -45,8 +45,8 @@ const App = (props: AppProps) => {
           <PrivateRoute path="/contact" component={Contact} />
           <Route path="/game" component={MainFrame} />
           <Route path="/profile" component={Profile} />
-          <Route path="/porvisitar" component={TripsContainer} />
-          <Route path="/misviajes" component={MyTripsContainer} />
+          <PrivateRoute path="/porvisitar" component={TripsContainer} />
+          <PrivateRoute path="/misviajes" component={MyTripsContainer} />
         </Switch>
       </div>
     </BrowserRouter>
