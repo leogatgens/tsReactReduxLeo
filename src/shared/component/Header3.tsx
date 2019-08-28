@@ -140,7 +140,7 @@ function PrimarySearchAppBar(props: Iprops) {
     console.log(props);
     setAnchorEl(null);
     handleMobileMenuClose();
-    
+
     const location = {
       pathname: "/profile"
     };
@@ -184,18 +184,12 @@ function PrimarySearchAppBar(props: Iprops) {
       onClose={handleMenuClose}
     >
       {isAuthenticated && (
-        
         <MenuItem onClick={handleProfile}>My account</MenuItem>
-        
-        
       )}
-          {isAuthenticated && (
-        
+      {isAuthenticated && (
         <MenuItem onClick={logoutWithRedirect}>Logout</MenuItem>
-        
-        
       )}
-      
+
       {!isAuthenticated && <MenuItem onClick={handleLogin}>Login</MenuItem>}
     </Menu>
   );

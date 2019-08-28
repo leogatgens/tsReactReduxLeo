@@ -1,4 +1,5 @@
 {
   "domain": "leogatgens.auth0.com",
-  "clientId": "HTwg21o0FUTh0BYQeooOqukxFircHxZR"
+  "clientId": "HTwg21o0FUTh0BYQeooOqukxFircHxZR",
+  "audience": "https://leogatgensAPI"
 }

@@ -39,7 +39,10 @@ const Root = (props : IProps) => {
     domain={config.domain}
     client_id={config.clientId}
     redirect_uri={window.location.origin}
-    onRedirectCallback={props.funcion}>
+    onRedirectCallback={props.funcion}
+    audience={config.audience}
+    >
+    
       
     <Provider store={props.store}>
       <App history={history} />
